@@ -9,7 +9,7 @@ import AVFoundation
 import SwiftUI
 
 class CameraViewModel: ObservableObject {
-    @Published var isUsingFrontCamera: Bool = false
+    @Published var isUsingFrontCamera: Bool = true
     var captureSession: AVCaptureSession? // 접근 제한자 제거
     
     private var currentInput: AVCaptureDeviceInput?

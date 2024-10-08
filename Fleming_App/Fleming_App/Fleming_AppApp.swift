@@ -12,11 +12,12 @@ struct Fleming_AppApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            MonitorSoundView() // Issue #1: 카메라 위에 애니메이션 & 음성넣기
+//            MonitorSoundView() // Issue #1: 카메라 위에 애니메이션 & 음성넣기
+            FableView() // Issue #3: ui기본구성 연습, 카메라위에 png 올리기 및 애니메이션
         }
     }
 }
 
 #Preview {
- MonitorSoundView()
+ FableView()
 }
