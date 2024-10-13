@@ -45,6 +45,11 @@
 			path = Fleming_AppUITests;
 			sourceTree = "<group>";
 		};
+		9827D0A82CBBBE01000334B0 /* New Folder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "New Folder";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 		00C014C82CB38D3900E2753B = {
 			isa = PBXGroup;
 			children = (
+				9827D0A82CBBBE01000334B0 /* New Folder */,
 				00C014D32CB38D3900E2753B /* Fleming_App */,
 				00C014E42CB38D3B00E2753B /* Fleming_AppTests */,
 				00C014EE2CB38D3B00E2753B /* Fleming_AppUITests */,
@@ -109,6 +115,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				00C014D32CB38D3900E2753B /* Fleming_App */,
+				9827D0A82CBBBE01000334B0 /* New Folder */,
 			);
 			name = Fleming_App;
 			packageProductDependencies = (
@@ -396,8 +403,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
+				DEVELOPMENT_TEAM = SPWZSLF9KX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -424,8 +433,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
+				DEVELOPMENT_TEAM = SPWZSLF9KX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
