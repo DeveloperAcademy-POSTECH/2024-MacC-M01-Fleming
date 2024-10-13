@@ -1,46 +1,26 @@
 //
-//  Untitled.swift
+//  ThreeLittlePigs10.swift
 //  Fleming_App
 //
-//  Created by Leo Yoon on 10/10/24.
+//  Created by Leo Yoon on 10/14/24.
 //
+
 
 import SwiftUI
 
-struct ThreeLittlePigs01: View {
+struct ThreeLittlePigs10: View {
     @Binding var currentStep: Int
-    var screenWidth = UIScreen.main.bounds.width
-    var screenHeight = UIScreen.main.bounds.height
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
 
+    var screenWidth = UIScreen.main.bounds.width
+    var screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
         
         ZStack{
-            // 배경
-            BaseView_ThreeLittlePig(currentStep:$currentStep)
-            
-            // 제목 - 컴포넌트화 필요
-            VStack{
-                Text("The")
-                    .font(.system(size: 128))
-                    .bold()
-                    .frame(width: screenWidth-80, alignment: .leading)
-                    .foregroundStyle(AppColor.pigBrown)
-                Text("Three")
-                    .font(.system(size: 128))
-                    .bold()
-                    .frame(width: screenWidth-80, alignment: .leading)
-                    .foregroundStyle(AppColor.pigBrown)
-                Text("Little Pigs")
-                    .font(.system(size: 128))
-                    .bold()
-                    .frame(width: screenWidth-80, alignment: .leading)
-                    .foregroundStyle(AppColor.pigBrown)
-            }
-            .padding(.leading, 40)
-            
+            // 카메라 뷰
+            CameraView_ThreeLittlePig(currentStep:$currentStep)
             
             // 캐릭터 위치
             HStack{
@@ -77,12 +57,26 @@ struct ThreeLittlePigs01: View {
                         isLeft.toggle()
                     }
             }
-            .offset(x: 550)
+            .offset(x: -250)
+            
+            // 각각 분리형 집
+            Image("object_home11_in")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
+                .offset(x: -260, y: 100)
+            
+            Image("object_home11_cut")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
+                .offset(x: 260, y: 100)
+                
         }
     }
 }
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs01(currentStep: .constant(1), isLeft: $isLeft)
+    ThreeLittlePigs10(currentStep: .constant(10), isLeft:$isLeft)
 }
