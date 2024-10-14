@@ -10,7 +10,7 @@ import SwiftUI
 struct FableView: View{
 //    @ObservedObject var viewModel = MonitorSoundViewModel() //필요없지 않나?
     @ObservedObject var cameraViewModel = CameraViewModel()
-    @State private var isLeft = true // 동그라미가 왼쪽에 있는지 여부
+    @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
     @State public var screenWidth = UIScreen.main.bounds.width
     @State public var screenHeight = UIScreen.main.bounds.height
@@ -75,5 +75,6 @@ struct FableView: View{
 }
 
 #Preview{
-    FableView()
+    @Previewable @State var isLeft: Bool = false
+    FableView(isLeft: $isLeft)
 }
