@@ -37,7 +37,7 @@ class CameraViewController: UIViewController {
         guard let captureSession = viewModel?.captureSession else { return }
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.bounds
-        previewLayer.videoGravity = .resizeAspect // 화면에 맞추되 비율 유지하며 여백 추가
+        previewLayer.videoGravity = .resizeAspectFill // 화면에 맞추되 비율 유지하며 여백 추가
         view.layer.addSublayer(previewLayer)
         self.previewLayer = previewLayer
     }

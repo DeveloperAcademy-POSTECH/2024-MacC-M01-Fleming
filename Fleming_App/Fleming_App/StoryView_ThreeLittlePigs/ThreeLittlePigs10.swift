@@ -57,20 +57,20 @@ struct ThreeLittlePigs10: View {
                         isLeft.toggle()
                     }
             }
-            .offset(x: -250)
+            .offset(x: -250, y: 100)
             
             // 각각 분리형 집
             Image("object_home11_in")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: -260, y: 100)
+                .frame(width: screenWidth * 0.05) // 화면 크기 n배
+                .offset(x: -screenWidth/2 + 60, y: 0)
             
             Image("object_home11_cut")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: 260, y: 100)
+                .frame(width: screenWidth * 0.2) // 화면 크기 n배
+                .offset(x: screenWidth/2 - 100, y: 0)
                 
         }
     }
