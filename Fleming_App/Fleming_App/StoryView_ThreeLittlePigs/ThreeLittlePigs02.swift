@@ -9,20 +9,24 @@ import SwiftUI
 
 struct ThreeLittlePigs02: View {
     @Binding var currentStep: Int
+    @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
+    
+    var screenWidth = UIScreen.main.bounds.width
+    var screenHeight = UIScreen.main.bounds.height
+    
     
     var body: some View {
         
-        VStack {
-            Text("ThreeLittlePigs02 View")
-            Button(action: {
-                currentStep = 3 // 3단계로 이동
-            }) {
-                Text("Go to ThreeLittlePigs03")
-            }
+        ZStack{
+            
+            BaseView_ThreeLittlePig(currentStep:$currentStep)
+            
         }
     }
 }
 
 #Preview {
-    ThreeLittlePigs02(currentStep: .constant(2))
+    @Previewable @State var isLeft: Bool = false
+    ThreeLittlePigs02(currentStep: .constant(2), isLeft: $isLeft)
 }
