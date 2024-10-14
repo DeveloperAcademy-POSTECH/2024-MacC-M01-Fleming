@@ -6,13 +6,13 @@
 //
 
 
-import SwiftUI
-
-@main
-struct makeCameraApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
+//import SwiftUI
+//
+//@main
+//struct makeCameraApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            ContentView()
+//        }
+//    }
+//}
