@@ -1,6 +1,6 @@
 <svg width="1133" height="744" viewBox="0 0 1133 744" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_156_17981)">
-<ellipse cx="523.5" cy="668" rx="756" ry="144.5" fill="#C3E460"/>
+<g clip-path="url(#clip0_298_620)">
+<ellipse cx="523.5" cy="758" rx="756" ry="144.5" fill="#C3E460"/>
 <circle cx="528" cy="201" r="38.5" fill="white"/>
 <circle cx="485" cy="172" r="38.5" fill="white"/>
 <circle cx="528" cy="175" r="38.5" fill="white"/>
@@ -18,7 +18,7 @@
 <circle cx="1005.5" cy="150.5" r="67" fill="white"/>
 </g>
 <defs>
-<clipPath id="clip0_156_17981">
+<clipPath id="clip0_298_620">
 <rect width="744" height="1133" fill="white" transform="matrix(0 -1 1 0 0 744)"/>
 </clipPath>
 </defs>

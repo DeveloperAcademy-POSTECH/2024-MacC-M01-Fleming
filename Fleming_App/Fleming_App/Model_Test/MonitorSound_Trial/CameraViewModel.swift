@@ -18,6 +18,8 @@ class CameraViewModel: ObservableObject {
         captureSession = AVCaptureSession()
         guard let captureSession = captureSession else { return }
         captureSession.sessionPreset = .photo
+        
+        captureSession.sessionPreset = .hd1280x720 // 또는 .hd1920x1080
         switchCamera()
     }
     
