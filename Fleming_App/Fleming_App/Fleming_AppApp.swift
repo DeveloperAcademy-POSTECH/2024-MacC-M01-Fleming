@@ -21,6 +21,8 @@ struct Fleming_AppApp: App {
                 //            NavigationToggleView(isLeft:$isLeft) // Issue #5: 동화넘기기 연습
                 SplashView(currentStep: $currentStep, isLeft: $isLeft)
             }
+            .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
+
         }
     }
 }

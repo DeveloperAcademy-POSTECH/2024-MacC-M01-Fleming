@@ -28,7 +28,7 @@ struct CameraView_ThreeLittlePig: View {
                 .fill(Color.white.opacity(0.4))
             
             // 배경그림 깔기
-            Image("iPad mini 8.3 - _pig_background_cut")
+            Image("Background_ThreeLittlePig2")
                 .resizable()
                 .scaledToFill()
                 .frame(width: screenWidth, height: screenHeight, alignment: .center)
