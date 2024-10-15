@@ -14,7 +14,14 @@ struct BaseView_ThreeLittlePig: View {
     
     var body: some View{
         // 배경
-        Image("iPad mini 8.3 - _pig_background")
+        Image("Background_ThreeLittlePig1")
+            .resizable()
+            .scaledToFill()
+            .frame(width: screenWidth, height: screenHeight, alignment: .center)
+            .offset(x:0, y:0)
+            .edgesIgnoringSafeArea(.all)
+        
+        Image("Background_ThreeLittlePig2")
             .resizable()
             .scaledToFill()
             .frame(width: screenWidth, height: screenHeight, alignment: .center)

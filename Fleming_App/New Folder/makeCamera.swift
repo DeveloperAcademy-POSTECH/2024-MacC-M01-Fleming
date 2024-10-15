@@ -1,11 +1,10 @@
+////
+////  makeCamera.swift
+////  Fleming_App
+////
+////  Created by 임유리 on 10/13/24.
+////
 //
-//  makeCamera.swift
-//  Fleming_App
-//
-//  Created by 임유리 on 10/13/24.
-//
-
-
 //import SwiftUI
 //
 //@main

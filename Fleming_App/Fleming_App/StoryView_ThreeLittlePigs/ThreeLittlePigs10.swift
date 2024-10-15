@@ -40,7 +40,7 @@ struct ThreeLittlePigs10: View {
             
             // 캐릭터 위치
             HStack{
-                Image("character_pig1")
+                Image("character_ThreeLittlePig1")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
@@ -51,7 +51,7 @@ struct ThreeLittlePigs10: View {
                         isLeft.toggle()
                     }
                 
-                Image("character_pig2")
+                Image("character_ThreeLittlePig2")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
@@ -62,7 +62,7 @@ struct ThreeLittlePigs10: View {
                         isLeft.toggle()
                     }
                 
-                Image("character_pig3")
+                Image("character_ThreeLittlePig3")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
@@ -73,8 +73,7 @@ struct ThreeLittlePigs10: View {
                         isLeft.toggle()
                     }
             }
-            .offset(x: -250)
-            
+            .offset(x: -250, y: 100)
             
             Image("object_home11_cut")
                 .resizable()
