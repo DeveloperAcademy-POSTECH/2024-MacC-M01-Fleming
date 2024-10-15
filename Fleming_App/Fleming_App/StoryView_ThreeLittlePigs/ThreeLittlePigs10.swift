@@ -141,7 +141,7 @@ struct ThreeLittlePigs10: View {
     
     //By Hera
     @State private var touchPoint: CGPoint? = nil
-    @State private var imgPosition: CGPoint = CGPoint(x: 150, y: 500) // 초기 이미지 위치
+    @State private var imgPosition: CGPoint = CGPoint(x: 300, y: 620) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
     
     @Binding var currentStep: Int
     // currentStep 스토리 진행의 단계를 나타낸다
@@ -151,6 +151,7 @@ struct ThreeLittlePigs10: View {
 
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
+    @State private var isSuccess = false // 성공 여부를 나타내는 상태값
     
     var body: some View {
         
@@ -219,12 +220,24 @@ struct ThreeLittlePigs10: View {
                 Image("object_home11_in") // testimg 파일을 표시
                     .resizable()
                     .scaledToFit()
-                    //.frame(width: 100, height: 100) // 이미지 크기
+                //.frame(width: 100, height: 100) // 이미지 크기
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
                 //                    .position(x: geometry.size.width * 0.1, // 왼쪽 중앙에 배치
                 //                              y: geometry.size.height * 0.5)
                 // 이동할 수 있도록
                     .position(imgPosition)
+                    .onChange(of: imgPosition) { newPosition in
+                        // 목표 위치: x가 950 근방, y가 620 근방
+                        let targetX: CGFloat = 950
+                        let targetY: CGFloat = 620
+                        
+                        // 변경된 위치가 목표 위치와 가까워지면 isSuccess를 true
+                        if abs(newPosition.x - targetX) < 50 && abs(newPosition.y - targetY) < 50 {
+                            withAnimation {
+                                isSuccess = true
+                            }
+                        }
+                    }
             }
             
             // 손가락이 맞닿았을 때 원 그리기
@@ -234,12 +247,22 @@ struct ThreeLittlePigs10: View {
                     .frame(width: 30, height: 30)
                     .position(touchPoint)
             }
+            
+            // 성공 메시지 표시
+            if isSuccess {
+                Text("Success!")
+                    .font(.title)
+                    .foregroundColor(.red)
+                    .bold()
+                    .position(x: screenWidth / 2, y: screenHeight / 2)
+                    .animation(.easeInOut(duration: 3), value: isSuccess)
+            }
                 
         }
     }
 }
 
-#Preview {
-    @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs10(currentStep: .constant(10), isLeft:$isLeft)
-}
+//#Preview {
+//    @Previewable @State var isLeft: Bool = false
+//    ThreeLittlePigs10(currentStep: .constant(10), isLeft:$isLeft)
+//}

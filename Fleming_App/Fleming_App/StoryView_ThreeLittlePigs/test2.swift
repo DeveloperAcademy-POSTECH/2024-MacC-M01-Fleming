@@ -97,11 +97,11 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 
                 // Vision 좌표는 (0,0)이 좌측 하단
                 //(1,1)이 우측 상단
+                // TODO: 이유를 찾아봅시다
                 let thumbTipLocation = CGPoint(x: 1 - thumbTip.location.x, y: thumbTip.location.y)
                 let indexTipLocation = CGPoint(x: 1 - indexTip.location.x, y: indexTip.location.y)
                 
                 // 엄지와 검지의 거리를 계산하여 맞닿았는지 확인
-                // TODO: 이유를 찾아봅시다
                 let distance = hypot(thumbTipLocation.x - indexTipLocation.x, thumbTipLocation.y - indexTipLocation.y)
                 
                 // 맞닿았다면 화면 좌표로 변환하여 전달
