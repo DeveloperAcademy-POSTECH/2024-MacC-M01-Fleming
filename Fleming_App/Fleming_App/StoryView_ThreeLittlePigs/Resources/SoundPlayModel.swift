@@ -12,6 +12,20 @@ class SoundPlayModel: ObservableObject {
     var audioPlayer: AVAudioPlayer?
     var sampleMusicName: String = "music_sample_trial_1"
     
+    init() {
+            setupAudioSession() // 오디오 세션 설정
+        }
+        
+        // 오디오 세션 설정
+        func setupAudioSession() {
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("Failed to set up audio session: \(error)")
+            }
+        }
+    
     // 로컬 사운드 재생
     func playSound() {
         // 기존 재생 중인 음악이 있으면 중지하고 초기화

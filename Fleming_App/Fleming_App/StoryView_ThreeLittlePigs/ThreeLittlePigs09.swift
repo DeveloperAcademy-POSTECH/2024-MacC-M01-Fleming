@@ -30,10 +30,11 @@ struct ThreeLittlePigs09: View {
                     .foregroundStyle(AppColor.pigBrown)
                     .padding(-3)
                 
-                Image("character_wolf2")
+                Image("character_ThreeLittlePig5")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.25) // 화면 크기 n배
+                    .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
+                    .padding(-100)
             }
             .offset(x: -260, y: -50)
             

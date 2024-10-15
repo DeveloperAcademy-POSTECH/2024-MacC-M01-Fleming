@@ -21,6 +21,45 @@ struct ThreeLittlePigs01: View {
             // 배경
             BaseView_ThreeLittlePig(currentStep:$currentStep)
             
+            // 캐릭터 위치
+            HStack{
+                Image("character_ThreeLittlePig1")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.35) // 화면 크기 n배
+                    .offset(x: -250, y: isLeft ? 200 : 190)
+                    .animation(.easeInOut(duration: 0.3), value: isLeft)
+                    .onReceive(timer) { _ in
+                        // 0.5초마다 좌우 위치를 변경
+                        isLeft.toggle()
+                    }
+                
+                Image("character_ThreeLittlePig2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.35) // 화면 크기 n배
+                    .offset(x: -210, y: isLeft ? 180 : 170)
+                    .animation(.easeInOut(duration: 0.2), value: isLeft)
+                    .onReceive(timer) { _ in
+                        // 0.5초마다 좌우 위치를 변경
+                        isLeft.toggle()
+                    }
+                    .padding(-200)
+                
+                Image("character_ThreeLittlePig3")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.35) // 화면 크기 n배
+                    .offset(x: -170, y: isLeft ? 180 : 170)
+                    .animation(.easeInOut(duration: 0.3), value: isLeft)
+                    .onReceive(timer) { _ in
+                        // 0.5초마다 좌우 위치를 변경
+                        isLeft.toggle()
+                    }
+                    .padding(-20)
+            }
+            .offset(x: screenWidth/3, y: -screenHeight/20)
+            
             // 제목 - 컴포넌트화 필요
             VStack{
                 Text("The")
@@ -41,43 +80,6 @@ struct ThreeLittlePigs01: View {
             }
             .padding(.leading, 40)
             
-            
-            // 캐릭터 위치
-            HStack{
-                Image("character_pig1")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-                    .offset(x: isLeft ? -300 : -250, y: 200) // 좌우로 이동
-                    .animation(.easeInOut(duration: 0.8), value: isLeft) // 0.5초 간격 애니메이션
-                    .onReceive(timer) { _ in
-                        // 0.5초마다 좌우 위치를 변경
-                        isLeft.toggle()
-                    }
-                
-                Image("character_pig2")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-                    .offset(x: isLeft ? -230 : -210, y: 180)
-                    .animation(.easeInOut(duration: 0.2), value: isLeft) // 0.5초 간격 애니메이션
-                    .onReceive(timer) { _ in
-                        // 0.5초마다 좌우 위치를 변경
-                        isLeft.toggle()
-                    }
-                
-                Image("character_pig3")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-                    .offset(x: isLeft ? -200 : -170, y: 170)
-                    .animation(.easeInOut(duration: 0.3), value: isLeft) // 0.5초 간격 애니메이션
-                    .onReceive(timer) { _ in
-                        // 0.5초마다 좌우 위치를 변경
-                        isLeft.toggle()
-                    }
-            }
-            .offset(x: 550)
         }
     }
 }

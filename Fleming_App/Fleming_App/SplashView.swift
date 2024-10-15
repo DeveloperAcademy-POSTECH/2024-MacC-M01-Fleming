@@ -10,6 +10,7 @@ import SwiftUI
 struct SplashView: View{
     @Binding var currentStep: Int // 현재 뷰 상태 관리
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
+    @State private var splashTab : Int = 0
 
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
@@ -18,7 +19,7 @@ struct SplashView: View{
         NavigationView{
             ZStack{
                 
-                Image("iPad mini 8.3 - splash_background")
+                Image("Background_splashView")
                     .resizable()
                     .scaledToFill()
                     .frame(width: screenWidth, alignment: .center)
@@ -31,9 +32,10 @@ struct SplashView: View{
                     //탭버튼
                     HStack{
                         Button(action:{
+                            splashTab = 0
                             print("Bookaroo")
                         }, label:{
-                            Text("Training")
+                            Text("Bookaroo")
                                 .font(.title)
                                 .foregroundStyle(.white)
                                 .frame(width: 180, height: 50, alignment: .center)
@@ -46,9 +48,10 @@ struct SplashView: View{
                             .frame(width: 40)
                         
                         Button(action:{
-                            print("Report")
+                            splashTab = 1
+                            print("Guardian")
                         }, label:{
-                            Text("Report")
+                            Text("Guardian")
                                 .font(.title)
                                 .foregroundStyle(.white)
                                 .frame(width: 180, height: 50, alignment: .center)
@@ -56,47 +59,13 @@ struct SplashView: View{
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                         })
                     }
+                    .frame(height: screenHeight * 0.05)
                     
-                    
-                    Text("Hi Leo")
-                        .font(.system(size: 128))
-                        .bold()
-                        .frame(width: screenWidth-80, alignment: .leading)
-                    
-                    ScrollView(.horizontal){
-                        LazyHStack(spacing: 60) {
-                            // 네비게이션 한 개
-                            
-                            NavigationLink(destination: ThreeLittlePigsNavigation(currentStep: $currentStep, isLeft:$isLeft)){
-                                Image("Cover_pig")
-                                    .resizable()
-                                    .frame(width: 0.23 * screenWidth, height: 0.50 * screenHeight)
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 32))
-                                    .contentShape(Rectangle())
-                            }
-                            
-                            // 뒤에 추가하는 것들... 컨텐츠에 따라 컴포넌트화 할 예정...
-                            ForEach(0..<10) { index in
-                                VStack(alignment:.leading) {
-                                    Button(action: {
-                                        print("\(index+1)번 동화 클릭")
-                                    },label:{Rectangle()
-                                            .fill(Color.gray)
-                                            .frame(width: 0.23 * screenWidth, height: 0.50 * screenHeight)
-                                            .overlay(
-                                                Text("\(index+1)번 동화")
-                                                    .font(.title)
-                                                    .foregroundStyle(.white)
-                                            )
-                                            .clipShape(RoundedRectangle(cornerRadius: 32))
-                                    })
-                                } //
-                            } // ForEach 끝
-                        }
+                    if splashTab == 0{
+                        BookarooView(currentStep: $currentStep, isLeft: $isLeft)
+                    } else if splashTab == 1 {
+                        GuardianView()
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.top, -40)
                     
                 }
                 
