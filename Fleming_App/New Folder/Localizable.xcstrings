@@ -25,6 +25,10 @@
     "Concentrate" : {
 
     },
+
+    "Default" : {
+
+    },
     "for Kids" : {
 
     },
@@ -43,6 +47,9 @@
     "Physic" : {
 
     },
+    "Read Text" : {
+
+    },
     "Recognition" : {
 
     },
@@ -50,6 +57,9 @@
 
     },
     "Scream" : {
+
+    },
+    "Select Voice" : {
 
     },
     "Success!" : {

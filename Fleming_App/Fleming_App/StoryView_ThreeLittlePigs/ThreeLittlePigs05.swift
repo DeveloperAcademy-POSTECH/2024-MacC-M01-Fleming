@@ -12,6 +12,9 @@ struct ThreeLittlePigs05: View {
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
     
+    var screenWidth = UIScreen.main.bounds.width
+    var screenHeight = UIScreen.main.bounds.height
+    
     var body: some View {
         
         ZStack{
@@ -27,6 +30,11 @@ struct ThreeLittlePigs05: View {
                     // 0.5초마다 좌우 위치를 변경
                     isLeft.toggle()
                 }
+            
+            // 페이지 이동 버튼
+            ButtonView_ThreeLittlePig(currentStep: $currentStep)
+                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+            
         }
     }
 }
