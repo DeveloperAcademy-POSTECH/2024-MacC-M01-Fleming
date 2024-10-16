@@ -23,10 +23,10 @@ struct ThreeLittlePigs06: View {
             BaseView_ThreeLittlePig(currentStep:$currentStep)
             
             // 그림(좌측 상단부터 입력하기)
-            Image("character_wolf1")
+            Image("character_ThreeLittlePig4")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.2) // 화면 크기 n배
+                .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
                 .offset(x: isLeft ? -240 : -260, y: 100)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
@@ -47,18 +47,14 @@ struct ThreeLittlePigs06: View {
             
             // 소리 재생 버튼 추가
             Button(action: {
-                if (currentStep == 10){
-                    currentStep = 1
-                } else{
-                    currentStep = currentStep + 1 // 다음 단계로 이동
-                }
+                soundModel.playSound()
             }, label: {
                 Image(systemName: "speaker.wave.2.fill")
                     .font(.system(size:40))
                     .bold()
                     .foregroundStyle(.orange)
             })
-            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 40)
+            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
             
         }
         .onAppear{

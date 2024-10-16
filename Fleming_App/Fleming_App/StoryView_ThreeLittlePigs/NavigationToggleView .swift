@@ -1,5 +1,5 @@
 //
-//  ThreeLittlePigs01 .swift
+//  ThreeLittlePigsNavigation.swift
 //  Fleming_App
 //
 //  Created by Leo Yoon on 10/10/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct NavigationToggleView: View {
-    @State private var currentStep: Int = 1 // 현재 뷰 상태 관리
+struct ThreeLittlePigsNavigation: View {
+    @Binding var currentStep: Int // 현재 뷰 상태 관리
     @State private var isShowingNextView = false // 전환 애니메이션 상태 관리
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     
@@ -30,7 +30,9 @@ struct NavigationToggleView: View {
             
         }
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
+//        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
     }
+    
     
     // 각 단계에 맞는 뷰를 반환
     @ViewBuilder
@@ -64,5 +66,6 @@ struct NavigationToggleView: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    NavigationToggleView(isLeft:$isLeft)
+    @Previewable @State var currentStep: Int = 1
+    ThreeLittlePigsNavigation(currentStep: $currentStep, isLeft:$isLeft)
 }
