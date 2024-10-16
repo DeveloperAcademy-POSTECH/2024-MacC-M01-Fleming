@@ -7,10 +7,10 @@
     " " : {
 
     },
-    "%lld번 동화" : {
+    "8, Boy" : {
 
     },
-    "8, Boy" : {
+    "aroo" : {
 
     },
     "Attending physician :" : {
@@ -19,13 +19,13 @@
     "Blow it !" : {
 
     },
-    "Bookaroo" : {
+    "Book" : {
 
     },
     "Concentrate" : {
 
     },
-    "Guardian" : {
+    "for Kids" : {
 
     },
     "Hi Leo" : {
@@ -46,6 +46,9 @@
     "Recognition" : {
 
     },
+    "Rehabilitation" : {
+
+    },
     "Scream" : {
 
     },
@@ -61,22 +64,10 @@
     "Voice" : {
 
     },
-    "동물이동" : {
-
-    },
-    "소리재생" : {
-
-    },
     "실시간 소리 크기 (데시벨)" : {
 
     },
     "실시간 소리 크기 그래프 (데시벨)" : {
-
-    },
-    "정지" : {
-
-    },
-    "카메라 전환" : {
 
     },
     "현재 소리 크기: %lld dB" : {
