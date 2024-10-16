@@ -34,6 +34,10 @@ class CameraViewController: UIViewController {
     var previewLayer: AVCaptureVideoPreviewLayer?
     var touchPoint: Binding<CGPoint?>?
     var imgPosition: Binding<CGPoint>?
+    
+    // 좌표 변화 부드럽게 하기 위해 추가
+    private var previousThumbTipLocation: CGPoint?
+    private var previousIndexTipLocation: CGPoint?
 
     private let handPoseRequest = VNDetectHumanHandPoseRequest()
     
@@ -101,6 +105,15 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 let thumbTipLocation = CGPoint(x: 1 - thumbTip.location.x, y: thumbTip.location.y)
                 let indexTipLocation = CGPoint(x: 1 - indexTip.location.x, y: indexTip.location.y)
                 
+                // 엄지와 검지 좌표 부드럽게 하기 위해 추가 (이전 좌표와 현재 좌표의 평균 사용)
+                  let smoothedThumbTip = smoothCoordinates(current: thumbTipLocation, previous: previousThumbTipLocation)
+                  let smoothedIndexTip = smoothCoordinates(current: indexTipLocation, previous: previousIndexTipLocation)
+                  
+                  previousThumbTipLocation = smoothedThumbTip
+                  previousIndexTipLocation = smoothedIndexTip
+                
+                
+                
                 // 엄지와 검지의 거리를 계산하여 맞닿았는지 확인
                 let distance = hypot(thumbTipLocation.x - indexTipLocation.x, thumbTipLocation.y - indexTipLocation.y)
                 
@@ -122,7 +135,15 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             if imgFrame.contains(convertedIndexPoint) || imgFrame.contains(convertedThumbPoint) {
                                 let middlePoint = CGPoint(x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
                                                           y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2)
-                                self.imgPosition?.wrappedValue = middlePoint
+//                                self.imgPosition?.wrappedValue = middlePoint
+                                
+                                // 애니메이션을 추가 -> 자연스럽게 이동
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    // 이미지의 새로운 위치 설정 여기에
+                                    self.imgPosition?.wrappedValue = middlePoint
+                                }
+                                
+                                
                             }
                         }
                     }
@@ -135,5 +156,15 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         } catch {
             print("에러 \(error)")
         }
+    }
+    
+    //부드럽게 하기 위해 추가 -> 현재 좌표 이전좌표 평균값 사용
+    func smoothCoordinates(current: CGPoint, previous: CGPoint?) -> CGPoint {
+        guard let previous = previous else {
+            return current
+        }
+        let smoothedX = (current.x + previous.x) / 2
+        let smoothedY = (current.y + previous.y) / 2
+        return CGPoint(x: smoothedX, y: smoothedY)
     }
 }
