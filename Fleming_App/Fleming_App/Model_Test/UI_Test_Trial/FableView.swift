@@ -34,7 +34,7 @@ struct FableView: View{
                 .frame(width: screenWidth) // 가로 기준으로 늘림
             
             HStack{
-                Image("character_pig1")
+                Image("character_ThreeLittlePig1")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 원래 크기의 0.75배로 설정
@@ -45,7 +45,7 @@ struct FableView: View{
                         isLeft.toggle()
                     }
                 
-                Image("character_pig2")
+                Image("character_ThreeLittlePig2")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기의 0.3배로 설정
@@ -56,7 +56,7 @@ struct FableView: View{
                         isLeft.toggle()
                     }
                 
-                Image("character_pig3")
+                Image("character_ThreeLittlePig3")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 원래 크기의 0.75배로 설정

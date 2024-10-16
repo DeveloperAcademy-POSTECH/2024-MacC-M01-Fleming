@@ -18,19 +18,22 @@ struct CameraView_ThreeLittlePig: View {
     var body: some View{
         // 배경
         ZStack{
+            // 카메라 깔기
+            CameraView(viewModel: cameraViewModel)
+                .rotationEffect(.degrees(-90))
+                .frame(width:screenWidth, height: screenHeight, alignment: .center)
+                .edgesIgnoringSafeArea(.all)
             
-            Image("iPad mini 8.3 - _pig_background_cut")
+            Rectangle()
+                .fill(Color.white.opacity(0.4))
+            
+            // 배경그림 깔기
+            Image("Background_ThreeLittlePig2")
                 .resizable()
                 .scaledToFill()
                 .frame(width: screenWidth, height: screenHeight, alignment: .center)
                 .offset(x:0, y:0)
                 .edgesIgnoringSafeArea(.all)
-            
-            CameraView(viewModel: cameraViewModel)
-                .edgesIgnoringSafeArea(.all)
-            
-            Rectangle()
-                .fill(Color.white.opacity(0.4))
             
             // 뷰넘기기
             HStack(alignment: .bottom) {
