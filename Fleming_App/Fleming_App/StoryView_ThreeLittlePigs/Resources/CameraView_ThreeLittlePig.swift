@@ -3,9 +3,11 @@
 //  Fleming_App
 //
 //  Created by Leo Yoon on 10/14/24.
-//
-
+// 베이스를 카메라로 전환
+// 스토리 진행의 단계를 나타낸다
 import SwiftUI
+import AVFoundation
+import Vision
 
 struct CameraView_ThreeLittlePig: View {
     @ObservedObject var viewModel = MonitorSoundViewModel()
@@ -14,7 +16,7 @@ struct CameraView_ThreeLittlePig: View {
     @Binding var currentStep: Int
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
-    
+       
     var body: some View{
         // 배경
         ZStack{
@@ -69,8 +71,4 @@ struct CameraView_ThreeLittlePig: View {
             .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
         }
     }
-}
-
-#Preview{
-    CameraView_ThreeLittlePig(currentStep: .constant(1))
 }
