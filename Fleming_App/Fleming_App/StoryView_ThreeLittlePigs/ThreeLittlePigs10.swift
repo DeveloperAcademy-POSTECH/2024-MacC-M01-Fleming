@@ -31,7 +31,7 @@ struct ThreeLittlePigs10: View {
         
         ZStack{
             // 카메라 뷰
-            //            CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
+            // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
             //.edgesIgnoringSafeArea(.all)
             
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
