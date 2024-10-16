@@ -19,10 +19,10 @@ struct ThreeLittlePigs10: View {
     
     @Binding var currentStep: Int
     // currentStep 스토리 진행의 단계를 나타낸다
-
+    
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
-
+    
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @State private var isSuccess = false // 성공 여부를 나타내는 상태값
@@ -31,11 +31,11 @@ struct ThreeLittlePigs10: View {
         
         ZStack{
             // 카메라 뷰
-//            CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
-                //.edgesIgnoringSafeArea(.all)
-                        
+            //            CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
+            //.edgesIgnoringSafeArea(.all)
+            
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
-//                .rotationEffect(.degrees(-90))
+            //                .rotationEffect(.degrees(-90))
             
             
             // 캐릭터 위치
@@ -44,36 +44,39 @@ struct ThreeLittlePigs10: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-//                    .offset(x: isLeft ? -300 : -250, y: 200) // 좌우로 이동
-//                    .animation(.easeInOut(duration: 0.8), value: isLeft) // 0.5초 간격 애니메이션
-//                    .onReceive(timer) { _ in
-//                        // 0.5초마다 좌우 위치를 변경
-//                        isLeft.toggle()
-//                    }
+                    .offset(x: -300, y: 200)
+                //                    .offset(x: isLeft ? -300 : -250, y: 200) // 좌우로 이동
+                //                    .animation(.easeInOut(duration: 0.8), value: isLeft) // 0.5초 간격 애니메이션
+                //                    .onReceive(timer) { _ in
+                //                        // 0.5초마다 좌우 위치를 변경
+                //                        isLeft.toggle()
+                //                    }
                 
                 Image("character_ThreeLittlePig2")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-//                    .offset(x: isLeft ? -230 : -210, y: 180)
-//                    .animation(.easeInOut(duration: 0.2), value: isLeft) // 0.5초 간격 애니메이션
-//                    .onReceive(timer) { _ in
-//                        // 0.5초마다 좌우 위치를 변경
-//                        isLeft.toggle()
-//                    }
+                //                  .offset(x: isLeft ? -230 : -210, y: 180)
+                    .offset(x: -230, y: 180)
+                //                    .animation(.easeInOut(duration: 0.2), value: isLeft) // 0.5초 간격 애니메이션
+                //                    .onReceive(timer) { _ in
+                //                        // 0.5초마다 좌우 위치를 변경
+                //                        isLeft.toggle()
+                //                    }
                 
                 Image("character_ThreeLittlePig3")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-//                    .offset(x: isLeft ? -200 : -170, y: 170)
-//                    .animation(.easeInOut(duration: 0.3), value: isLeft) // 0.5초 간격 애니메이션
-//                    .onReceive(timer) { _ in
-//                        // 0.5초마다 좌우 위치를 변경
-//                        isLeft.toggle()
-//                    }
+                //                    .offset(x: isLeft ? -200 : -170, y: 170)
+                    .offset(x: -230, y: 180)
+                //                    .animation(.easeInOut(duration: 0.3), value: isLeft) // 0.5초 간격 애니메이션
+                //                    .onReceive(timer) { _ in
+                //                        // 0.5초마다 좌우 위치를 변경
+                //                        isLeft.toggle()
+                //                    }
             }
-            .offset(x: -250, y: 100)
+            .offset(x: -200, y: 200)
             if isSuccess == false{
                 Image("object_home11_cut")
                     .resizable()
@@ -130,14 +133,9 @@ struct ThreeLittlePigs10: View {
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.3)
                     .scaleEffect(2)
-                    // 화면 크기 n배
+                // 화면 크기 n배
                     .offset(x: 260, y: 100)
-                
             }
-            
-            
-            
-                
         }
     }
 }
