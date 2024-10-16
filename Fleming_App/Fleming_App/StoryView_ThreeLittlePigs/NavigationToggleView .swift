@@ -33,7 +33,6 @@ struct ThreeLittlePigsNavigation: View {
 //        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
     }
     
-    
     // 각 단계에 맞는 뷰를 반환
     @ViewBuilder
     func getViewForStep(currentStep: Int) -> some View {
