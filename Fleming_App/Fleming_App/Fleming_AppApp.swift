@@ -14,12 +14,13 @@ struct Fleming_AppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-//                SoundLevelView()
-                SplashView()
-            }
-            .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
+//            NavigationView{
+//                SplashView()
+//            }
+//            .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
 
+            //                SoundLevelView()
+                SimpleTTSView()
         }
     }
 }
