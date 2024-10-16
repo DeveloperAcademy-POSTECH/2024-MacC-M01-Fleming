@@ -15,6 +15,10 @@ struct ThreeLittlePigs07: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
+    // 게이지 크기 표시를 위한 변수
+    @State private var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
+    @State private var clickCount = 0
+    
     var body: some View {
         
         ZStack{
@@ -56,17 +60,34 @@ struct ThreeLittlePigs07: View {
                 ZStack(alignment: .leading){
                     Rectangle()
                         .foregroundStyle(Color.white)
-                        .frame(width: screenWidth*0.7, height: 60)
+                        .frame(width: screenWidth * 0.7, height: 60)
                         .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                     Rectangle()
                         .foregroundStyle(Color.gray)
-                        .frame(width: screenWidth*0.3, height: 50)
+                        .frame(width: screenWidth * 0.7 * rectangleWidth - 10, height: 50)
                         .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                         .offset(x:5)
                 }
             }
             .offset(y: screenHeight * 0.4)
             .frame(width: screenWidth * 0.70, alignment: .center)
+            
+            // 임시(버튼)
+            Button(action: {
+                if clickCount < 10 {
+                    clickCount += 1
+                    rectangleWidth = 0 + CGFloat(clickCount) * 0.1 // 클릭할 때마다 길이를 10씩 증가
+                    print("Increase Width")
+                } else if clickCount == 10 {
+                    currentStep = currentStep + 1
+                }
+            }, label: {
+                Image(systemName: "microphone.circle")
+                    .font(.system(size:40))
+                    .bold()
+                    .foregroundStyle(.orange)
+            })
+            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
         }
     }
 }
