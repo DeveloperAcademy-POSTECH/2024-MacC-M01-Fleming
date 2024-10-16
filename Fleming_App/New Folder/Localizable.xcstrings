@@ -4,16 +4,31 @@
     "" : {
 
     },
-    " " : {
+    "%lld dB" : {
 
     },
-    "8, Boy" : {
+    "0 dB" : {
+
+    },
+    "80 dB" : {
+
+    },
+    "160 dB" : {
 
     },
     "aroo" : {
 
     },
+    "Attending Physician" : {
+
+    },
     "Attending physician :" : {
+
+    },
+    "Birth:" : {
+
+    },
+    "Birthday" : {
 
     },
     "Blow it !" : {
@@ -22,38 +37,43 @@
     "Book" : {
 
     },
-    "Concentrate" : {
+    "Default" : {
 
     },
+    "Edit" : {
 
-    "Default" : {
+    },
+    "Edit Info" : {
+
+    },
+    "Finish!! Go Next!!" : {
 
     },
     "for Kids" : {
 
     },
-    "Hi Leo" : {
+    "Gender" : {
 
     },
     "Little Pigs" : {
 
     },
-    "Mode :" : {
+    "Name" : {
+
+    },
+    "Note" : {
 
     },
     "Note :" : {
 
     },
-    "Physic" : {
-
-    },
     "Read Text" : {
 
     },
-    "Recognition" : {
+    "Rehabilitation" : {
 
     },
-    "Rehabilitation" : {
+    "Save" : {
 
     },
     "Scream" : {
@@ -71,13 +91,28 @@
     "Three" : {
 
     },
-    "Voice" : {
+    "Threshold" : {
 
     },
-    "실시간 소리 크기 (데시벨)" : {
+    "Total Counting: %lld" : {
 
     },
-    "실시간 소리 크기 그래프 (데시벨)" : {
+    "User Info" : {
+
+    },
+    "기준데시벨 넘었는지 체크용" : {
+
+    },
+    "데시벨 기준 값: %lld dB" : {
+
+    },
+    "동화책으로 돌아가기" : {
+
+    },
+    "실시간 소리 크기 게이지 (dB)" : {
+
+    },
+    "실시간 소리 크기 그래프 (dB)" : {
 
     },
     "현재 소리 크기: %lld dB" : {
