@@ -29,8 +29,8 @@ struct Fleming_AppApp: App {
     }
 }
 
-#Preview {
-    @Previewable @State var isLeft: Bool = false
-    @Previewable @State var currentStep: Int = 1
-    SplashView(currentStep:$currentStep, isLeft:$isLeft)
-}
+//#Preview {
+//    @Previewable @State var isLeft: Bool = false
+//    @Previewable @State var currentStep: Int = 1
+////    SplashView(currentStep:$currentStep, isLeft:$isLeft)
+//}

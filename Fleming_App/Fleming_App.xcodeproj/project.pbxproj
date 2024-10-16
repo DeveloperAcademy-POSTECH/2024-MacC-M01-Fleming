@@ -405,7 +405,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+        
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "행동치료 지도를 위한 카메라 접근 권한을 허용해주세요.";
@@ -436,7 +437,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "행동치료 지도를 위한 카메라 접근 권한을 허용해주세요.";
