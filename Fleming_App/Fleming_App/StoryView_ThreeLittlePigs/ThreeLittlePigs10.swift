@@ -144,7 +144,6 @@ struct ThreeLittlePigs10: View {
             }
         }
     }
-}
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
