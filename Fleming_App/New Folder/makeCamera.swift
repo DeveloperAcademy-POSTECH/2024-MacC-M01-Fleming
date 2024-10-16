@@ -5,10 +5,7 @@
 ////  Created by 임유리 on 10/13/24.
 ////
 //
-<<<<<<< HEAD
-//
-=======
->>>>>>> main
+
 //import SwiftUI
 //
 //@main

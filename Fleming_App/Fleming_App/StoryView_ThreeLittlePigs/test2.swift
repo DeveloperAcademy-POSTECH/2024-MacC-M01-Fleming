@@ -126,27 +126,37 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             let convertedThumbPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: thumbTipLocation)
                             let convertedIndexPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: indexTipLocation)
                             
-                            print("Converted : \(convertedThumbPoint)")
+//                            print("Converted : \(convertedThumbPoint)")
                             
+                            
+                            print("Converted Thumb Point:", convertedThumbPoint)
+                            print("Converted Index Point:", convertedIndexPoint)
+                        
                             // 검지의 좌표를 사용하여 원을 그리도록 업데이트
                             self.touchPoint?.wrappedValue = convertedIndexPoint
                             // 엄지와 검지가 img에 닿으면 img 위치를 업데이트
-                            let imgFrame = CGRect(x: self.imgPosition?.wrappedValue.x ?? 0, y: self.imgPosition?.wrappedValue.y ?? 0, width: 100, height: 100)
+                            let imgFrame = CGRect(x: self.imgPosition?.wrappedValue.x ?? 0,
+                                                  y: self.imgPosition?.wrappedValue.y ?? 0,
+                                                  width: 100, height: 100)
+                            
                             if imgFrame.contains(convertedIndexPoint) || imgFrame.contains(convertedThumbPoint) {
-                                let middlePoint = CGPoint(x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
-                                                          y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2)
-                                self.imgPosition?.wrappedValue = middlePoint
+                                let middlePoint = CGPoint(
+                                    x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
+                                    y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2
+                                )
+                                //self.imgPosition?.wrappedValue = middlePoint
                                 
                                 // 애니메이션을 추가 -> 자연스럽게 이동
-                                withAnimation(.easeInOut(duration: 0.2)) {
-                                    // 이미지의 새로운 위치 설정 여기에
-                                    self.imgPosition?.wrappedValue = middlePoint
+                                DispatchQueue.main.async {
+                                    withAnimation(.easeInOut(duration: 0.2)) {
+                                        // 이미지의 새로운 위치 설정 여기로 변경
+                                        self.imgPosition?.wrappedValue = middlePoint
+                                    }
                                 }
-                                
                             }
                         }
                     }
-                } else {
+                } else { //손가락이 닿지 않았을 때의 경우
                     DispatchQueue.main.async {
                         self.touchPoint?.wrappedValue = nil
                     }
@@ -168,3 +178,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
 }
+
+//#Preview{
+//    makeCameraView(touchPoint: <#T##Binding<CGPoint?>#>, imgPosition: <#T##Binding<CGPoint>#>)
+//}
