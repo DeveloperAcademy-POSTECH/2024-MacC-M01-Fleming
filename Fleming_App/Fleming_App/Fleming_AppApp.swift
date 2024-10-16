@@ -14,6 +14,7 @@ struct Fleming_AppApp: App {
 
     var body: some Scene {
         WindowGroup {
+
 //            NavigationView{
 //                SplashView()
 //            }
