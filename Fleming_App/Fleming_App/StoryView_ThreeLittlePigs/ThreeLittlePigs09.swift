@@ -67,6 +67,11 @@ struct ThreeLittlePigs09: View {
             }
             .offset(y: screenHeight * 0.4)
             .frame(width: screenWidth * 0.70, alignment: .center)
+            
+            // 페이지 이동 버튼
+            ButtonView_ThreeLittlePig(currentStep: $currentStep)
+                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+            
         }
     }
 }
