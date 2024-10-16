@@ -1,17 +1,12 @@
-
-//
-//  BookarooView.swift
-//  Fleming_App
-//
-//  Created by Leo Yoon on 10/15/24.
-//
-
 import SwiftUI
 
 struct BookarooView: View{
     @Binding var currentStep: Int // 현재 뷰 상태 관리
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     @State private var isNavigating: Bool = false
+    @State private var selectedCategory: String = "All" // 선택된 카테고리
+    
+    var categories = ["All", "Physic", "Concentrate", "Voice", "Recognition"] // 카테고리 리스트
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
@@ -42,42 +37,67 @@ struct BookarooView: View{
                         .multilineTextAlignment(.center)
                         
                         Spacer()
-                        
                     }
                     .frame(height: 50)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 40)
                     .padding(.top, 10)
+                    Spacer()
+                    
+                            HStack(spacing: 20) {
+                                Spacer()
+                                ForEach(categories, id: \.self) { category in
+                                    Text(category)
+                                        .font(.system(size: selectedCategory == category ? 36 : 30, weight: .bold))
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal, 20)
+                                        .foregroundColor(selectedCategory == category ? Color.black : Color.gray)
+                                        .cornerRadius(15)
+                                        .onTapGesture {
+                                            selectedCategory = category
+                                        }
+                                }
+                                Spacer()
+                            }
+                        .padding(.horizontal, 40)
+                        .padding(.top, 10)
+                    
+                    
                     Spacer()
                     ScrollView(.horizontal){
                         HStack {
+                            if selectedCategory == "All" || selectedCategory == "Physic" {
+                                Button(action: {
+                                    currentStep = 1
+                                    isNavigating = true
+                                }, label: {
+                                    Image("Cover_pigs")
+                                        .resizable()
+                                        .frame(width: 290, height: 400)
+                                        .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
+                                        .padding(.leading, 30)
+                                })
+                                .navigationDestination(isPresented: $isNavigating){
+                                    ThreeLittlePigsNavigation(currentStep: $currentStep, isLeft: $isLeft)
+                                }
+                            }
                             
-                            Button(action: {
-                                currentStep = 1
-                                isNavigating = true
-                            }, label: {
-                                Image("Cover_pigs")
+                            if selectedCategory == "All" || selectedCategory == "Concentrate" {
+                                Image("Cover_rsp")
                                     .resizable()
                                     .frame(width: 290, height: 400)
                                     .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
                                     .padding(.leading, 30)
-                            })
-                            .navigationDestination(isPresented: $isNavigating){
-                                ThreeLittlePigsNavigation(currentStep: $currentStep, isLeft: $isLeft)}
+                            }
                             
-                            
-                            Image("Cover_rsp")
-                                .resizable()
-                                .frame(width: 290, height: 400)
-                                .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
-                                .padding(.leading, 30)
-                            Image("Cover_dots")
-                                .resizable()
-                                .frame(width: 290, height: 400)
-                                .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
-                                .padding(.leading, 30)
-                            
-                            
-                            
+                            if selectedCategory == "All" ||
+                                selectedCategory == "Voice" ||
+                                selectedCategory == "Recognition" {
+                                Image("Cover_dots")
+                                    .resizable()
+                                    .frame(width: 290, height: 400)
+                                    .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
+                                    .padding(.leading, 30)
+                            }
                         }
                         .padding(50)
                     }
@@ -95,4 +115,3 @@ struct BookarooView: View{
     @Previewable @State var currentStep: Int = 1
     BookarooView(currentStep: $currentStep, isLeft: $isLeft)
 }
-
