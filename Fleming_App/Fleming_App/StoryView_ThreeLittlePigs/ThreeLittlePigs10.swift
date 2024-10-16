@@ -129,7 +129,7 @@ struct ThreeLittlePigs10: View {
     }
 }
 
-//#Preview {
-//    @Previewable @State var isLeft: Bool = false
-//    ThreeLittlePigs10(currentStep: .constant(10), isLeft:$isLeft)
-//}
+#Preview {
+    @Previewable @State var isLeft: Bool = false
+    ThreeLittlePigs10(currentStep: .constant(10), isLeft:$isLeft)
+}
