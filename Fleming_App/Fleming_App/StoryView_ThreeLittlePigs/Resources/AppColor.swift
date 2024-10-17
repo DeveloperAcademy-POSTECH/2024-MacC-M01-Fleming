@@ -8,7 +8,12 @@
 import SwiftUI
 
 class AppColor {
+    // Three Little Pigs
     static let pigBrown = Color(hex: "#996736")
+    
+    // RockPaperScissors
+    static let handColor = Color(hex: "#FFDF83")
+    static let handBackgroundColor = Color(hex: "#D9D9D9")
 }
 
 extension Color {
