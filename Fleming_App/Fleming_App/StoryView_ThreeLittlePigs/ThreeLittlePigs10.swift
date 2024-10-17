@@ -127,21 +127,20 @@ struct ThreeLittlePigs10: View {
                     .bold()
                     .position(x: screenWidth / 2, y: screenHeight / 2)
                     .animation(.easeInOut(duration: 3), value: isSuccess)
-
+                
             }
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
-                
-                Image("object_home11")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.3)
-                    .scaleEffect(2)
-                // 화면 크기 n배
-                    .offset(x: 260, y: 100)
-            }
+            
+            Image("object_home11")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width * 0.3)
+                .scaleEffect(2)
+            // 화면 크기 n배
+                .offset(x: 260, y: 100)
         }
     }
 
