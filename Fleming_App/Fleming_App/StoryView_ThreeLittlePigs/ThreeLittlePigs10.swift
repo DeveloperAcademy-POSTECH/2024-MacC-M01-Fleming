@@ -143,6 +143,7 @@ struct ThreeLittlePigs10: View {
                 .offset(x: 260, y: 100)
         }
     }
+}
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
