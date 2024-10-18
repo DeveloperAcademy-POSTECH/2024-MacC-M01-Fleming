@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "object_RockPaperScissors_Rock.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "object_RockPaperScissors_Rock@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "object_RockPaperScissors_Rock@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

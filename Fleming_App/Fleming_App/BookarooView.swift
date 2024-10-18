@@ -1,9 +1,18 @@
+//
+//  BookarooView.swift
+//  Fleming_App
+//
+//  Created by Leo Yoon on 10/9/24.
+//
+
 import SwiftUI
 
 struct BookarooView: View{
     @Binding var currentStep: Int // 현재 뷰 상태 관리
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     @State private var isNavigating: Bool = false
+    @State private var isNavigating2: Bool = false
+    @State private var isNavigating3: Bool = false
     @State private var selectedCategory: String = "All" // 선택된 카테고리
     
     var categories = ["All", "Physic", "Concentrate", "Voice", "Recognition"] // 카테고리 리스트
@@ -92,11 +101,22 @@ struct BookarooView: View{
                             if selectedCategory == "All" ||
                                 selectedCategory == "Voice" ||
                                 selectedCategory == "Recognition" {
-                                Image("Cover_dots")
-                                    .resizable()
-                                    .frame(width: 290, height: 400)
-                                    .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
-                                    .padding(.leading, 30)
+                                
+                                Button(action: {
+                                    currentStep = 1
+                                    isNavigating3 = true
+                                }, label: {
+                                    
+                                    Image("Cover_dots")
+                                        .resizable()
+                                        .frame(width: 290, height: 400)
+                                        .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
+                                        .padding(.leading, 30)
+                                    
+                                })
+                                .navigationDestination(isPresented: $isNavigating3){
+                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating3:$isNavigating3)
+                                }
                             }
                         }
                         .padding(50)
