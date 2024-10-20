@@ -40,7 +40,6 @@ struct ThreeLittlePigsNavigation: View {
         case 2:
             ThreeLittlePigs02(currentStep: $currentStep, isLeft: $isLeft)
 //            ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft) ThreeLittlePigs10 즉시 10번 뷰 테스트 위해
-
 //            makeCameraForCircle()
 
         case 3:
