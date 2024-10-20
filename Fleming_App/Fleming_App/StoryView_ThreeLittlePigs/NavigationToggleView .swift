@@ -39,8 +39,9 @@ struct ThreeLittlePigsNavigation: View {
         switch currentStep {
         case 2:
             ThreeLittlePigs02(currentStep: $currentStep, isLeft: $isLeft)
-//            ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft) ThreeLittlePigs10 즉시 10번 뷰 테스트 위해
-            makeCameraForCircle()
+//            ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft)
+            //ThreeLittlePigs10 즉시 10번 뷰 테스트 위해
+//            makeCameraForCircle()
 
         case 3:
             ThreeLittlePigs03(currentStep: $currentStep, isLeft: $isLeft)

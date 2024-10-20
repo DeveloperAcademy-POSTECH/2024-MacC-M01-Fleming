@@ -91,11 +91,18 @@ struct BookarooView: View{
                             }
                             
                             if selectedCategory == "All" || selectedCategory == "Concentrate" {
-                                Image("Cover_rsp")
-                                    .resizable()
-                                    .frame(width: 290, height: 400)
-                                    .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
-                                    .padding(.leading, 30)
+                                Button(action: {
+                                    currentStep = 1
+                                    isNavigating2 = true
+                                }, label: {
+                                    Image("Cover_rsp")
+                                        .resizable()
+                                        .frame(width: 290, height: 400)
+                                        .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
+                                        .padding(.leading, 30)
+                                }).navigationDestination(isPresented: $isNavigating2){
+                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating2:$isNavigating2)
+                                }
                             }
                             
                             if selectedCategory == "All" ||
@@ -115,7 +122,8 @@ struct BookarooView: View{
                                     
                                 })
                                 .navigationDestination(isPresented: $isNavigating3){
-                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating3:$isNavigating3)
+                                      makeCameraForCircle()
+//                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating3:$isNavigating3)
                                 }
                             }
                         }
@@ -130,8 +138,8 @@ struct BookarooView: View{
     }
 }
 
-#Preview {
-    @Previewable @State var isLeft: Bool = false
-    @Previewable @State var currentStep: Int = 1
-    BookarooView(currentStep: $currentStep, isLeft: $isLeft)
-}
+//#Preview {
+//    @Previewable @State var isLeft: Bool = false
+//    @Previewable @State var currentStep: Int = 1
+//    BookarooView(currentStep: $currentStep, isLeft: $isLeft)
+//}
