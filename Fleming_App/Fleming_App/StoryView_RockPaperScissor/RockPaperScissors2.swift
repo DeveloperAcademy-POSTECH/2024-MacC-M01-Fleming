@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RockPaperScissors2: View{
+    @ObservedObject var model = RockScissorsPaperMLModel()
+    
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
@@ -58,7 +60,15 @@ struct RockPaperScissors2: View{
                                 .frame(width:screenHeight * 0.5, height: screenHeight * 0.5)
                                 .clipShape(ButtonBorderShape.roundedRectangle(radius: 50))
                             
-                            Text("Camera")
+                            RSP_CameraView(model: model)
+                                .frame(width: screenHeight * 0.45, height: screenHeight * 0.45) // 카메라 뷰 크기를 500x500으로 설정
+                                .clipShape(RoundedRectangle(cornerRadius: 50))
+                                .clipped() // 부모 뷰 바깥의 콘텐츠를 자르기
+                                .rotationEffect(.degrees(90))
+                            
+                            Text("예측 결과: \(model.predictionLabel)")
+                                .font(.title2)
+                                .padding()
                         }
                     }
                 }
@@ -69,5 +79,6 @@ struct RockPaperScissors2: View{
 }
 
 #Preview{
+    @Previewable @State var isPresentingNextPage: Bool = false
     RockPaperScissors2()
 }

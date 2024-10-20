@@ -11,6 +11,8 @@ import SwiftUI
 struct RockPaperScissorsView: View{
     @Binding var currentStep: Int
     @Binding var isNavigating3: Bool
+
+
     
     var body: some View {
         VStack{
