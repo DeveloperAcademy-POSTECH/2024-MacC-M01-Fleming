@@ -43,9 +43,9 @@ struct ThreeLittlePigsNavigation: View {
 //            makeCameraForCircle()
 
         case 3:
-            ThreeLittlePigs03(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs02_A(currentStep: $currentStep, isLeft: $isLeft)
         case 4:
-            ThreeLittlePigs04(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs03(currentStep: $currentStep, isLeft: $isLeft)
         case 5:
             ThreeLittlePigs05(currentStep: $currentStep, isLeft: $isLeft)
         case 6:
