@@ -18,9 +18,6 @@ struct Fleming_AppApp: App {
                 SplashView()
             }
             .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
-//            
-//            SoundLevelView()
-//            SimpleTTSView()
             
         }
     }
@@ -31,7 +28,3 @@ struct Fleming_AppApp: App {
     @Previewable @State var currentStep: Int = 1
     BookarooView(currentStep:$currentStep, isLeft:$isLeft)
 }
-
-//#Preview{
-//        SoundLevelView()
-//}

@@ -123,7 +123,6 @@ struct BookarooView: View{
                                 })
                                 .navigationDestination(isPresented: $isNavigating3){
                                       makeCameraForCircle()
-//                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating3:$isNavigating3)
                                 }
                             }
                         }
@@ -137,9 +136,3 @@ struct BookarooView: View{
         .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
     }
 }
-
-//#Preview {
-//    @Previewable @State var isLeft: Bool = false
-//    @Previewable @State var currentStep: Int = 1
-//    BookarooView(currentStep: $currentStep, isLeft: $isLeft)
-//}
