@@ -122,6 +122,7 @@ struct BookarooView: View{
                                     
                                 })
                                 .navigationDestination(isPresented: $isNavigating3){
+                                      makeCameraForCircle()
 //                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating3:$isNavigating3)
                                 }
                             }
