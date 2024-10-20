@@ -15,6 +15,7 @@ struct makeCameraForCircle: View {
     @State private var success = false // 성공 여부 상태
     @State private var leftCheck = false // 왼쪽 원에 닿았는지 여부
     @State private var pathPoints: [CGPoint] = [] // 경로를 그릴 점들을 저장하는 배열
+    @State private var isTextVisible = true
     @State private var circlePositions = [
         CGPoint(x: 100, y: UIScreen.main.bounds.height - 150), // 왼쪽 하단 원 위치
         CGPoint(x: UIScreen.main.bounds.width - 100, y: 100)  // 오른쪽 상단 원 위치
@@ -56,16 +57,26 @@ struct makeCameraForCircle: View {
             
             
             // 성공 메시지
-            if success {
+            if (success && isTextVisible) {
                 Text("Success!")
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .bold()
+                    .onAppear {
+                        // 3초 후에 텍스트를 숨기기 위해 추가
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                isTextVisible = false
+                            }
+                        }
+                    }
 //                self.leftCheck.wrappedValue == false
 //                leftCheck = false
                //clearPathPoints()
 //                pathPoints.removeAll()
             }
+            
+            
             
         }
         .edgesIgnoringSafeArea(.all)
