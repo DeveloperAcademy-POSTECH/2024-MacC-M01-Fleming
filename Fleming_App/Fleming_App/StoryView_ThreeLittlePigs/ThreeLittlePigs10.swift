@@ -34,9 +34,8 @@ struct ThreeLittlePigs10: View {
             // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
             //.edgesIgnoringSafeArea(.all)
             
-            makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
-            //                .rotationEffect(.degrees(-90))
-            
+            makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition)
+                .edgesIgnoringSafeArea(.all)
             
             // 캐릭터 위치
             HStack{
@@ -77,6 +76,8 @@ struct ThreeLittlePigs10: View {
                 //                    }
             }
             .offset(x: -200, y: 200)
+            
+            // 집 옮기기 기능
             if isSuccess == false{
                 Image("object_home11_cut")
                     .resizable()

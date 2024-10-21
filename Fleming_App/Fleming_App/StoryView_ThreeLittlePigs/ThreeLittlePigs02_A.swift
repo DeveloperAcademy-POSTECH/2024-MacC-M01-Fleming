@@ -31,9 +31,6 @@ struct ThreeLittlePigs02_A: View {
     var body: some View {
         
         ZStack{
-            
-            
-            Image("Background_ThreeLittlePig2")
                 
             // 카메라 뷰
             // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
@@ -41,6 +38,13 @@ struct ThreeLittlePigs02_A: View {
             
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
             //                .rotationEffect(.degrees(-90))
+            
+            Image("Background_ThreeLittlePig2")
+                .resizable()
+                .scaledToFill()
+                .frame(width: screenWidth, height: screenHeight, alignment: .center)
+                .offset(x:0, y:0)
+                .edgesIgnoringSafeArea(.all)
             
             
             // 캐릭터 위치
@@ -81,7 +85,9 @@ struct ThreeLittlePigs02_A: View {
 //                //                        isLeft.toggle()
 //                //                    }
 //            }
-            .offset(x: -200, y: 200)
+//            .offset(x: -200, y: 200)
+            
+            // 집 옮기기 기능
             if isSuccess == false{
                 Image("object_home11_cut")
                     .resizable()
@@ -133,10 +139,7 @@ struct ThreeLittlePigs02_A: View {
                 
             }
             
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
-            
+            // 완성된 집
             Image("object_home11")
                 .resizable()
                 .scaledToFit()
@@ -144,6 +147,11 @@ struct ThreeLittlePigs02_A: View {
                 .scaleEffect(2)
             // 화면 크기 n배
                 .offset(x: 260, y: 100)
+            
+            // 페이지 이동 버튼
+            ButtonView_ThreeLittlePig(currentStep: $currentStep)
+                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+            
         }
     }
 }
