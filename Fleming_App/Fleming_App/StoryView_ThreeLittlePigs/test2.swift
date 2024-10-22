@@ -137,7 +137,8 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             // 엄지와 검지가 img에 닿으면 img 위치를 업데이트
                             let imgFrame = CGRect(x: self.imgPosition?.wrappedValue.x ?? 0,
                                                   y: self.imgPosition?.wrappedValue.y ?? 0,
-                                                  width: 100, height: 100)
+                                                  width: 200, height: 500)
+ 
                             
                             if imgFrame.contains(convertedIndexPoint) || imgFrame.contains(convertedThumbPoint) {
                                 let middlePoint = CGPoint(
