@@ -91,7 +91,8 @@ struct ThreeLittlePigs01: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width: screenWidth - 80, height: screenHeight - 80, alignment: .bottom)
         }
-        .onAppear {     // personal voice by hera start
+        .onAppear {
+            // personal voice by hera start
             //checkAuthorization()
             soundManager.speakText("""
                     The Three Little Pigs
