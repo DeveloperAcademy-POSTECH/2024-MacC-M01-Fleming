@@ -10,6 +10,9 @@ import SwiftUI
 struct RockPaperScissors1: View{
     @State private var isActive = false
     
+    //임시: 페이지 넘기기
+    @State private var isPresentingNextPage = false
+    
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
@@ -41,25 +44,36 @@ struct RockPaperScissors1: View{
                 .padding(.bottom, screenHeight * 0.1)
                 
             }
-            ZStack{
-                Rectangle()
-                    .foregroundStyle(.white)
-                    .frame(width: 300, height: 80)
-                    .clipShape(ButtonBorderShape.roundedRectangle(radius: 20))
-                
-                HStack(alignment: .center){
-                    Text("Start game")
-                    Image(systemName: "chevron.forward")
+            
+            Button (action: {
+                isPresentingNextPage = true
+            }, label: {
+                ZStack{
+                    Rectangle()
+                        .foregroundStyle(.white)
+                        .frame(width: 300, height: 80)
+                        .clipShape(ButtonBorderShape.roundedRectangle(radius: 20))
+                    
+                    HStack(alignment: .center){
+                        Text("Start game")
+                        Image(systemName: "chevron.forward")
+                    }
+                    .font(.system(size: 40, weight: .bold))
+                    .foregroundStyle(.blue)
                 }
-                .font(.system(size: 40, weight: .bold))
-                .foregroundStyle(.blue)
-            }
-            .offset(x: screenWidth/2 - 120, y: screenHeight / 2 - 60)
-                .padding(.trailing, 40)
+                .offset(x: screenWidth/2 - 150, y: screenHeight / 2 - 60)
+                    .padding(.trailing, 40)
+            })
+            
+        }
+        //임시: 페이지 넘기기
+        .fullScreenCover(isPresented: $isPresentingNextPage){
+            RockPaperScissors2()
         }
     }
 }
 
 #Preview{
+//    @Previewable @State var isPresentingNextPage: Bool = false
     RockPaperScissors1()
 }

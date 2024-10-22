@@ -16,8 +16,8 @@ struct ThreeLittlePigs07: View {
     var screenHeight = UIScreen.main.bounds.height
     
     // 게이지 크기 표시를 위한 변수
-    @State private var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
-    @State private var clickCount = 0
+    @State var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
+    @State var clickCount = 0
     
     //dBCounter 기능을 위한 변수
     @ObservedObject var audioManager = AudioManager() // 오디오 매니저 연결
@@ -77,8 +77,8 @@ struct ThreeLittlePigs07: View {
 //                        .offset(x:5)
 //                }
 //            }
-            .offset(y: screenHeight * 0.4)
-            .frame(width: screenWidth * 0.70, alignment: .center)
+//            .offset(y: screenHeight * 0.4)
+//            .frame(width: screenWidth * 0.70, alignment: .center)
             
 //            // 임시1(버튼) - 눌러서 1씩 증가하도록
 //            Button(action: {

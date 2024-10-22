@@ -32,8 +32,9 @@ struct ThreeLittlePigs01: View {
                 Image("character_ThreeLittlePig1")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: screenWidth * 0.35)
-                    .offset(x: -250, y: isLeft ? 200 : 190)
+                    .frame(width: UIScreen.main.bounds.width * 0.35) // 화면 크기 n배
+                    .offset(x:  -screenWidth*0.15, y: isLeft ? screenHeight*0.2 : screenHeight*0.18)
+
                     .animation(.easeInOut(duration: 0.3), value: isLeft)
                     .onReceive(timer) { _ in
                         isLeft.toggle()
@@ -42,8 +43,9 @@ struct ThreeLittlePigs01: View {
                 Image("character_ThreeLittlePig2")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.35)
-                    .offset(x: -210, y: isLeft ? 180 : 170)
+                    .frame(width: UIScreen.main.bounds.width * 0.35) // 화면 크기 n배
+                    .offset(x:  -screenWidth*0.15, y: isLeft ? screenHeight*0.19 : screenHeight*0.21)
+
                     .animation(.easeInOut(duration: 0.2), value: isLeft)
                     .onReceive(timer) { _ in
                         isLeft.toggle()
@@ -53,8 +55,9 @@ struct ThreeLittlePigs01: View {
                 Image("character_ThreeLittlePig3")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.35)
-                    .offset(x: -170, y: isLeft ? 180 : 170)
+                    .frame(width: UIScreen.main.bounds.width * 0.35) // 화면 크기 n배
+                    .offset(x: -screenWidth*0.15, y: isLeft ? screenHeight*0.23 : screenHeight*0.21)
+
                     .animation(.easeInOut(duration: 0.3), value: isLeft)
                     .onReceive(timer) { _ in
                         isLeft.toggle()
@@ -62,16 +65,12 @@ struct ThreeLittlePigs01: View {
                     .padding(-20)
 
             }
-            .offset(x: screenWidth / 3, y: -screenHeight / 20)
+            .offset(x: screenWidth/3, y: -screenHeight/20)
+            
+            // 제목 - 컴포넌트화 필요
+            VStack{
+                Text("The Three")
 
-            // 제목
-            VStack {
-                Text("The")
-                    .font(.system(size: 128))
-                    .bold()
-                    .frame(width: screenWidth-80, alignment: .leading)
-                    .foregroundStyle(AppColor.pigBrown)
-                Text("Three")
                     .font(.system(size: 128))
                     .bold()
                     .frame(width: screenWidth-80, alignment: .leading)
@@ -83,6 +82,7 @@ struct ThreeLittlePigs01: View {
                     .foregroundStyle(AppColor.pigBrown)
             }
             .padding(.leading, 40)
+            .padding(.bottom, screenHeight*0.5)
 
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
