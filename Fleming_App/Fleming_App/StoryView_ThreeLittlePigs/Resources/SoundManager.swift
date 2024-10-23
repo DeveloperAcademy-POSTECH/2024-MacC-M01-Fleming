@@ -54,4 +54,8 @@ class SoundManager: ObservableObject {
         utterance.rate = rate
         synthesizer.speak(utterance)
     }
+    
+    func stopSpeaking() {
+           synthesizer.stopSpeaking(at: .immediate)
+       }
 }

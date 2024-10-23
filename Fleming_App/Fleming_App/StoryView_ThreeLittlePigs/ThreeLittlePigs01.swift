@@ -98,6 +98,9 @@ struct ThreeLittlePigs01: View {
                     Once upon a time, there were three little pigs. They each decided to build their own house.
             """)
         }
+        .onDisappear(){
+            soundManager.stopSpeaking()
+        }
         .alert(isPresented: .constant(authorStatus == .denied)) {
             Alert(
                 title: Text("개인음성 권한 거부됨"),
