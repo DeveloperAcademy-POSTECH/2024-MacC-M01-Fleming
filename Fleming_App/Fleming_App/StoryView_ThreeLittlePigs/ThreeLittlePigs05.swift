@@ -14,12 +14,13 @@ struct ThreeLittlePigs05: View {
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
+    @StateObject private var soundManager = SoundManager()
     
     var body: some View {
         
         ZStack{
             BaseView_ThreeLittlePig(currentStep:$currentStep)
-        
+            
             Image("object_home31")
                 .resizable()
                 .scaledToFit()
@@ -35,7 +36,16 @@ struct ThreeLittlePigs05: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
+        }.onAppear(){
+            soundManager.speakText("""
+                    The Three Little Pigs
+                    Once upon a time, there were three little pigs. They each decided to build their own house.
+            """)
         }
+        .onDisappear(){
+            soundManager.stopSpeaking()
+        }
+        
     }
 }
 
