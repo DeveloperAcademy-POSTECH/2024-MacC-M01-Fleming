@@ -15,6 +15,9 @@ struct ThreeLittlePigs07: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
+    @StateObject private var soundManager = SoundManager()
+    
+    
     // 게이지 크기 표시를 위한 변수
     @State var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
     @State var clickCount = 0
@@ -57,45 +60,45 @@ struct ThreeLittlePigs07: View {
                 .offset(x: 260, y: 0)
             
             // 임시1(게이지) - 눌러서 1씩 증가하도록
-//            VStack{
-//                Text("Scream")
-//                    .font(.system(size: 36))
-//                    .bold()
-//                    .frame(alignment: .leading)
-//                    .foregroundStyle(AppColor.pigBrown)
-//                    .padding(-3)
-//                
-//                ZStack(alignment: .leading){
-//                    Rectangle()
-//                        .foregroundStyle(Color.white)
-//                        .frame(width: screenWidth * 0.7, height: 60)
-//                        .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
-//                    Rectangle()
-//                        .foregroundStyle(Color.gray)
-//                        .frame(width: max(screenWidth * 0.7 * rectangleWidth - 10, 0), height: 50)
-//                        .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
-//                        .offset(x:5)
-//                }
-//            }
-//            .offset(y: screenHeight * 0.4)
-//            .frame(width: screenWidth * 0.70, alignment: .center)
+            //            VStack{
+            //                Text("Scream")
+            //                    .font(.system(size: 36))
+            //                    .bold()
+            //                    .frame(alignment: .leading)
+            //                    .foregroundStyle(AppColor.pigBrown)
+            //                    .padding(-3)
+            //
+            //                ZStack(alignment: .leading){
+            //                    Rectangle()
+            //                        .foregroundStyle(Color.white)
+            //                        .frame(width: screenWidth * 0.7, height: 60)
+            //                        .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
+            //                    Rectangle()
+            //                        .foregroundStyle(Color.gray)
+            //                        .frame(width: max(screenWidth * 0.7 * rectangleWidth - 10, 0), height: 50)
+            //                        .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
+            //                        .offset(x:5)
+            //                }
+            //            }
+            //            .offset(y: screenHeight * 0.4)
+            //            .frame(width: screenWidth * 0.70, alignment: .center)
             
-//            // 임시1(버튼) - 눌러서 1씩 증가하도록
-//            Button(action: {
-//                if clickCount < 10 {
-//                    clickCount += 1
-//                    rectangleWidth = 0 + CGFloat(clickCount) * 0.1 // 클릭할 때마다 길이를 10씩 증가
-//                    print("Increase Width")
-//                } else if clickCount == 10 {
-//                    currentStep = currentStep + 1
-//                }
-//            }, label: {
-//                Image(systemName: "microphone.circle")
-//                    .font(.system(size:40))
-//                    .bold()
-//                    .foregroundStyle(.orange)
-//            })
-//            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
+            //            // 임시1(버튼) - 눌러서 1씩 증가하도록
+            //            Button(action: {
+            //                if clickCount < 10 {
+            //                    clickCount += 1
+            //                    rectangleWidth = 0 + CGFloat(clickCount) * 0.1 // 클릭할 때마다 길이를 10씩 증가
+            //                    print("Increase Width")
+            //                } else if clickCount == 10 {
+            //                    currentStep = currentStep + 1
+            //                }
+            //            }, label: {
+            //                Image(systemName: "microphone.circle")
+            //                    .font(.system(size:40))
+            //                    .bold()
+            //                    .foregroundStyle(.orange)
+            //            })
+            //            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
             
             // 임시2(게이지) - 소리가 일정량 넘으면 증가하도록
             VStack{
@@ -132,7 +135,7 @@ struct ThreeLittlePigs07: View {
                             .onAppear {currentStep = currentStep + 1}
                     }
                     
-//                    Text("\(audioManager.dBCounter)") // 디버깅때 필요한?? ㅋㅋ??
+                    //                    Text("\(audioManager.dBCounter)") // 디버깅때 필요한?? ㅋㅋ??
                 }
             }
             .offset(y: screenHeight * 0.4)
@@ -153,13 +156,18 @@ struct ThreeLittlePigs07: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
         }
-//        .onAppear {
-//            audioManager.setupRecorder() // 오디오 모듈 켜기
-//            audioManager.resetDBCounter() // dBCounter 없애기
-//        }
-//        .onDisappear{
-//            audioManager.stopAudioManager() // 오디오 모듈 끄기
-//        }
+        .onAppear {
+            //            audioManager.setupRecorder() // 오디오 모듈 켜기
+            //            audioManager.resetDBCounter() // dBCounter 없애기
+            soundManager.speakText(
+                                   """
+                                   The wolf went to the first little pig's house and blew a big wind. 'Whoooo!' And the straw house blew away!
+                                   """)
+        }
+        .onDisappear{
+            soundManager.stopSpeaking()
+            //            audioManager.stopAudioManager() // 오디오 모듈 끄기
+        }
         .fullScreenCover(isPresented: $isPresentingSoundLevelView){
             SoundLevelView()
         }
