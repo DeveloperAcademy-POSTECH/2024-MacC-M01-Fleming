@@ -14,18 +14,45 @@ struct ThreeLittlePigs02: View {
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
-    
+    @StateObject private var soundManager = SoundManager()
+
     
     var body: some View {
         
         ZStack{
-            
             BaseView_ThreeLittlePig(currentStep:$currentStep)
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
+            
+            HStack{
+                Image("character_ThreeLittlePig1")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
+                    .offset(x:  -screenWidth*0.15, y: isLeft ? screenHeight*0.1 : screenHeight*0.12)
+                    .animation(.easeInOut(duration: 0.3), value: isLeft)
+                    .onReceive(timer) { _ in
+                        // 0.5초마다 좌우 위치를 변경
+                        isLeft.toggle()
+                    }
+            }
+            
+            
+            
+            
+            
+        }.onAppear {     // personal voice by hera start
+            //checkAuthorization()
+            soundManager.speakText("""
+                    The Three Little Pigs
+                    Once upon a time, there were three little pigs. They each decided to build their own house.
+            """)
+        }
+        .onDisappear(){
+            soundManager.stopSpeaking()
         }
     }
 }

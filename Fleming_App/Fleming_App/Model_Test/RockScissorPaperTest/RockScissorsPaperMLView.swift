@@ -18,6 +18,7 @@ struct RockScissorsPaperMLView: View {
             
             RSP_CameraView(model: model)
                 .frame(width: 500, height: 500) // 카메라 뷰 크기를 500x500으로 설정
+                .scaledToFit()
                 .clipped() // 부모 뷰 바깥의 콘텐츠를 자르기
             
             Text("예측 결과: \(model.predictionLabel)")

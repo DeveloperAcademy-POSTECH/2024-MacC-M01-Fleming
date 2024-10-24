@@ -31,18 +31,22 @@ struct ButtonView_ThreeLittlePig: View{
             
             Spacer()
             
-            Button(action: {
-                if (currentStep == 10){
-                    currentStep = 1
-                } else{
-                    currentStep = currentStep + 1 // 다음 단계로 이동
-                }
-            }, label: {
-                Image(systemName: "chevron.right")
-                    .font(.system(size:40))
-                    .bold()
-                    .foregroundStyle(.cyan)
-            })
+            if (currentStep >= 10){
+                Text("")
+            } else {
+                Button(action: {
+                    if (currentStep == 10){
+                        currentStep = 1
+                    } else{
+                        currentStep = currentStep + 1 // 다음 단계로 이동
+                    }
+                }, label: {
+                    Image(systemName: "chevron.right")
+                        .font(.system(size:40))
+                        .bold()
+                        .foregroundStyle(.cyan)
+                })
+            }
         }
         .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
     }
