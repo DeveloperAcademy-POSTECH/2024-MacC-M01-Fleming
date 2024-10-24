@@ -37,7 +37,8 @@ struct ThreeLittlePigs04: View {
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
         }.onAppear(){soundManager.speakText("""
                     The Three Little Pigs
-                    Once upon a time, there were three little pigs. They each decided to build their own house.
+                    Once upon a time, there were three little pigs. 
+                    They each decided to build their own house.
             """)}
         .onDisappear(){
             soundManager.stopSpeaking()
