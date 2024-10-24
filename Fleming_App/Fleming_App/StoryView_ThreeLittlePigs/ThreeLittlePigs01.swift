@@ -95,7 +95,8 @@ struct ThreeLittlePigs01: View {
             //checkAuthorization()
             soundManager.speakText("""
                     The Three Little Pigs
-                    Once upon a time, there were three little pigs. They each decided to build their own house.
+                    Once upon a time, there were three little pigs. 
+                    They each decided to build their own house.
             """)
         }
         .onDisappear(){
