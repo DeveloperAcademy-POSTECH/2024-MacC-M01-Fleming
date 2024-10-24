@@ -38,8 +38,8 @@ struct ThreeLittlePigs05: View {
             
         }.onAppear(){
             soundManager.speakText("""
-                    The Three Little Pigs
-                    Once upon a time, there were three little pigs. They each decided to build their own house.
+                    The third little pig gathered some bricks to build a house.
+                    The third little pig built a strong house with bricks
             """)
         }
         .onDisappear(){

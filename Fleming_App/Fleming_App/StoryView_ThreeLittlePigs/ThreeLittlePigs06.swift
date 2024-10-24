@@ -15,7 +15,8 @@ struct ThreeLittlePigs06: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @StateObject var soundModel = SoundPlayModel()
-    
+    @StateObject private var soundManager = SoundManager()
+
     var body: some View {
         
         ZStack{
@@ -64,6 +65,9 @@ struct ThreeLittlePigs06: View {
         .onAppear{
             soundModel.sampleMusicName = "music_sample1"
             soundModel.playSound()
+            soundManager.speakText("""
+                But one day, a big bad wolf came.
+            """)
         }
         .onDisappear(){
             soundModel.stopSound()

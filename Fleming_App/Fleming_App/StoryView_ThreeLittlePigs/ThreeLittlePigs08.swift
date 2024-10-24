@@ -15,7 +15,8 @@ struct ThreeLittlePigs08: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @StateObject var soundModel = SoundPlayModel()
-    
+    @StateObject private var soundManager = SoundManager()
+
     var body: some View {
         
         ZStack{
@@ -64,9 +65,14 @@ struct ThreeLittlePigs08: View {
         .onAppear{
             soundModel.sampleMusicName = "music_sample1"
             soundModel.playSound()
+            soundManager.speakText("""
+                The first little pig ran to the second little pig’s
+                house. The wolf went to the second little pig's house and blew again. 'Whoooo!' And the wooden house blew away too!
+            """)
         }
         .onDisappear(){
             soundModel.stopSound()
+            soundManager.stopSpeaking()
         }
     }
 }
