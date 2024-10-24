@@ -140,8 +140,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             
                             
                             let center = CGPoint(x: self.imgPosition?.x.wrappedValue ?? 0, y: self.imgPosition?.y.wrappedValue ?? 0)
-                            let size = CGSize(width: 100, height: 300)
-                            
+                            let size = CGSize(width: 150, height: 430)
                             let imgFrame = self.rectFromCenter(center: center, size: size)
                             
  
@@ -200,7 +199,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     func rectFromCenter(center: CGPoint, size: CGSize) -> CGRect {
-        let origin = CGPoint(x: center.x - size.width/2, y: center.y - size.height/2)
+        let origin = CGPoint(x: center.x - size.width/2, y: center.y - size.height/2 + 40)
         
         return CGRect(origin: origin, size: size)
     }
