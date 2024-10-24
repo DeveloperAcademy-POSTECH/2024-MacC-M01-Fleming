@@ -47,7 +47,6 @@ struct ThreeLittlePigs02: View {
         }.onAppear {     // personal voice by hera start
             //checkAuthorization()
             soundManager.speakText("""
-                    The Three Little Pigs
                     Once upon a time, there were three little pigs. They each decided to build their own house.
             """)
         }
