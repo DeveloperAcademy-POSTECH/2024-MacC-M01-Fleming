@@ -1,9 +1,9 @@
 
 //
-//  ThreeLittlePigs10.swift
+//  ThreeLittlePigs02A.swift
 //  Fleming_App
 //
-//  Created by Leo Yoon on 10/14/24.
+//  Created by Dodo on 10/18/24.
 //
 
 
@@ -28,6 +28,12 @@ struct ThreeLittlePigs02_A: View {
     var screenHeight = UIScreen.main.bounds.height
     @State private var isSuccess = false // 성공 여부를 나타내는 상태값
     @StateObject private var soundManager = SoundManager()
+    
+    // 반복연습과 관련있는 변수들
+    @State var repeatCount = 0 // 몇 회 반복?
+    @State var repeatCountEnd = 3
+    @State private var refresh = false
+    let refreshTime: TimeInterval = 2.0
     
     var body: some View {
         
@@ -137,7 +143,10 @@ struct ThreeLittlePigs02_A: View {
                     .bold()
                     .position(x: screenWidth / 2, y: screenHeight / 2)
                     .animation(.easeInOut(duration: 3), value: isSuccess)
-                
+                    .onAppear {
+                        repeatCount += 1
+                        triggerRefreshAfterDelay()
+                    } // 반복횟수 증가
             }
             
             // 완성된 집
@@ -160,10 +169,21 @@ struct ThreeLittlePigs02_A: View {
                     Once upon a time, there were three little pigs. They each decided to build their own house.
             """)
         }
+    }
+    
+    private func triggerRefreshAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + refreshTime) {
+            refresh.toggle() // refresh 상태를 변경하여 뷰를 새로고침
+            imgPosition = CGPoint(x: 300, y: 620) // 게임 초기화
+            isSuccess = false // 게임 초기화
+            print("RepeatCount: \(repeatCount)")
+            if repeatCount >= repeatCountEnd{
+                currentStep += 1
+            }
+        }
         .onDisappear(){
             soundManager.stopSpeaking()
         }
-        
     }
 }
 

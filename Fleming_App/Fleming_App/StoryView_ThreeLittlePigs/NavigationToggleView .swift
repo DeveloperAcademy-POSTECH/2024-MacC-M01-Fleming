@@ -30,7 +30,7 @@ struct ThreeLittlePigsNavigation: View {
             
         }
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
-//        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
+        //        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
     }
     
     // 각 단계에 맞는 뷰를 반환
