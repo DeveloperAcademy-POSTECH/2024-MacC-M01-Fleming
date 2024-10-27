@@ -30,7 +30,7 @@ struct ThreeLittlePigsNavigation: View {
             
         }
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
-//        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
+        //        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
     }
     
     // 각 단계에 맞는 뷰를 반환
@@ -39,9 +39,9 @@ struct ThreeLittlePigsNavigation: View {
         switch currentStep {
         case 2:
             ThreeLittlePigs02(currentStep: $currentStep, isLeft: $isLeft)
-//            ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft) ThreeLittlePigs10 즉시 10번 뷰 테스트 위해
-//            makeCameraForCircle()
-
+            //            ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft) ThreeLittlePigs10 즉시 10번 뷰 테스트 위해
+            //            makeCameraForCircle()
+            
         case 3:
             ThreeLittlePigs02_A(currentStep: $currentStep, isLeft: $isLeft)
         case 4:

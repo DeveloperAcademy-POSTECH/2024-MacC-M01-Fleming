@@ -6,6 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		005AAB222CC87FEF009CA5D3 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB212CC87FEF009CA5D3 /* Metal.framework */; };
+		005AAB292CC88006009CA5D3 /* libswiftMetalKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB232CC88006009CA5D3 /* libswiftMetalKit.tbd */; };
+		005AAB2A2CC88006009CA5D3 /* libswiftMetal.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB242CC88006009CA5D3 /* libswiftMetal.tbd */; };
+		005AAB2B2CC88006009CA5D3 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB252CC88006009CA5D3 /* MetalPerformanceShaders.framework */; };
+		005AAB2C2CC88006009CA5D3 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB262CC88006009CA5D3 /* MetalKit.framework */; };
+		005AAB2D2CC88006009CA5D3 /* MetalFX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB272CC88006009CA5D3 /* MetalFX.framework */; };
+		005AAB2E2CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB282CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework */; };
+		005AAB312CC88797009CA5D3 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */; };
+		005AAB322CC88797009CA5D3 /* libswiftVideoToolbox.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		00C014E22CB38D3B00E2753B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +36,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		005AAB212CC87FEF009CA5D3 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		005AAB232CC88006009CA5D3 /* libswiftMetalKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftMetalKit.tbd; path = usr/lib/swift/libswiftMetalKit.tbd; sourceTree = SDKROOT; };
+		005AAB242CC88006009CA5D3 /* libswiftMetal.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftMetal.tbd; path = usr/lib/swift/libswiftMetal.tbd; sourceTree = SDKROOT; };
+		005AAB252CC88006009CA5D3 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
+		005AAB262CC88006009CA5D3 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		005AAB272CC88006009CA5D3 /* MetalFX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalFX.framework; path = System/Library/Frameworks/MetalFX.framework; sourceTree = SDKROOT; };
+		005AAB282CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShadersGraph.framework; path = System/Library/Frameworks/MetalPerformanceShadersGraph.framework; sourceTree = SDKROOT; };
+		005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftVideoToolbox.tbd; path = usr/lib/swift/libswiftVideoToolbox.tbd; sourceTree = SDKROOT; };
+		005AAB332CC88DFC009CA5D3 /* Fleming_App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fleming_App.xctestplan; path = ../../../Fleming_App.xctestplan; sourceTree = "<group>"; };
 		00C014D12CB38D3900E2753B /* Fleming_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fleming_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C014E12CB38D3B00E2753B /* Fleming_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fleming_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C014EB2CB38D3B00E2753B /* Fleming_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fleming_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +79,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005AAB312CC88797009CA5D3 /* VideoToolbox.framework in Frameworks */,
+				005AAB322CC88797009CA5D3 /* libswiftVideoToolbox.tbd in Frameworks */,
+				005AAB292CC88006009CA5D3 /* libswiftMetalKit.tbd in Frameworks */,
+				005AAB2A2CC88006009CA5D3 /* libswiftMetal.tbd in Frameworks */,
+				005AAB2B2CC88006009CA5D3 /* MetalPerformanceShaders.framework in Frameworks */,
+				005AAB2C2CC88006009CA5D3 /* MetalKit.framework in Frameworks */,
+				005AAB2D2CC88006009CA5D3 /* MetalFX.framework in Frameworks */,
+				005AAB2E2CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework in Frameworks */,
+				005AAB222CC87FEF009CA5D3 /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,13 +108,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005AAB202CC87FE8009CA5D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */,
+				005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */,
+				005AAB242CC88006009CA5D3 /* libswiftMetal.tbd */,
+				005AAB232CC88006009CA5D3 /* libswiftMetalKit.tbd */,
+				005AAB272CC88006009CA5D3 /* MetalFX.framework */,
+				005AAB262CC88006009CA5D3 /* MetalKit.framework */,
+				005AAB252CC88006009CA5D3 /* MetalPerformanceShaders.framework */,
+				005AAB282CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework */,
+				005AAB212CC87FEF009CA5D3 /* Metal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		00C014C82CB38D3900E2753B = {
 			isa = PBXGroup;
 			children = (
+				005AAB332CC88DFC009CA5D3 /* Fleming_App.xctestplan */,
 				9827D0A82CBBBE01000334B0 /* New Folder */,
 				00C014D32CB38D3900E2753B /* Fleming_App */,
 				00C014E42CB38D3B00E2753B /* Fleming_AppTests */,
 				00C014EE2CB38D3B00E2753B /* Fleming_AppUITests */,
+				005AAB202CC87FE8009CA5D3 /* Frameworks */,
 				00C014D22CB38D3900E2753B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -328,6 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -386,6 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -420,6 +471,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "samplecode.Fleming-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -451,6 +506,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "samplecode.Fleming-AppTests";

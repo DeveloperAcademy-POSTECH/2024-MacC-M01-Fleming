@@ -11,7 +11,7 @@ import AVFoundation
 import Vision
 import CoreML
 import SwiftUI
-
+//
 class RockScissorsPaperMLModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     @Published var predictionLabel: String = "대기 중..."
     

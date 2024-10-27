@@ -18,9 +18,7 @@ struct Fleming_AppApp: App {
                 SplashView()
             }
             .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
-//            
-//            SoundLevelView()
-//            SimpleTTSView()
+//            HandPoseTestView()
             
         }
     }
