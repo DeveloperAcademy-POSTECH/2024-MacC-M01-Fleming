@@ -13,6 +13,7 @@ struct ThreeLittlePigs03: View {
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
+    @StateObject private var soundManager = SoundManager()
     
     var body: some View {
         
@@ -29,12 +30,12 @@ struct ThreeLittlePigs03: View {
                     // 0.5초마다 좌우 위치를 변경
                     isLeft.toggle()
                 }
-        
+            
             Image("object_home11")
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
-//                .offset(x: isLeft ? 240 : 260, y: screenHeight*0.07)
+            //                .offset(x: isLeft ? 240 : 260, y: screenHeight*0.07)
                 .offset(x: isLeft ? 240 : 260, y: screenHeight*0.07)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
@@ -49,7 +50,17 @@ struct ThreeLittlePigs03: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
+        }.onAppear {     // personal voice by hera start
+            //checkAuthorization()
+            soundManager.speakText("""
+                    The first little pig gathered some straw to build a house.
+                    The first little pig built a house with straw.
+            """)
         }
+        .onDisappear(){
+            soundManager.stopSpeaking()
+        }
+        
         
     }
 }

@@ -15,6 +15,9 @@ struct ThreeLittlePigs09: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
+    @StateObject private var soundManager = SoundManager()
+
+    
     // 게이지 크기 표시를 위한 변수
     @State var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
     @State var clickCount = 0
@@ -117,6 +120,10 @@ struct ThreeLittlePigs09: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
+        }.onAppear(){
+            soundManager.speakText("""
+            The first and second little pigs ran to the third little pig’s house.The wolf went to the third little pig’s house and blew a big wind. 'Whoooo!' But the brick house didn’t fall down!The wolf gave up and ran away to the forest. The three little pigs lived happily ever after.
+            """)
         }
     }
 }

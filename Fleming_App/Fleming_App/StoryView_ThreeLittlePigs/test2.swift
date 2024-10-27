@@ -103,8 +103,10 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 // Vision 좌표는 (0,0)이 좌측 하단
                 //(1,1)이 우측 상단
                 // TODO: 이유를 찾아봅시다
-                let thumbTipLocation = CGPoint(x: 1 - thumbTip.location.x, y: thumbTip.location.y)
-                let indexTipLocation = CGPoint(x: 1 - indexTip.location.x, y: indexTip.location.y)
+                
+                //여기 세로쪽 좌표 보정시도함 -> 이후 가로도 보정시도함 완료
+                let thumbTipLocation = CGPoint(x: (1 - thumbTip.location.x) * 0.95, y: thumbTip.location.y * 0.95)
+                let indexTipLocation = CGPoint(x: (1 - indexTip.location.x) * 0.95, y: indexTip.location.y * 0.95)
                 
                 // 엄지와 검지 좌표 부드럽게 하기 위해 추가 (이전 좌표와 현재 좌표의 평균 사용)
                 let smoothedThumbTip = smoothCoordinates(current: thumbTipLocation, previous: previousThumbTipLocation)
@@ -135,15 +137,34 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             // 검지의 좌표를 사용하여 원을 그리도록 업데이트
                             self.touchPoint?.wrappedValue = convertedIndexPoint
                             // 엄지와 검지가 img에 닿으면 img 위치를 업데이트
-                            let imgFrame = CGRect(x: self.imgPosition?.wrappedValue.x ?? 0,
-                                                  y: self.imgPosition?.wrappedValue.y ?? 0,
-                                                  width: 100, height: 100)
                             
-                            if imgFrame.contains(convertedIndexPoint) || imgFrame.contains(convertedThumbPoint) {
+                            
+                            let center = CGPoint(x: self.imgPosition?.x.wrappedValue ?? 0, y: self.imgPosition?.y.wrappedValue ?? 0)
+                            let size = CGSize(width: 150, height: 430)
+                            let imgFrame = self.rectFromCenter(center: center, size: size)
+                            
+ 
+                            // 여유 거리 추가를 위해
+                            let margin: CGFloat = 20.0 // 여유 거리 일단 20
+                            let extendedImgFrame = imgFrame.insetBy(dx: -margin, dy: -margin)
+                            //  원래의 imgFrame보다 margin만큼 더 큰 사각형 영역
+                            
+                            //인정 범위 확인 위해
+                            let testView = UIView(frame: imgFrame)
+                            testView.backgroundColor = .blue
+                            self.view.addSubview(testView)
+                            
+                            if extendedImgFrame.contains(convertedIndexPoint) || extendedImgFrame.contains(convertedThumbPoint) {
                                 let middlePoint = CGPoint(
                                     x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
                                     y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2
                                 )
+                            
+//                            if imgFrame.contains(convertedIndexPoint) ||          imgFrame.contains(convertedThumbPoint) {
+//                                let middlePoint = CGPoint(
+//                                    x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
+//                                    y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2
+//                                )
                                 //self.imgPosition?.wrappedValue = middlePoint
                                 
                                 // 애니메이션을 추가 -> 자연스럽게 이동
@@ -175,6 +196,12 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         let smoothedX = (current.x + previous.x) / 2
         let smoothedY = (current.y + previous.y) / 2
         return CGPoint(x: smoothedX, y: smoothedY)
+    }
+    
+    func rectFromCenter(center: CGPoint, size: CGSize) -> CGRect {
+        let origin = CGPoint(x: center.x - size.width/2, y: center.y - size.height/2 + 40)
+        
+        return CGRect(origin: origin, size: size)
     }
     
 }
