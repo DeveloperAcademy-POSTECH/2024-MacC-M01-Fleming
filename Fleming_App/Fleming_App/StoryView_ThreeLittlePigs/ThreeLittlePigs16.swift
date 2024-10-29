@@ -35,7 +35,7 @@ struct ThreeLittlePigs16: View {
                     isLeft.toggle()
                 }
             
-            Image("object_home11")
+            Image("object_home31")
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배

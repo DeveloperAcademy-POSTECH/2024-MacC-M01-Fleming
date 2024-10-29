@@ -21,11 +21,23 @@ struct ThreeLittlePigs10: View {
         ZStack{
             BaseView_ThreeLittlePig(currentStep:$currentStep)
             
-            Image("object_home31")
+            Image("character_ThreeLittlePig3")
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: isLeft ? 240 : 260, y: 100)
+                .offset(x:  -screenWidth*0.15, y: isLeft ? screenHeight*0.08 : screenHeight*0.16)
+                .animation(.easeInOut(duration: 0.3), value: isLeft)
+                .onReceive(timer) { _ in
+                    // 0.5초마다 좌우 위치를 변경
+                    isLeft.toggle()
+                }
+            
+            Image("object_home31")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
+            //                .offset(x: isLeft ? 240 : 260, y: screenHeight*0.07)
+                .offset(x: isLeft ? 240 : 260, y: screenHeight*0.07)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경

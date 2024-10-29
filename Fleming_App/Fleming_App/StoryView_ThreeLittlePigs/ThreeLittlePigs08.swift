@@ -28,7 +28,7 @@ struct ThreeLittlePigs08: View {
             
             
             HStack{
-                Image("character_ThreeLittlePig1")
+                Image("character_ThreeLittlePig3")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배

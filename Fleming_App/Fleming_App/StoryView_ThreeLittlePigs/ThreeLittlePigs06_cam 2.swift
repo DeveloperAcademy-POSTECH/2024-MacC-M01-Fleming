@@ -53,47 +53,7 @@ struct ThreeLittlePigs06_cam: View {
                 .offset(x:0, y:0)
                 .edgesIgnoringSafeArea(.all)
             
-            
-            // 캐릭터 위치
-            //            HStack{
-            //                Image("character_ThreeLittlePig1")
-            //                    .resizable()
-            //                    .scaledToFit()
-            //                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-            //                    .offset(x: -300, y: 200)
-            //                //                    .offset(x: isLeft ? -300 : -250, y: 200) // 좌우로 이동
-            //                //                    .animation(.easeInOut(duration: 0.8), value: isLeft) // 0.5초 간격 애니메이션
-            //                //                    .onReceive(timer) { _ in
-            //                //                        // 0.5초마다 좌우 위치를 변경
-            //                //                        isLeft.toggle()
-            //                //                    }
-            //
-            //                Image("character_ThreeLittlePig2")
-            //                    .resizable()
-            //                    .scaledToFit()
-            //                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-            //                //                  .offset(x: isLeft ? -230 : -210, y: 180)
-            //                    .offset(x: -230, y: 180)
-            //                //                    .animation(.easeInOut(duration: 0.2), value: isLeft) // 0.5초 간격 애니메이션
-            //                //                    .onReceive(timer) { _ in
-            //                //                        // 0.5초마다 좌우 위치를 변경
-            //                //                        isLeft.toggle()
-            //                //                    }
-            //
-            //                Image("character_ThreeLittlePig3")
-            //                    .resizable()
-            //                    .scaledToFit()
-            //                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-            //                //                    .offset(x: isLeft ? -200 : -170, y: 170)
-            //                    .offset(x: -230, y: 180)
-            //                //                    .animation(.easeInOut(duration: 0.3), value: isLeft) // 0.5초 간격 애니메이션
-            //                //                    .onReceive(timer) { _ in
-            //                //                        // 0.5초마다 좌우 위치를 변경
-            //                //                        isLeft.toggle()
-            //                //                    }
-            //            }
-            //            .offset(x: -200, y: 200)
-            
+
             // 집 옮기기 기능
             if isSuccess == false{
                 Image("object_home11_cut")
@@ -147,16 +107,16 @@ struct ThreeLittlePigs06_cam: View {
                         repeatCount += 1
                         triggerRefreshAfterDelay()
                     } // 반복횟수 증가
+                
+                // 완성된 집
+                Image("object_home11")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.3)
+                    .scaleEffect(2)
+                // 화면 크기 n배
+                    .offset(x: 260, y: 100)
             }
-            
-            // 완성된 집
-            Image("object_home11")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.3)
-                .scaleEffect(2)
-            // 화면 크기 n배
-                .offset(x: 260, y: 100)
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)

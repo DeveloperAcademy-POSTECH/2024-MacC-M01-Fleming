@@ -31,6 +31,7 @@ struct RockPaperScissorsView: View{
         }
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
     }
+    
     @ViewBuilder
     func getViewForStep(currentStep: Int) -> some View {
         switch currentStep {
@@ -42,4 +43,9 @@ struct RockPaperScissorsView: View{
             EmptyView()
         }
     }
+}
+
+#Preview{
+    @Previewable @State var currentStep: Int = 1
+    RockPaperScissors1(currentStep: $currentStep)
 }

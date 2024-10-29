@@ -24,22 +24,40 @@ struct ThreeLittlePigs18: View {
             BaseView_ThreeLittlePig(currentStep:$currentStep)
             
             // 그림(좌측 상단부터 입력하기)
-            Image("character_ThreeLittlePig4")
+            
+            Image("object_home31")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
-                .offset(x: isLeft ? -240 : -260, y: 100)
+                .frame(width: screenWidth * 0.6) // 화면 크기 n배
+                .offset(x: 0, y: screenHeight / 10)
+            
+            Image("character_ThreeLittlePig1")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
+                .offset(x: isLeft ? -screenWidth / 4 : -screenWidth / 4 + 20, y: screenHeight / 4)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경
                     isLeft.toggle()
                 }
             
-            Image("object_home11")
+            Image("character_ThreeLittlePig2")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
-                .offset(x: isLeft ? 240 : 260, y: 100)
+                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
+                .offset(x: isLeft ? 0 : 20, y: screenHeight / 3)
+                .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
+                .onReceive(timer) { _ in
+                    // 0.5초마다 좌우 위치를 변경
+                    isLeft.toggle()
+                }
+            
+            Image("character_ThreeLittlePig3")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
+                .offset(x: isLeft ? screenWidth / 4 : screenWidth / 4 + 20, y: screenHeight / 4)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경

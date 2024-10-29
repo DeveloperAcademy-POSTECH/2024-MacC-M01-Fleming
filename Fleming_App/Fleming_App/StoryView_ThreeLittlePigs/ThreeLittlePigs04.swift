@@ -44,8 +44,6 @@ struct ThreeLittlePigs04: View {
                 }
             
             
-            
-            
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
@@ -60,8 +58,7 @@ struct ThreeLittlePigs04: View {
         .onDisappear(){
             soundManager.stopSpeaking()
         }
-        
-        
+
     }
 }
 

@@ -67,15 +67,9 @@ struct RockPaperScissors1: View{
             })
             
         }
-        .onAppear { // @@초 뒤 화면전환
-                    incrementStepAfterDelay()
-                }
+        
     }
-    private func incrementStepAfterDelay() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                currentStep += 1
-            }
-        }
+
 }
 
 #Preview{
