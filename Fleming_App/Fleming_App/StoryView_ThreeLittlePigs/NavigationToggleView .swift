@@ -55,6 +55,14 @@ struct ThreeLittlePigsNavigation: View {
             ThreeLittlePigs09(currentStep: $currentStep, isLeft: $isLeft)
         case 10:
             ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft)
+//        case 11:
+//        case 12:
+//        case 13:
+//        case 14:
+//        case 15:
+//        case 16:
+//        case 17:
+//        case 18:
         default:
             EmptyView()
         }

@@ -12,7 +12,6 @@
 		005AAB2A2CC88006009CA5D3 /* libswiftMetal.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB242CC88006009CA5D3 /* libswiftMetal.tbd */; };
 		005AAB2B2CC88006009CA5D3 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB252CC88006009CA5D3 /* MetalPerformanceShaders.framework */; };
 		005AAB2C2CC88006009CA5D3 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB262CC88006009CA5D3 /* MetalKit.framework */; };
-		005AAB2D2CC88006009CA5D3 /* MetalFX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB272CC88006009CA5D3 /* MetalFX.framework */; };
 		005AAB2E2CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB282CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework */; };
 		005AAB312CC88797009CA5D3 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */; };
 		005AAB322CC88797009CA5D3 /* libswiftVideoToolbox.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */; };
@@ -85,7 +84,6 @@
 				005AAB2A2CC88006009CA5D3 /* libswiftMetal.tbd in Frameworks */,
 				005AAB2B2CC88006009CA5D3 /* MetalPerformanceShaders.framework in Frameworks */,
 				005AAB2C2CC88006009CA5D3 /* MetalKit.framework in Frameworks */,
-				005AAB2D2CC88006009CA5D3 /* MetalFX.framework in Frameworks */,
 				005AAB2E2CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework in Frameworks */,
 				005AAB222CC87FEF009CA5D3 /* Metal.framework in Frameworks */,
 			);
@@ -456,7 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "행동치료 지도를 위한 카메라 접근 권한을 허용해주세요.";
@@ -492,7 +490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "행동치료 지도를 위한 카메라 접근 권한을 허용해주세요.";
