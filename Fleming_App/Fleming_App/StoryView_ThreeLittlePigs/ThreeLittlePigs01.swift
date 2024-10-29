@@ -112,3 +112,8 @@ struct ThreeLittlePigs01: View {
         }
     }
 }
+
+#Preview {
+    @Previewable @State var isLeft: Bool = false
+    ThreeLittlePigs01(currentStep: .constant(1), isLeft: $isLeft)
+}
