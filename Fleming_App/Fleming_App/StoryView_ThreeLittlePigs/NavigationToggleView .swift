@@ -40,29 +40,37 @@ struct ThreeLittlePigsNavigation: View {
         case 2:
             ThreeLittlePigs02(currentStep: $currentStep, isLeft: $isLeft)
         case 3:
-            ThreeLittlePigs02_A(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs03_cam(currentStep: $currentStep, isLeft: $isLeft)
         case 4:
-            ThreeLittlePigs03(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs04(currentStep: $currentStep, isLeft: $isLeft)
         case 5:
             ThreeLittlePigs05(currentStep: $currentStep, isLeft: $isLeft)
         case 6:
-            ThreeLittlePigs06(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs06_cam(currentStep: $currentStep, isLeft: $isLeft)
         case 7:
             ThreeLittlePigs07(currentStep: $currentStep, isLeft: $isLeft)
         case 8:
             ThreeLittlePigs08(currentStep: $currentStep, isLeft: $isLeft)
         case 9:
-            ThreeLittlePigs09(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs09_cam(currentStep: $currentStep, isLeft: $isLeft)
         case 10:
             ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft)
-//        case 11:
-//        case 12:
-//        case 13:
-//        case 14:
-//        case 15:
-//        case 16:
-//        case 17:
-//        case 18:
+        case 11:
+            ThreeLittlePigs11(currentStep: $currentStep, isLeft: $isLeft)
+        case 12:
+            ThreeLittlePigs12(currentStep: $currentStep, isLeft: $isLeft)
+        case 13:
+            ThreeLittlePigs13_speech(currentStep: $currentStep, isLeft: $isLeft)
+        case 14:
+            ThreeLittlePigs14(currentStep: $currentStep, isLeft: $isLeft)
+        case 15:
+            ThreeLittlePigs15_speech(currentStep: $currentStep, isLeft: $isLeft)
+        case 16:
+            ThreeLittlePigs16(currentStep: $currentStep, isLeft: $isLeft)
+        case 17:
+            ThreeLittlePigs17_speech(currentStep: $currentStep, isLeft: $isLeft)
+        case 18:
+            ThreeLittlePigs18(currentStep: $currentStep, isLeft: $isLeft)
         default:
             EmptyView()
         }

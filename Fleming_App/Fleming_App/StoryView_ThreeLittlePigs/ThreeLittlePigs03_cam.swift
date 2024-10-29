@@ -12,7 +12,7 @@ import Vision
 import AVFoundation
 
 
-struct ThreeLittlePigs02_A: View {
+struct ThreeLittlePigs03_cam: View {
     
     //By Hera
     @State private var touchPoint: CGPoint? = nil
@@ -189,5 +189,5 @@ struct ThreeLittlePigs02_A: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs02_A(currentStep: .constant(10), isLeft:$isLeft)
+    ThreeLittlePigs03_cam(currentStep: .constant(3), isLeft:$isLeft)
 }

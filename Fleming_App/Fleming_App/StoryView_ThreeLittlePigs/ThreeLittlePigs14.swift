@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ThreeLittlePigs08: View {
+struct ThreeLittlePigs14: View {
     @Binding var currentStep: Int
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
@@ -79,5 +79,5 @@ struct ThreeLittlePigs08: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs08(currentStep: .constant(8), isLeft:$isLeft)
+    ThreeLittlePigs14(currentStep: .constant(14), isLeft:$isLeft)
 }

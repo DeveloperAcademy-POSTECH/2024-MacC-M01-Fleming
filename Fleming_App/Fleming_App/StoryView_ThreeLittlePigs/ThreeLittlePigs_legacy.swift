@@ -4,6 +4,7 @@
 //
 //  Created by Leo Yoon on 10/14/24.
 //
+// Hera께서 
 
 
 import SwiftUI
@@ -11,7 +12,7 @@ import Vision
 import AVFoundation
 
 
-struct ThreeLittlePigs10: View {
+struct ThreeLittlePigs_legacy: View {
     
     //By Hera
     @State private var touchPoint: CGPoint? = nil
