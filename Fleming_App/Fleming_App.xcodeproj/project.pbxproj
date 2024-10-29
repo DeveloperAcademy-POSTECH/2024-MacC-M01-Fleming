@@ -11,6 +11,10 @@
 		005AAB2A2CC88006009CA5D3 /* libswiftMetal.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB242CC88006009CA5D3 /* libswiftMetal.tbd */; };
 		005AAB312CC88797009CA5D3 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */; };
 		005AAB322CC88797009CA5D3 /* libswiftVideoToolbox.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */; };
+		00606E1C2CD0855600E3A4F2 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB212CC87FEF009CA5D3 /* Metal.framework */; };
+		00606E1E2CD0855600E3A4F2 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB262CC88006009CA5D3 /* MetalKit.framework */; };
+		00606E1F2CD0855600E3A4F2 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB252CC88006009CA5D3 /* MetalPerformanceShaders.framework */; };
+		00606E202CD0855600E3A4F2 /* MetalPerformanceShadersGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AAB282CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00606E1C2CD0855600E3A4F2 /* Metal.framework in Frameworks */,
+				00606E1E2CD0855600E3A4F2 /* MetalKit.framework in Frameworks */,
+				00606E1F2CD0855600E3A4F2 /* MetalPerformanceShaders.framework in Frameworks */,
+				00606E202CD0855600E3A4F2 /* MetalPerformanceShadersGraph.framework in Frameworks */,
 				005AAB312CC88797009CA5D3 /* VideoToolbox.framework in Frameworks */,
 				005AAB322CC88797009CA5D3 /* libswiftVideoToolbox.tbd in Frameworks */,
 				005AAB292CC88006009CA5D3 /* libswiftMetalKit.tbd in Frameworks */,
