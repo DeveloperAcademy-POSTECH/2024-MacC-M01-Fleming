@@ -1,5 +1,5 @@
 //
-//  ThreeLittlePigs09.swift
+//  ThreeLittlePigs07.swift
 //  Fleming_App
 //
 //  Created by Leo Yoon on 10/14/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ThreeLittlePigs15_speech: View {
+struct ThreeLittlePigs17_speech: View {
     @Binding var currentStep: Int
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
@@ -16,13 +16,13 @@ struct ThreeLittlePigs15_speech: View {
     var screenHeight = UIScreen.main.bounds.height
     
     @StateObject private var soundManager = SoundManager()
-
+    
     
     // 게이지 크기 표시를 위한 변수
     @State var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
     @State var clickCount = 0
     
-    // dBCounter 기능을 위한 변수
+    //dBCounter 기능을 위한 변수
     @ObservedObject var audioManager = AudioManager() // 오디오 매니저 연결
     private let columns = Array(repeating: GridItem(.flexible()), count: 10) // 체크마크 열의 수를 설정(dBCounter)
     @State private var thresholdValue: Float = 50.0 // 초기 데시벨 기준 값
@@ -55,13 +55,13 @@ struct ThreeLittlePigs15_speech: View {
             
             
             if audioManager.dBCounter < 10{
-                Image("object_home21")
+                Image("object_home31")
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth * 0.6) // 화면 크기 n배
                     .offset(x: 260, y: 0)
             } else if audioManager.dBCounter >= 10 {
-                Image("object_home22")
+                Image("object_home31")
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth * 0.6) // 화면 크기 n배
@@ -143,5 +143,5 @@ struct ThreeLittlePigs15_speech: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs15_speech(currentStep: .constant(15), isLeft: $isLeft)
+    ThreeLittlePigs17_speech(currentStep: .constant(17), isLeft:$isLeft)
 }

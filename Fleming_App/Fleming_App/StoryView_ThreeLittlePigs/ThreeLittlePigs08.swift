@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ThreeLittlePigs02: View {
+struct ThreeLittlePigs08: View {
     @Binding var currentStep: Int
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
@@ -15,7 +15,7 @@ struct ThreeLittlePigs02: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @StateObject private var soundManager = SoundManager()
-    
+
     
     var body: some View {
         
@@ -26,9 +26,9 @@ struct ThreeLittlePigs02: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
-            // 캐릭터 띄우기
+            
             HStack{
-                Image("character_ThreeLittlePig1")
+                Image("character_ThreeLittlePig3")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
@@ -39,6 +39,10 @@ struct ThreeLittlePigs02: View {
                         isLeft.toggle()
                     }
             }
+            
+            
+            
+            
             
         }.onAppear {     // personal voice by hera start
             //checkAuthorization()
@@ -54,5 +58,5 @@ struct ThreeLittlePigs02: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs02(currentStep: .constant(2), isLeft: $isLeft)
+    ThreeLittlePigs08(currentStep: .constant(8), isLeft: $isLeft)
 }

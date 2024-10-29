@@ -4,7 +4,16 @@
     "" : {
 
     },
+    "-" : {
+
+    },
+    "%lld" : {
+
+    },
     "%lld dB" : {
+
+    },
+    "+" : {
 
     },
     "0 dB" : {
@@ -79,6 +88,9 @@
     "Rehabilitation" : {
 
     },
+    "Repeat" : {
+
+    },
     "Rock Paper Scissors !" : {
 
     },
@@ -89,6 +101,9 @@
 
     },
     "Select Voice" : {
+
+    },
+    "Start" : {
 
     },
     "Start game" : {
