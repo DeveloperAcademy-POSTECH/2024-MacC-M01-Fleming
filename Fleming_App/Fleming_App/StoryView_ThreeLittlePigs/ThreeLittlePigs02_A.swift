@@ -169,6 +169,9 @@ struct ThreeLittlePigs02_A: View {
                     Once upon a time, there were three little pigs. They each decided to build their own house.
             """)
         }
+        .onDisappear(){
+            soundManager.stopSpeaking()
+        }
     }
     
     private func triggerRefreshAfterDelay() {
@@ -181,9 +184,7 @@ struct ThreeLittlePigs02_A: View {
                 currentStep += 1
             }
         }
-        .onDisappear(){
-            soundManager.stopSpeaking()
-        }
+
     }
 }
 
