@@ -13,8 +13,10 @@ struct Fleming_AppApp: App {
     @State private var currentStep: Int = 1 // 현재 뷰 상태 관리
     
     var body: some Scene {
+        
         WindowGroup {
-            NavigationView{
+//            checkDevice()
+            NavigationView {
                 SplashView()
             }
             .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
