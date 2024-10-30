@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ThreeLittlePigs10: View {
+    //By Hera
+    @State private var touchPoint: CGPoint? = nil
+    @State private var imgPosition: CGPoint = CGPoint(x: 300, y: 620) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
+    
     @Binding var currentStep: Int
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
