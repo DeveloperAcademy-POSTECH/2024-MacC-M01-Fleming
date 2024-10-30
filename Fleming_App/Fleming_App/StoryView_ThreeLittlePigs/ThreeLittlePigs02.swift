@@ -15,7 +15,7 @@ struct ThreeLittlePigs02: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @StateObject private var soundManager = SoundManager()
-
+    
     
     var body: some View {
         
@@ -26,7 +26,7 @@ struct ThreeLittlePigs02: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
-            
+            // 캐릭터 띄우기
             HStack{
                 Image("character_ThreeLittlePig1")
                     .resizable()
@@ -39,10 +39,6 @@ struct ThreeLittlePigs02: View {
                         isLeft.toggle()
                     }
             }
-            
-            
-            
-            
             
         }.onAppear {     // personal voice by hera start
             //checkAuthorization()

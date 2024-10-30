@@ -1,9 +1,9 @@
 
 //
-//  ThreeLittlePigs10.swift
+//  ThreeLittlePigs02A.swift
 //  Fleming_App
 //
-//  Created by Leo Yoon on 10/14/24.
+//  Created by Dodo on 10/18/24.
 //
 
 
@@ -12,7 +12,7 @@ import Vision
 import AVFoundation
 
 
-struct ThreeLittlePigs02_A: View {
+struct ThreeLittlePigs03_cam: View {
     
     //By Hera
     @State private var touchPoint: CGPoint? = nil
@@ -29,13 +29,15 @@ struct ThreeLittlePigs02_A: View {
     @State private var isSuccess = false // 성공 여부를 나타내는 상태값
     @StateObject private var soundManager = SoundManager()
     
+    // 반복연습과 관련있는 변수들
+    @State var repeatCount = 0 // 몇 회 반복?
+    @State var repeatCountEnd = 3
+    @State private var refresh = false
+    let refreshTime: TimeInterval = 2.0
+    
     var body: some View {
         
         ZStack{
-            
-            // 카메라 뷰
-            // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
-            //.edgesIgnoringSafeArea(.all)
             
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
             //                .rotationEffect(.degrees(-90))
@@ -47,46 +49,6 @@ struct ThreeLittlePigs02_A: View {
                 .offset(x:0, y:0)
                 .edgesIgnoringSafeArea(.all)
             
-            
-            // 캐릭터 위치
-            //            HStack{
-            //                Image("character_ThreeLittlePig1")
-            //                    .resizable()
-            //                    .scaledToFit()
-            //                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-            //                    .offset(x: -300, y: 200)
-            //                //                    .offset(x: isLeft ? -300 : -250, y: 200) // 좌우로 이동
-            //                //                    .animation(.easeInOut(duration: 0.8), value: isLeft) // 0.5초 간격 애니메이션
-            //                //                    .onReceive(timer) { _ in
-            //                //                        // 0.5초마다 좌우 위치를 변경
-            //                //                        isLeft.toggle()
-            //                //                    }
-            //
-            //                Image("character_ThreeLittlePig2")
-            //                    .resizable()
-            //                    .scaledToFit()
-            //                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-            //                //                  .offset(x: isLeft ? -230 : -210, y: 180)
-            //                    .offset(x: -230, y: 180)
-            //                //                    .animation(.easeInOut(duration: 0.2), value: isLeft) // 0.5초 간격 애니메이션
-            //                //                    .onReceive(timer) { _ in
-            //                //                        // 0.5초마다 좌우 위치를 변경
-            //                //                        isLeft.toggle()
-            //                //                    }
-            //
-            //                Image("character_ThreeLittlePig3")
-            //                    .resizable()
-            //                    .scaledToFit()
-            //                    .frame(width: UIScreen.main.bounds.width * 0.1) // 화면 크기 n배
-            //                //                    .offset(x: isLeft ? -200 : -170, y: 170)
-            //                    .offset(x: -230, y: 180)
-            //                //                    .animation(.easeInOut(duration: 0.3), value: isLeft) // 0.5초 간격 애니메이션
-            //                //                    .onReceive(timer) { _ in
-            //                //                        // 0.5초마다 좌우 위치를 변경
-            //                //                        isLeft.toggle()
-            //                //                    }
-            //            }
-            //            .offset(x: -200, y: 200)
             
             // 집 옮기기 기능
             if isSuccess == false{
@@ -137,17 +99,20 @@ struct ThreeLittlePigs02_A: View {
                     .bold()
                     .position(x: screenWidth / 2, y: screenHeight / 2)
                     .animation(.easeInOut(duration: 3), value: isSuccess)
+                    .onAppear {
+                        repeatCount += 1
+                        triggerRefreshAfterDelay()
+                    } // 반복횟수 증가
                 
+                // 완성된 집
+                Image("object_home11")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.3)
+                    .scaleEffect(2)
+                // 화면 크기 n배
+                    .offset(x: 260, y: 100)
             }
-            
-            // 완성된 집
-            Image("object_home11")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.3)
-                .scaleEffect(2)
-            // 화면 크기 n배
-                .offset(x: 260, y: 100)
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
@@ -160,14 +125,22 @@ struct ThreeLittlePigs02_A: View {
                     Once upon a time, there were three little pigs. They each decided to build their own house.
             """)
         }
-        .onDisappear(){
-            soundManager.stopSpeaking()
+    }
+    
+    private func triggerRefreshAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + refreshTime) {
+            refresh.toggle() // refresh 상태를 변경하여 뷰를 새로고침
+            imgPosition = CGPoint(x: 300, y: 620) // 게임 초기화
+            isSuccess = false // 게임 초기화
+            print("RepeatCount: \(repeatCount)")
+            if repeatCount >= repeatCountEnd{
+                currentStep += 1
+            }
         }
-        
     }
 }
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs02_A(currentStep: .constant(10), isLeft:$isLeft)
+    ThreeLittlePigs03_cam(currentStep: .constant(3), isLeft:$isLeft)
 }

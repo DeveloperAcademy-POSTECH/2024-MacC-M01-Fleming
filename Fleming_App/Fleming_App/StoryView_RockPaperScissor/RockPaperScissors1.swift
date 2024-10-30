@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RockPaperScissors1: View{
     @State private var isActive = false
+    @Binding var currentStep: Int
     
     //임시: 페이지 넘기기
     @State private var isPresentingNextPage = false
@@ -46,7 +47,7 @@ struct RockPaperScissors1: View{
             }
             
             Button (action: {
-                isPresentingNextPage = true
+                currentStep = 2
             }, label: {
                 ZStack{
                     Rectangle()
@@ -66,14 +67,12 @@ struct RockPaperScissors1: View{
             })
             
         }
-        //임시: 페이지 넘기기
-        .fullScreenCover(isPresented: $isPresentingNextPage){
-            RockPaperScissors2()
-        }
+        
     }
+
 }
 
 #Preview{
-//    @Previewable @State var isPresentingNextPage: Bool = false
-    RockPaperScissors1()
+    @Previewable @State var currentStep: Int = 1
+    RockPaperScissors1(currentStep: $currentStep)
 }

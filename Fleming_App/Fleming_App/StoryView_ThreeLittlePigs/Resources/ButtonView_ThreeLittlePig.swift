@@ -31,11 +31,11 @@ struct ButtonView_ThreeLittlePig: View{
             
             Spacer()
             
-            if (currentStep >= 10){
+            if (currentStep >= 18){
                 Text("")
             } else {
                 Button(action: {
-                    if (currentStep == 10){
+                    if (currentStep == 18){
                         currentStep = 1
                     } else{
                         currentStep = currentStep + 1 // 다음 단계로 이동
