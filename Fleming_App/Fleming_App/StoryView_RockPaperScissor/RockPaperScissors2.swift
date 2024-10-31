@@ -107,15 +107,19 @@ struct RockPaperScissors2: View{
     @State private var winnerCount = 0 // 반복횟수 카운팅용
     @Binding var currentStep: Int // 현재 페이지
     
-    // 랜덤 이미지 변수
-    @State private var currentImageName: String = ""
-    private let rockPaperScissorsImages = ["object_RockPaperScissors_Rock", "object_RockPaperScissors_Paper", "object_RockPaperScissors_Scissors"]
+    //for random by hera
+    @State private var currentImage_random : String = ""
+    let images = ["object_RockPaperScissors_Paper", "object_RockPaperScissors_Scissors", "object_RockPaperScissors_Rock"]
+//    
+//    init() {
+//        _currentImage = State(initialValue: "object_RockPaperScissors_Rock")
+//    }
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
-
+        
             ZStack{
                 Image("Background_RPSView")
                     .resizable()
@@ -146,7 +150,7 @@ struct RockPaperScissors2: View{
                                     .frame(width:screenHeight * 0.6, height: screenHeight * 0.6)
                                     .clipShape(ButtonBorderShape.roundedRectangle(radius: 50))
                                 
-                                Image("object_RockPaperScissors_Rock")
+                                Image(currentImage_random)
                                     .frame(width: screenHeight * 0.55)
                             }
                         }
@@ -180,7 +184,7 @@ struct RockPaperScissors2: View{
                     winnerCount += 1
                     if winnerCount >= 3{
                         currentStep = 3
-                        currentImageName = rockPaperScissorsImages.randomElement() ?? "object_RockPaperScissors_Rock"
+                        currentImage_random = images.randomElement() ?? "object_RockPaperScissors_Rock"
                     }
                 }, label: {
                     Image(systemName: "speaker.wave.2.fill")
@@ -192,7 +196,7 @@ struct RockPaperScissors2: View{
                 
             }
             .onAppear(){
-                currentImageName = rockPaperScissorsImages.randomElement() ?? "object_RockPaperScissors_Rock"
+                currentImage_random = images.randomElement() ?? "object_RockPaperScissors_Rock"
             }
     }
     
