@@ -16,19 +16,25 @@ struct ThreeLittlePigs15_speech: View {
     var screenHeight = UIScreen.main.bounds.height
     
     @StateObject private var soundManager = SoundManager()
-
+    
     
     // 게이지 크기 표시를 위한 변수
     @State var rectangleWidth: CGFloat = 0 // [0, 1] 값을 0.1단위로 균일하게 증가
     @State var clickCount = 0
     
-    // dBCounter 기능을 위한 변수
+    //dBCounter 기능을 위한 변수
     @ObservedObject var audioManager = AudioManager() // 오디오 매니저 연결
     private let columns = Array(repeating: GridItem(.flexible()), count: 10) // 체크마크 열의 수를 설정(dBCounter)
     @State private var thresholdValue: Float = 50.0 // 초기 데시벨 기준 값
     
     //dBCounter 뷰를 위한 변수
     @State private var isPresentingSoundLevelView = false
+    
+    // 반복연습과 관련있는 변수들
+    @State var repeatCount = 0 // 몇 회 반복?
+    @Binding var repeatNumber: Int
+    @State private var refresh = false
+    let refreshTime: TimeInterval = 2.0 // Success를 보고, 몇 초 뒤 별이 차오르는가?
     
     var body: some View {
         
@@ -54,13 +60,13 @@ struct ThreeLittlePigs15_speech: View {
             .offset(x: -260, y: -50)
             
             
-            if audioManager.dBCounter < 10{
+            if repeatCount < repeatNumber {
                 Image("object_home21")
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth * 0.6) // 화면 크기 n배
                     .offset(x: 260, y: 0)
-            } else if audioManager.dBCounter >= 10 {
+            } else if repeatCount >= repeatNumber {
                 Image("object_home22")
                     .resizable()
                     .scaledToFit()
@@ -83,24 +89,30 @@ struct ThreeLittlePigs15_speech: View {
                         .frame(width: screenWidth * 0.7, height: 60)
                         .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                     
-                    if audioManager.dBCounter < 10{
+                    if audioManager.dBCounter < 4{
                         Rectangle()
                             .foregroundStyle(Color.gray)
-                            .frame(width: max(screenWidth * 0.7 * CGFloat(Double(audioManager.dBCounter) * 0.1) - 10, 0), height: 50) // 추가 개선 필요.
+                            .frame(width: max(screenWidth * 0.7 * CGFloat(Double(audioManager.dBCounter) * 0.25) - 10, 0), height: 50) // 추가 개선 필요.
                             .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                             .offset(x:5)
-                    }else if audioManager.dBCounter == 10{
+                    }else if audioManager.dBCounter == 4{
                         
                         Rectangle()
                             .foregroundStyle(Color.gray)
                             .frame(width: max(screenWidth * 0.7 - 10, 0), height: 50) // 추가 개선 필요.
                             .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                             .offset(x:5)
-                        Text("Finish!! Go Next!!")
+                        Text("Sucess!!")
+                            .onAppear {triggerRefreshAfterDelay()}
                         
-                    } else if audioManager.dBCounter > 10 {
-                        Text("Finish!! Go Next!!")
-                            .onAppear {currentStep = currentStep + 1}
+                    } else if audioManager.dBCounter > 4 {
+                        Text("Sucess!!")
+                            .onAppear {
+                                triggerRefreshAfterDelay()
+                                if(repeatCount >= repeatNumber){
+                                    currentStep = currentStep + 1
+                                }
+                            }
                     }
 
 
@@ -139,9 +151,25 @@ struct ThreeLittlePigs15_speech: View {
             SoundLevelView()
         }
     }
+    
+    // Success 이후, 넘어가기
+    private func triggerRefreshAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + refreshTime) {
+            repeatCount += 1
+            print("RepeatCount: \(repeatCount)")
+
+            if repeatCount >= repeatNumber{
+                currentStep += 1
+            } else {
+                refresh.toggle() // refresh 상태를 변경하여 뷰를 새로고침
+                audioManager.resetDBCounter() // 게임 초기화
+            }
+        }
+    }
 }
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs15_speech(currentStep: .constant(15), isLeft: $isLeft)
+    @Previewable @State var repeatNumber: Int = 2
+    ThreeLittlePigs15_speech(currentStep: .constant(15), isLeft: $isLeft, repeatNumber: $repeatNumber)
 }

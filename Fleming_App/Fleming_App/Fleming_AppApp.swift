@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Fleming_AppApp: App {
     @State private var isLeft = true // 동그라미가 왼쪽에 있는지 여부
-    @State private var currentStep: Int = 1 // 현재 뷰 상태 관리
+    @State private var currentStep: Int = 0 // 현재 뷰 상태 관리 -> 0번은 PopUpView를 띄우기 위한 FakeView
     @State private var showSplash = true // 스플래쉬 뷰 표시 여부
     @State private var showAttention = false // AttentionView 표시 여부
     
@@ -41,6 +41,9 @@ struct Fleming_AppApp: App {
 
             }
             .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
+            
+//            ThreeLittlePigsNavigation(currentStep: $currentStep, isLeft: $isLeft)
+            
         }
     }
 }

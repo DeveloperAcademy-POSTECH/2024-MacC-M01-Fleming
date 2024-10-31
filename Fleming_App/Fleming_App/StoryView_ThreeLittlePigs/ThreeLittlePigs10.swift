@@ -24,19 +24,7 @@ struct ThreeLittlePigs10: View {
         
         ZStack{
 
-            // 카메라 뷰
-            // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
-            //.edgesIgnoringSafeArea(.all)
-            
-            //이거 카메라뷰 쪽으로 이동해서 수정
-//            let deviceDirection: CameraDirection = checkDevice().getDeviceName() // checkDevice에서 여기로 가져옴.
-//            Text("방향 측정: \(deviceDirection == .horizontal ? "Horizontal" : "Vertical")")
-            
-            makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition)
-                .edgesIgnoringSafeArea(.all)
-
-            //BaseView_ThreeLittlePig(currentStep:$currentStep)
-
+            BaseView_ThreeLittlePig(currentStep:$currentStep)
             
             Image("character_ThreeLittlePig3")
                 .resizable()
