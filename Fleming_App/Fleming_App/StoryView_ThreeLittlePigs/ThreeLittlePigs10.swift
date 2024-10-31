@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ThreeLittlePigs10: View {
+    //By Hera
+    @State private var touchPoint: CGPoint? = nil
+    @State private var imgPosition: CGPoint = CGPoint(x: 300, y: 620) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
+    
     @Binding var currentStep: Int
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect() // 0.5초 간격 타이머
@@ -19,7 +23,20 @@ struct ThreeLittlePigs10: View {
     var body: some View {
         
         ZStack{
-            BaseView_ThreeLittlePig(currentStep:$currentStep)
+
+            // 카메라 뷰
+            // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
+            //.edgesIgnoringSafeArea(.all)
+            
+            //이거 카메라뷰 쪽으로 이동해서 수정
+//            let deviceDirection: CameraDirection = checkDevice().getDeviceName() // checkDevice에서 여기로 가져옴.
+//            Text("방향 측정: \(deviceDirection == .horizontal ? "Horizontal" : "Vertical")")
+            
+            makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition)
+                .edgesIgnoringSafeArea(.all)
+
+            //BaseView_ThreeLittlePig(currentStep:$currentStep)
+
             
             Image("character_ThreeLittlePig3")
                 .resizable()

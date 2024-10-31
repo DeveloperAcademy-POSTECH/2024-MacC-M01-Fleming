@@ -67,6 +67,12 @@
     "Gender" : {
 
     },
+    "Hello, device!" : {
+
+    },
+    "Label Text: %@" : {
+
+    },
     "Little Pigs" : {
 
     },
@@ -100,6 +106,9 @@
     "Scream" : {
 
     },
+    "Second Label: %@" : {
+
+    },
     "Select Voice" : {
 
     },
@@ -115,6 +124,9 @@
     "The Three" : {
 
     },
+    "Third Label: %lld%%의 확률" : {
+
+    },
     "Threshold" : {
 
     },
@@ -125,6 +137,9 @@
 
     },
     "You Win 3 Times!\nHorray!" : {
+
+    },
+    "가위, 바위, 보 중 선택하여 주세요." : {
 
     },
     "가위바위보 게임" : {

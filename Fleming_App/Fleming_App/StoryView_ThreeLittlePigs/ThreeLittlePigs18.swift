@@ -81,8 +81,6 @@ struct ThreeLittlePigs18: View {
             
         }
         .onAppear{
-            soundModel.sampleMusicName = "music_sample1"
-            soundModel.playSound()
             soundManager.speakText("""
                 But one day, a big bad wolf came.
             """)

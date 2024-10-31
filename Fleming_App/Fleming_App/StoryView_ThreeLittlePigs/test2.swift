@@ -29,6 +29,31 @@ struct makeCameraView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
+enum CameraDirection {
+    case vertical
+    case horizontal
+    case not
+
+    func calculate(thumbTip: CGPoint, indexTip: CGPoint) -> (CGPoint, CGPoint) {
+        switch self {
+        case .vertical:
+            let thumbTipLocation = CGPoint(x: (1 - indexTip.x) * 0.95, y: indexTip.y * 0.95)
+            let indexTipLocation = CGPoint(x: (1 - indexTip.x) * 0.95, y: indexTip.y * 0.95)
+            return (thumbTipLocation, indexTipLocation)
+
+        case .horizontal: //변동해야함
+            let thumbTipLocation = CGPoint(x: (indexTip.x) * 0.95, y: (1 - indexTip.y) * 0.95)
+            let indexTipLocation = CGPoint(x: (indexTip.x) * 0.95, y: (1 - indexTip.y) * 0.95)
+            return (thumbTipLocation, indexTipLocation)
+
+        case .not:
+//                            break
+            return (thumbTip, indexTip)
+
+        }
+    }
+}
+
 class CameraViewController: UIViewController {
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
@@ -42,8 +67,17 @@ class CameraViewController: UIViewController {
     
     private let handPoseRequest = VNDetectHumanHandPoseRequest()
     
+    var cameraDirection: CameraDirection = .vertical //멤버변수 vertical을 초기값으로 설정
+    private let deviceChecker = checkDevice() //여기서
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ///
+        cameraDirection = deviceChecker.getDeviceName() //여기에서 방향 판단하기
+        ///
+        Text("")
+        
         setupCamera()
     }
     
@@ -81,6 +115,10 @@ class CameraViewController: UIViewController {
     }
 }
 
+
+
+
+
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
@@ -104,9 +142,39 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 //(1,1)이 우측 상단
                 // TODO: 이유를 찾아봅시다
                 
+                
+//                enum CameraDirection {
+//                    case vertical
+//                    case horizontal
+//                    case not
+//                
+//                    func calculate(thumbTip: CGPoint, indexTip: CGPoint) -> (CGPoint, CGPoint) {
+//                        switch self {
+//                        case .vertical:
+//                            let thumbTipLocation = CGPoint(x: (1 - indexTip.x) * 0.95, y: indexTip.y * 0.95)
+//                            let indexTipLocation = CGPoint(x: (1 - indexTip.x) * 0.95, y: indexTip.y * 0.95)
+//                            return (thumbTipLocation, indexTipLocation)
+//
+//                        case .horizontal: //변동해야함
+//                            let thumbTipLocation = CGPoint(x: (indexTip.x) * 0.95, y: (1 - indexTip.y) * 0.95)
+//                            let indexTipLocation = CGPoint(x: (indexTip.x) * 0.95, y: (1 - indexTip.y) * 0.95)
+//                            return (thumbTipLocation, indexTipLocation)
+//
+//                        case .not:
+////                            break
+//                            return (thumbTip, indexTip)
+//
+//                        }
+//                    }
+//                }
+
+                
+                let (thumbTipLocation, indexTipLocation) = self.cameraDirection.calculate(thumbTip: thumbTip.location, indexTip: indexTip.location)
+                
                 //여기 세로쪽 좌표 보정시도함 -> 이후 가로도 보정시도함 완료
-                let thumbTipLocation = CGPoint(x: (1 - thumbTip.location.x) * 0.95, y: thumbTip.location.y * 0.95)
-                let indexTipLocation = CGPoint(x: (1 - indexTip.location.x) * 0.95, y: indexTip.location.y * 0.95)
+//                let thumbTipLocation = CGPoint(x: (1 - indexTip.location.x) * 0.95, y: indexTip.location.y * 0.95)
+                //CameraDirection.horizontal.calculate()
+//                let indexTipLocation = CGPoint(x: (1 - indexTip.location.x) * 0.95, y: indexTip.location.y * 0.95)
                 
                 // 엄지와 검지 좌표 부드럽게 하기 위해 추가 (이전 좌표와 현재 좌표의 평균 사용)
                 let smoothedThumbTip = smoothCoordinates(current: thumbTipLocation, previous: previousThumbTipLocation)
@@ -150,9 +218,9 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             //  원래의 imgFrame보다 margin만큼 더 큰 사각형 영역
                             
                             //인정 범위 확인 위해
-                            let testView = UIView(frame: imgFrame)
-                            testView.backgroundColor = .blue
-                            self.view.addSubview(testView)
+                            //let testView = UIView(frame: imgFrame)
+                            //testView.backgroundColor = .blue
+                            //self.view.addSubview(testView)
                             
                             if extendedImgFrame.contains(convertedIndexPoint) || extendedImgFrame.contains(convertedThumbPoint) {
                                 let middlePoint = CGPoint(
