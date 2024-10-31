@@ -218,9 +218,9 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             //  원래의 imgFrame보다 margin만큼 더 큰 사각형 영역
                             
                             //인정 범위 확인 위해
-                            let testView = UIView(frame: imgFrame)
-                            testView.backgroundColor = .blue
-                            self.view.addSubview(testView)
+                            //let testView = UIView(frame: imgFrame)
+                            //testView.backgroundColor = .blue
+                            //self.view.addSubview(testView)
                             
                             if extendedImgFrame.contains(convertedIndexPoint) || extendedImgFrame.contains(convertedThumbPoint) {
                                 let middlePoint = CGPoint(
