@@ -15,7 +15,7 @@ struct ThreeLittlePigs08: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     @StateObject private var soundManager = SoundManager()
-
+    
     
     var body: some View {
         
@@ -39,11 +39,7 @@ struct ThreeLittlePigs08: View {
                         isLeft.toggle()
                     }
             }
-            
-            
-            
-            
-            
+ 
         }.onAppear {     // personal voice by hera start
             //checkAuthorization()
             soundManager.speakText("""

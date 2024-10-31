@@ -141,9 +141,6 @@ struct ThreeLittlePigs06_cam: View {
                 currentStep += 1
             }
         }
-//        .onDisappear(){
-//            soundManager.stopSpeaking()
-//        }
     }
 }
 

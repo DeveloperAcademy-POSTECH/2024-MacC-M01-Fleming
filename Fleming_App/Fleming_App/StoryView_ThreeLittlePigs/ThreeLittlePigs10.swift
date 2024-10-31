@@ -34,9 +34,6 @@ struct ThreeLittlePigs10: View {
             
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition)
                 .edgesIgnoringSafeArea(.all)
-
-            //BaseView_ThreeLittlePig(currentStep:$currentStep)
-
             
             Image("character_ThreeLittlePig3")
                 .resizable()

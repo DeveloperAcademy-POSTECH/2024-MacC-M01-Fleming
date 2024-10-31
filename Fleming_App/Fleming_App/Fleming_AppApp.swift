@@ -18,7 +18,6 @@ struct Fleming_AppApp: App {
     var body: some Scene {
         
         WindowGroup {
-//            checkDevice()
             NavigationView {
                 SplashView()
             }

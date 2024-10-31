@@ -40,7 +40,6 @@ struct ThreeLittlePigs03_cam: View {
         ZStack{
             
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
-            //                .rotationEffect(.degrees(-90))
             
             Image("Background_ThreeLittlePig2")
                 .resizable()

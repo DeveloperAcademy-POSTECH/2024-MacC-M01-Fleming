@@ -19,7 +19,6 @@ struct PopupView: View {
                 }) {
                     Text("-")
                         .font(.system(size: CGFloat(selectedNumber * 100)))
-//                        .frame(width: 44, height: 44)
                         .background(Color.white.opacity(0.2))
                         .cornerRadius(8)
                         .foregroundColor(.black)
@@ -36,7 +35,6 @@ struct PopupView: View {
                 }) {
                     Text("+")
                         .font(.system(size: CGFloat(selectedNumber * 100)))
-//                        .frame(width: 44, height: 44)
                         .background(Color.white.opacity(0.2))
                         .cornerRadius(8)
                         .foregroundColor(.black)

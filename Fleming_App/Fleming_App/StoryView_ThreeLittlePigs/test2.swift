@@ -142,33 +142,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 //(1,1)이 우측 상단
                 // TODO: 이유를 찾아봅시다
                 
-                
-//                enum CameraDirection {
-//                    case vertical
-//                    case horizontal
-//                    case not
-//                
-//                    func calculate(thumbTip: CGPoint, indexTip: CGPoint) -> (CGPoint, CGPoint) {
-//                        switch self {
-//                        case .vertical:
-//                            let thumbTipLocation = CGPoint(x: (1 - indexTip.x) * 0.95, y: indexTip.y * 0.95)
-//                            let indexTipLocation = CGPoint(x: (1 - indexTip.x) * 0.95, y: indexTip.y * 0.95)
-//                            return (thumbTipLocation, indexTipLocation)
-//
-//                        case .horizontal: //변동해야함
-//                            let thumbTipLocation = CGPoint(x: (indexTip.x) * 0.95, y: (1 - indexTip.y) * 0.95)
-//                            let indexTipLocation = CGPoint(x: (indexTip.x) * 0.95, y: (1 - indexTip.y) * 0.95)
-//                            return (thumbTipLocation, indexTipLocation)
-//
-//                        case .not:
-////                            break
-//                            return (thumbTip, indexTip)
-//
-//                        }
-//                    }
-//                }
 
-                
                 let (thumbTipLocation, indexTipLocation) = self.cameraDirection.calculate(thumbTip: thumbTip.location, indexTip: indexTip.location)
                 
                 //여기 세로쪽 좌표 보정시도함 -> 이후 가로도 보정시도함 완료
@@ -196,7 +170,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                             let convertedThumbPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: thumbTipLocation)
                             let convertedIndexPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: indexTipLocation)
                             
-//                            print("Converted : \(convertedThumbPoint)")
+//                          print("Converted : \(convertedThumbPoint)")
                             
                             
                             print("Converted Thumb Point:", convertedThumbPoint)
@@ -227,13 +201,6 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                                     x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
                                     y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2
                                 )
-                            
-//                            if imgFrame.contains(convertedIndexPoint) ||          imgFrame.contains(convertedThumbPoint) {
-//                                let middlePoint = CGPoint(
-//                                    x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
-//                                    y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2
-//                                )
-                                //self.imgPosition?.wrappedValue = middlePoint
                                 
                                 // 애니메이션을 추가 -> 자연스럽게 이동
                                 DispatchQueue.main.async {
@@ -273,7 +240,3 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
 }
-
-//#Preview{
-//    makeCameraView(touchPoint: <#T##Binding<CGPoint?>#>, imgPosition: <#T##Binding<CGPoint>#>)
-//}
