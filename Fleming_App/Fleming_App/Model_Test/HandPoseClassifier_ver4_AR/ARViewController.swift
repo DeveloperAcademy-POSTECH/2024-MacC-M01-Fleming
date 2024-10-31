@@ -10,33 +10,33 @@
 
 import Foundation
 import ARKit
+import SwiftUI
 
 // ARKit을 통해 손모양을 인식, 분류, 표시하는 UIViewController
 class ARViewController: UIViewController, ARSessionDelegate {
     
-    // vars
+    // 변수설정
     var arView: ARSCNView! // ARKit의 ARSCNView를 사용하여, AR 콘텐츠를 표시함
-    var labelText: String = "" { // 손모양에 따라 secondLabel 텍스트를 업데이트 함.
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.secondLabel.text = self.labelText
-            }
-            
-        }
-    }
-    
-    // 손모양, 손정보 등을 표시하는 UILabel
-    private var label: UILabel = UILabel()
-    private var secondLabel = UILabel()
-    private var thirdLabel = UILabel()
-    
-    // secondLabel, thirdLabel등 화면에 배치하기 위한 UIStackView.
-    private var stackView: UIStackView = UIStackView()
+
+    @Binding var labelText: String
+    @Binding var secondLabelText: String
+    @Binding var confidenceValue: Int
     
     // 손포즈 인식용 frameCounter 및 예측 간격
     private var frameCounter = 0
     private let handPosePredictionInterval = 30
+    
+    init(labelText: Binding<String>, secondLabelText: Binding<String>, confidenceValue: Binding<Int>) {
+            _labelText = labelText
+            _secondLabelText = secondLabelText
+            _confidenceValue = confidenceValue
+            super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
     
     // 초기 설정(카메라 권한 확인 <- 호출)
     override func viewDidLoad() {
@@ -55,15 +55,16 @@ class ARViewController: UIViewController, ARSessionDelegate {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { enabled in
                 DispatchQueue.main.async {
+                    enabled ? self.setupARView() : print("카메라 접근 권한이 없습니다.")
                     if enabled {
                         self.setupARView()
                     } else {
-                        print("not working...")
+                        print("카메라 접근 권한이 없습니다.")
                     }
                 }
             }
         case .denied, .restricted:
-            print("Check settings..")
+            print("카메라 접근이 거부되었습니다.")
             
         @unknown default:
             print("Error")
@@ -77,52 +78,15 @@ class ARViewController: UIViewController, ARSessionDelegate {
         view.addSubview(arView)
         
         // generak world tracking
-        
         let configuration = ARWorldTrackingConfiguration()
         
         // enable the front camera
-        
         if ARFaceTrackingConfiguration.isSupported {
             let faceTrackingConfig = ARFaceTrackingConfiguration()
             arView.session.run(faceTrackingConfig)
-        } else {
-            // not supported
-            // show an alert
-            arView.session.run(configuration)
+        } else {                                // not supported
+            arView.session.run(configuration)   // show an alert
         }
-        
-        // add the label on the top or AR view
-        // confidence
-        thirdLabel = UILabel(frame: .init(x: 0, y: 0, width: 300, height: 12))
-        thirdLabel.text = ""
-        thirdLabel.textColor = .black
-        thirdLabel.font = .systemFont(ofSize: 26)
-        thirdLabel.backgroundColor = .lightText
-        thirdLabel.textAlignment  = .center
-        
-        label = UILabel(frame: .init(x: 0, y: 0, width: self.view.frame.width, height: 30))
-        label.text = labelText
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 65)
-        
-        secondLabel = UILabel(frame: .init(x: 0, y: 0, width: self.view.frame.width, height: 12))
-        secondLabel.text = labelText
-        secondLabel.textColor = .white
-        secondLabel.font = .systemFont(ofSize: 65)
-        secondLabel.backgroundColor = .lightText
-        secondLabel.textAlignment = .center
-        
-        // stack view
-        stackView = .init(frame: .init(x: 0, y: 40, width: (self.view.frame.width), height: 200))
-        stackView.axis = .vertical
-        stackView.distribution = .equalCentering
-        stackView.addArrangedSubview(secondLabel)
-        stackView.addArrangedSubview(thirdLabel)
-        stackView.spacing = 2
-        stackView.layoutMargins = .init(top: 10, left: 30, bottom: 10, right: 30)
-        
-        
-        view.addSubview(stackView)
         
     }
     
@@ -146,15 +110,12 @@ class ARViewController: UIViewController, ARSessionDelegate {
             assertionFailure("Human Pose Request failed: \(error.localizedDescription)")
         }
         
-        guard let handPoses = handPoseRequest.results, !handPoses.isEmpty else {
-            // no effects to draw
-            return
-        }
-        
+        guard let handPoses = handPoseRequest.results, !handPoses.isEmpty else { return }
         let handObservations = handPoses.first
-        
-        
+    
         if frameCounter % handPosePredictionInterval == 0 {
+            
+            // 손을 ML 모델에 매칭
             guard let keypointsMultiArray = try? handObservations!.keypointsMultiArray() else {
                 fatalError("Failed to create key points array")
             }
@@ -168,103 +129,50 @@ class ARViewController: UIViewController, ARSessionDelegate {
                 let handPosePrediction = try model.prediction(poses: keypointsMultiArray)
                 let confidence = handPosePrediction.labelProbabilities[handPosePrediction.label]!
                 DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.thirdLabel.text = "\(self.convertToPercentage(confidence))%"
+                    self?.labelText = handPosePrediction.label // 예시 데이터
+                    self?.secondLabelText = handPosePrediction.label  // "상태 업데이트"
+                    self?.confidenceValue = Int(confidence * 100)
+                    
+                    
                 }
                 print("labelProbabilities \(handPosePrediction.labelProbabilities)")
 
-                // render handpose effect
-                if confidence > 0.9 {
+                // 핸드포즈 정확도율 기준(0.9가 기본값이었음.)
+                if confidence > 0.8 {
 
                     print("handPosePrediction: \(handPosePrediction.label)")
                     renderHandPose(name: handPosePrediction.label)
                 } else {
                     print("handPosePrediction: \(handPosePrediction.label)")
-                    cleanEmojii()
-
+//                    cleanEmojii()
                 }
                 
             } catch let error {
                 print("Failure HandyModel: \(error.localizedDescription)")
             }
             
-            
         }
     }
     
     // MARK: - private funcs
     
-    // (labelText) 손모양 감지하면, 이름 및 텍스트를 표시하는 메서드(기본탑재)
+    // (labelText) 손모양 감지하면, 이름 및 텍스트를 print.
     private func renderHandPose(name: String) {
         switch name {
         case "rock":
-            
-            self.showEmoji(for: .rock)
             print("Rock handPose dedicted...")
             
         case "paper":
-            
-            self.showEmoji(for: .paper)
             print("Paper handpose dedicted")
             
         case "scissors":
-            self.showEmoji(for: .scissors)
             print("Scissors handpose dedicted")
             
             
         default:
             print("Remove nodes")
-            cleanEmojii()
+//            cleanEmojii()
         }
     }
-    
-    // (labelText) 손모양 감지하면, 해당하는 이모지를 반환하는 메서드 <- 기본탑재
-    private func showEmoji(for pose: Pose) {
-        
-        switch pose {
-        case .rock:
-            DispatchQueue.main.async { [weak self]  in
-                guard let self = self else { return }
-             //   self.secondLabel.text = "👊"
-                self.labelText = "👊"
-            }
-        case .paper:
-            
-            DispatchQueue.main.async { [weak self]  in
-                guard let self = self else { return }
-                
-                self.labelText = "✋"
-            }
-        case .scissors:
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.labelText = "✌️"
-            }
-        }
-    }
-    
-    // (labelText, secondLabel) 감지된 모양이 없을 시, 라벨값을 초기화함
-    private func cleanEmojii() {
-        
-        DispatchQueue.main.async {
-            self.labelText = ""
-            self.secondLabel.text = ""
-        }
-    }
-    
-    // (ThirdLabel) 모델의 신뢰도를 나타내는 유틸리티 메서드
-    private func convertToPercentage(_ value: Double) -> Float {
-        let result = Int((value * 1000))
-        
-        return Float(result) / 10
-    }
-    
-    enum Pose: String {
-        case rock = "Rock"
-        case paper = "Paper"
-        case scissors = "Scissors"
-        
-    }
-    
     
 }

@@ -46,30 +46,30 @@ struct RockPaperScissors1: View{
                 
             }
             
-            Button (action: {
-                currentStep = 2
-            }, label: {
-                ZStack{
-                    Rectangle()
-                        .foregroundStyle(.white)
-                        .frame(width: 300, height: 80)
-                        .clipShape(ButtonBorderShape.roundedRectangle(radius: 20))
-                    
-                    HStack(alignment: .center){
-                        Text("Start game")
-                        Image(systemName: "chevron.forward")
+            ZStack{
+                Button (action: {
+                    currentStep = 2
+                }, label: {
+                    ZStack{
+                        Rectangle()
+                            .foregroundStyle(.white)
+                            .frame(width: 300, height: 80)
+                            .clipShape(ButtonBorderShape.roundedRectangle(radius: 20))
+                        
+                        HStack(alignment: .center){
+                            Text("Start game")
+                            Image(systemName: "chevron.forward")
+                        }
+                        .font(.system(size: 40, weight: .bold))
+                        .foregroundStyle(.blue)
                     }
-                    .font(.system(size: 40, weight: .bold))
-                    .foregroundStyle(.blue)
-                }
-                .offset(x: screenWidth/2 - 150, y: screenHeight / 2 - 60)
-                    .padding(.trailing, 40)
-            })
+                })
+            }
+            .offset(x: screenWidth/2 - 150, y: screenHeight / 2 - 60)
+            .padding(.trailing, 40)
             
         }
-        
     }
-
 }
 
 #Preview{
