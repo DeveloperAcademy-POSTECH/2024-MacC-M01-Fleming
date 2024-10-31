@@ -94,5 +94,10 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-## User Info - from Xcode, blah blah... - by Leo
+# macOS system file - by Leo
+.DS_Store
+
+# User Info - from Xcode, blah blah... - by Leo
 *.xcuserstate
+*.xcuserdatad
+*.xcuserdata
