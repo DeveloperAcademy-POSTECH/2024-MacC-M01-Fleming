@@ -43,7 +43,6 @@ struct RockPaperScissors1: View{
                         .frame(height: screenHeight * 0.2)
                 }
                 .padding(.bottom, screenHeight * 0.1)
-                
             }
             
             ZStack{
@@ -65,8 +64,8 @@ struct RockPaperScissors1: View{
                     }
                 })
             }
-            .offset(x: screenWidth/2 - 150, y: screenHeight / 2 - 60)
-            .padding(.trailing, 40)
+            .offset(x: screenWidth/2 - 130, y: screenHeight / 2 - 100)
+            .padding(.trailing, 120)
             
         }
     }

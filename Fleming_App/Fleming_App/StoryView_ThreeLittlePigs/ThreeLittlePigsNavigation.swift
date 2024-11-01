@@ -12,7 +12,7 @@ struct ThreeLittlePigsNavigation: View {
     @State private var isShowingNextView = false // 전환 애니메이션 상태 관리
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
     
-    // Popup과 연결되는 값들
+    // Popup과 연결되는 값들(Repeat 횟수)
     @State private var isPresented: Bool = true
     @State private var repeatNumber: Int = 1 // 반복횟수 저장
     // -> (추후)SwiftData와 결합 필요.

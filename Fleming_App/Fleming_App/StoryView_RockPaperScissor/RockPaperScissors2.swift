@@ -7,102 +7,6 @@
 
 import SwiftUI
 
-//struct RockPaperScissors2: View{
-//    @ObservedObject var model = RockScissorsPaperMLModel()
-//    @State private var winnerCount = 0
-//    @Binding var currentStep: Int
-//
-//    var screenWidth = UIScreen.main.bounds.width
-//    var screenHeight = UIScreen.main.bounds.height
-//    
-//    var body: some View {
-//
-//            ZStack{
-//                Image("Background_RPSView")
-//                    .resizable()
-//                    .scaledToFill()
-//                    .frame(width: screenWidth, height: screenHeight, alignment: .center)
-//                    .offset(x:0, y:0)
-//                    .edgesIgnoringSafeArea(.all)
-//                
-//                VStack{
-//                    
-//                    Text("Rock Paper Scissors !")
-//                        .font(.system(size: 80, weight: .bold))
-//                        .foregroundStyle(.blue)
-//                        .padding(.bottom, screenHeight * 0.05)
-//                    
-//                    HStack(spacing: screenWidth * 0.1){
-//                        // 상대방 미리낼 것
-//                        VStack{
-//                            Text("Friend")
-//                                .font(.system(size: 40, weight: .bold))
-//                                .foregroundStyle(.blue)
-//                            
-//                            ZStack{
-//                                Rectangle()
-//                                    .foregroundStyle(Color(AppColor.handBackgroundColor))
-//                                    .frame(width:screenHeight * 0.5, height: screenHeight * 0.5)
-//                                    .clipShape(ButtonBorderShape.roundedRectangle(radius: 50))
-//                                
-//                                Image("object_RockPaperScissors_Rock")
-//                                    .frame(width: screenHeight * 0.3)
-//                                
-//                            }
-//                        }
-//                        
-//                        // 내가 낼 것
-//                        VStack{
-//                            Text("Me")
-//                                .font(.system(size: 40, weight: .bold))
-//                                .foregroundStyle(.blue)
-//                            
-//                            ZStack{
-//                                Rectangle()
-//                                    .foregroundStyle(Color(AppColor.handBackgroundColor))
-//                                    .frame(width:screenHeight * 0.5, height: screenHeight * 0.5)
-//                                    .clipShape(ButtonBorderShape.roundedRectangle(radius: 50))
-//                                
-//                                RSP_CameraView(model: model)
-//                                    .frame(width: screenHeight * 0.45, height: screenHeight * 0.45) // 카메라 뷰 크기를 500x500으로 설정
-//                                    .clipShape(RoundedRectangle(cornerRadius: 50))
-//                                    .clipped() // 부모 뷰 바깥의 콘텐츠를 자르기
-//                                    .rotationEffect(.degrees(90))
-//                                
-//                                Text("예측 결과: \(model.predictionLabel)")
-//                                    .font(.title2)
-//                                    .padding()
-//                            }
-//                        }
-//                    }
-//                    
-//                }
-//                
-//                Button(action: {
-//                    winnerCount += 1
-//                    if winnerCount >= 3{
-//                        currentStep = 3
-//                    }
-//                }, label: {
-//                    Image(systemName: "speaker.wave.2.fill")
-//                        .font(.system(size:40))
-//                        .bold()
-//                        .foregroundStyle(.orange)
-//                })
-//                .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
-//                
-//            }
-//
-//    }
-//    
-//}
-//
-//#Preview{
-//    @Previewable @State var currentStep: Int = 2
-//    RockPaperScissors2(currentStep: $currentStep)
-//}
-
-
 struct RockPaperScissors2: View{
     @State private var winnerCount = 0 // 반복횟수 카운팅용
     @Binding var currentStep: Int // 현재 페이지
@@ -113,6 +17,12 @@ struct RockPaperScissors2: View{
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
+    
+    // 반복연습과 관련있는 변수들
+    @State var repeatCount = 0 // 몇 회 반복?
+    @Binding var repeatNumber : Int
+    @State private var refresh = false
+    let refreshTime: TimeInterval = 2.0
     
     var body: some View {
 
@@ -164,6 +74,7 @@ struct RockPaperScissors2: View{
                                     .frame(width:screenHeight * 0.6, height: screenHeight * 0.6)
                                     .clipShape(ButtonBorderShape.roundedRectangle(radius: 50))
                                 
+                                // 개선이 필요한부분 -> Minor 한 개선이지만 필요해서, 기존의 legach 남겨둡니다...
                                 RockPaperScissors_cam() // 현재는 신모델[ARKit], 구모델은 [Vision]활용한 RSP_CameraView(model: model)
 //                                    .background(Color.brown) // ChildView의 영역 확인용.
 //                                    .frame(width:screenHeight * 0.55, height: screenHeight * 0.55, alignment: .center) // 바로 카메라 왼쪽 위가 잘리는 현상 발생 (그 외에 frame은 정상범주) // .topLeading .center .bottomTrailing 모두 안됌. - edges Ignoring 하기 전

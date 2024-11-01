@@ -12,15 +12,24 @@ struct RockPaperScissorsView: View{
     @Binding var currentStep: Int
     @Binding var isNavigating2: Bool
     
+    // Popup과 연결되는 값들(Repeat 횟수)
+    @State private var isPresented: Bool = true
+    @State private var repeatNumber: Int = 1 // 반복횟수 저장
+    // -> (추후)SwiftData와 결합 필요.
+    
     var body: some View {
         ZStack {
             
             // 뷰 이동방법
-            if currentStep == 1 {
+            if currentStep == 0 {
                 RockPaperScissors1(currentStep: $currentStep)
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
                         removal: .opacity))
+                
+                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+                    .onChange(of: isPresented){ currentStep = 1 }
+                
             } else {
                 getViewForStep(currentStep: currentStep)
                     .transition(.asymmetric(
@@ -35,8 +44,10 @@ struct RockPaperScissorsView: View{
     @ViewBuilder
     func getViewForStep(currentStep: Int) -> some View {
         switch currentStep {
+        case 1:
+            RockPaperScissors1(currentStep: $currentStep)
         case 2:
-            RockPaperScissors2(currentStep: $currentStep)
+            RockPaperScissors2(currentStep: $currentStep, repeatNumber: $repeatNumber)
         case 3:
             RockPaperScissors3(currentStep: $currentStep)
         default:
