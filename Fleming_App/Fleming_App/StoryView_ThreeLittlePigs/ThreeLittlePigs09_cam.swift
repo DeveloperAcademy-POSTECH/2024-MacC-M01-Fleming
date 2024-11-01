@@ -31,7 +31,7 @@ struct ThreeLittlePigs09_cam: View {
     
     // 반복연습과 관련있는 변수들
     @State var repeatCount = 0 // 몇 회 반복?
-    @State var repeatCountEnd = 3
+    @Binding var repeatNumber: Int
     @State private var refresh = false
     let refreshTime: TimeInterval = 2.0
     
@@ -40,9 +40,6 @@ struct ThreeLittlePigs09_cam: View {
         ZStack{
             
             // 카메라 뷰
-            // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
-            //.edgesIgnoringSafeArea(.all)
-            
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
             //                .rotationEffect(.degrees(-90))
             
@@ -55,17 +52,17 @@ struct ThreeLittlePigs09_cam: View {
             
             // 집 옮기기 기능
             if isSuccess == false{
-                Image("object_home11_cut")
+                Image("object_home31_cut")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
+                    .frame(width: UIScreen.main.bounds.width * 0.4) // 화면 크기 n배
                     .offset(x: 260, y: 100)
                 
                 GeometryReader { geometry in
-                    Image("object_home11_in") // testimg 파일을 표시
+                    Image("object_home31_in") // testimg 파일을 표시
                         .resizable()
                         .scaledToFit()
-                        .frame(width: UIScreen.main.bounds.width * 0.08)// 화면 크기 0.1배
+                        .frame(width: UIScreen.main.bounds.width * 0.4)// 화면 크기 0.1배
                     // .position(x: geometry.size.width * 0.1, // 왼쪽 중앙에 배치
                     // y: geometry.size.height * 0.5)
                     
@@ -108,7 +105,7 @@ struct ThreeLittlePigs09_cam: View {
                     } // 반복횟수 증가
                 
                 // 완성된 집
-                Image("object_home11")
+                Image("object_home31")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.3)
@@ -136,7 +133,7 @@ struct ThreeLittlePigs09_cam: View {
             imgPosition = CGPoint(x: 300, y: 620) // 게임 초기화
             isSuccess = false // 게임 초기화
             print("RepeatCount: \(repeatCount)")
-            if repeatCount >= repeatCountEnd{
+            if repeatCount >= repeatNumber{
                 currentStep += 1
             }
         }
@@ -148,5 +145,6 @@ struct ThreeLittlePigs09_cam: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs09_cam(currentStep: .constant(9), isLeft:$isLeft)
+    @Previewable @State var repeatNumber: Int = 2
+    ThreeLittlePigs09_cam(currentStep: .constant(9), isLeft:$isLeft, repeatNumber: $repeatNumber)
 }

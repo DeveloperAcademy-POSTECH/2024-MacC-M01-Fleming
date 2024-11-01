@@ -49,3 +49,9 @@ struct RockPaperScissorsView: View{
     @Previewable @State var currentStep: Int = 1
     RockPaperScissors1(currentStep: $currentStep)
 }
+
+// *1. MetalFX-framework특징
+// -> MetalKit은 시뮬레이터에 영향을 주지 않지만, FX는 그렇지 않음.
+// -> 이렇게 하지 않으면, 시뮬레이터 사용 불가능
+// ## 현재 MetalFX 사용중인 View
+// -> RockPaperScissor 시리즈 이거 옆에 띄워줘
