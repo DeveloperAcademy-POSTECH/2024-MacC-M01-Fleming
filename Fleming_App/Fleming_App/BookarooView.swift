@@ -76,7 +76,7 @@ struct BookarooView: View{
                         HStack {
                             if selectedCategory == "All" || selectedCategory == "Physic" {
                                 Button(action: {
-                                    currentStep = 1
+                                    currentStep = 0
                                     isNavigating = true
                                 }, label: {
                                     Image("Cover_pigs")

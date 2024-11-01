@@ -32,9 +32,6 @@ struct ThreeLittlePigs_legacy: View {
         
         ZStack{
             // 카메라 뷰
-            // CameraView_ThreeLittlePig(touchPoint: $touchPoint, imgPosition: $imgPosition,currentStep:$currentStep)
-            //.edgesIgnoringSafeArea(.all)
-            
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition)
                 .edgesIgnoringSafeArea(.all)
             
@@ -143,13 +140,6 @@ struct ThreeLittlePigs_legacy: View {
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
                 .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
-//            Image("object_home11")
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: UIScreen.main.bounds.width * 0.3)
-//                .scaleEffect(2)
-//            // 화면 크기 n배
-//                .offset(x: 260, y: 100)
         }
     }
 }

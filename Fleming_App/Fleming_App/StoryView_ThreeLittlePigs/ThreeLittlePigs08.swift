@@ -22,11 +22,6 @@ struct ThreeLittlePigs08: View {
         ZStack{
             BaseView_ThreeLittlePig(currentStep:$currentStep)
             
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
-            
-            
             HStack{
                 Image("character_ThreeLittlePig3")
                     .resizable()
@@ -40,8 +35,9 @@ struct ThreeLittlePigs08: View {
                     }
             }
             
-            
-            
+            // 페이지 이동 버튼
+            ButtonView_ThreeLittlePig(currentStep: $currentStep)
+                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
             
             
         }.onAppear {     // personal voice by hera start
