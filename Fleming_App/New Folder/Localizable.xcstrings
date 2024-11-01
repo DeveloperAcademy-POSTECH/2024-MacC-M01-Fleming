@@ -70,6 +70,9 @@
     "Hello, device!" : {
 
     },
+    "It's tied!" : {
+
+    },
     "Label Text: %@" : {
 
     },
@@ -86,6 +89,9 @@
 
     },
     "Note :" : {
+
+    },
+    "Please choose between rock, paper, scissors." : {
 
     },
     "Please make sure there are no obstacles in the children's " : {
@@ -139,13 +145,16 @@
     "Total Counting: %lld" : {
 
     },
+    "Try Again!" : {
+
+    },
     "User Info" : {
 
     },
-    "You Win 3 Times!\nHorray!" : {
+    "WIN!" : {
 
     },
-    "가위, 바위, 보 중 선택하여 주세요." : {
+    "You Win 3 Times!\nHorray!" : {
 
     },
     "개인 음성 권한이 거부되었습니다. 설정에서 권한을 허용해주세요." : {
@@ -154,6 +163,17 @@
     "개인음성 권한 거부됨" : {
 
     },
+
+    "게임 결과 %@" : {
+
+    },
+    "게임 전적 리셋" : {
+
+    },
+    "결과: %@" : {
+
+    },
+
     "기준데시벨 넘었는지 체크용" : {
 
     },
