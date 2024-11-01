@@ -118,7 +118,7 @@ struct ThreeLittlePigs15_speech: View {
 
                 }
             }
-            .offset(y: screenHeight * 0.4)
+            .offset(y: screenHeight / 2 - 80)
             .frame(width: screenWidth * 0.70, alignment: .center)
             
             // 임시2(버튼) - dBCounter 나타낼 수 있도록
