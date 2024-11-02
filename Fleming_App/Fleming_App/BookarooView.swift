@@ -27,14 +27,14 @@ struct BookarooView: View{
                     ZStack {
                         HStack{
                             Spacer()
-                            NavigationLink(destination: GuardianView()) {
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.black)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.leading, 20)
+//                            NavigationLink(destination: GuardianView()) {
+//                                Image(systemName: "person.circle.fill")
+//                                    .resizable()
+//                                    .frame(width: 50, height: 50)
+//                                    .foregroundColor(.black)
+//                            }
+//                            .buttonStyle(PlainButtonStyle())
+//                            .padding(.leading, 20)
                         }
                         HStack(spacing: 0) {
                             Text("Book")
