@@ -2,6 +2,67 @@ import SwiftUI
 import Vision
 import AVFoundation
 
+//struct checkDevice {
+//    func getDeviceName() -> CameraDirection {
+//        var systemInfo = utsname()
+//        uname(&systemInfo)
+//        
+//        let modelCode = withUnsafePointer(to: &systemInfo.machine) {
+//            $0.withMemoryRebound(to: CChar.self, capacity: 1) { ptr in
+//                String(validatingUTF8: ptr)
+//            }
+//        }
+//        
+//        guard let code = modelCode else { return .not }
+//        
+//        return mapToDevice(identifier: code)
+//    }
+//
+//    func mapToDevice(identifier: String) -> CameraDirection {
+//           switch identifier {
+//               // Add all cases as in your original code
+//           case "iPad13,18", "iPad13,19":
+//               return .vertical
+//               // more cases here...
+//           case "x86_64", "arm64":
+//               return .not
+//           default:
+//               return .not
+//           }
+//       }
+//   }
+
+
+enum CameraDirection_fordots {
+    case vertical
+    case horizontal
+    case not
+
+    func calculate(indexFingerTip: CGPoint, normalizedPoint: CGPoint) -> (CGPoint) {
+        switch self {
+        case .vertical:
+            return CGPoint(x: indexFingerTip.x, y: 1 - indexFingerTip.y)
+
+        case .horizontal: //변동해야함
+
+            return CGPoint(x: 1 - indexFingerTip.x, y: indexFingerTip.y)
+
+        case .not:
+//                            break
+            return normalizedPoint
+
+        }
+    }
+}
+
+//class checkDevice_fordots {
+//    func getDeviceName() -> CameraDirection_fordots {
+//        // Assuming this function returns the correct CameraDirection_fordots type
+//        return .vertical // or any other direction
+//    }
+//}
+
+
 // HandTrackingGameView는 UIViewControllerRepresentable을 구현하여 SwiftUI에서 사용할 수 있는 뷰를 제공합니다.
 struct HandTrackingGameView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
@@ -10,6 +71,8 @@ struct HandTrackingGameView: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
+
+
 
 // HandTrackingGameViewController는 손 추적 및 게임 로직을 구현하는 UIViewController입니다.
 class HandTrackingGameViewController: UIViewController {
@@ -23,8 +86,17 @@ class HandTrackingGameViewController: UIViewController {
     private var blueCircleFrame: CGRect! // 파란색 원의 프레임
     private var greenCircleFrame: CGRect! // 초록색 원의 프레임
     
+//    //by hera
+    var CameraDirection_fordots: CameraDirection_fordots = .vertical //멤버변수 vertical을 초기값으로 설정
+    private let deviceChecker = checkDevice_fordots() //여기서
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        CameraDirection_fordots = deviceChecker.getDeviceName() //여기에서 방향 판단하기 by hera
+
+        Text("!!!!!")
         
         setupCaptureSession() // 카메라 캡처 세션 설정
         setupFingerTipView() // 손가락 끝을 나타낼 뷰 설정
@@ -140,9 +212,16 @@ extension HandTrackingGameViewController: AVCaptureVideoDataOutputSampleBufferDe
                 for observation in results {
                     if let indexFingerTip = try? observation.recognizedPoint(.indexTip),
                        indexFingerTip.confidence > 0.5 {
-                        let normalizedPoint = CGPoint(x: 1 - indexFingerTip.location.x, y: 1 - indexFingerTip.location.y)
+                        //여기 부분
+//                        let normalizedPoint = CGPoint(x: 1 - indexFingerTip.location.x, y: 1 - indexFingerTip.location.y)
+//                        //여기 부분
+//                        let normalizedPoint = self.CameraDirection_fordots.calculate(indexFingerTip: indexFingerTip.location)
+                        
+                        
                         DispatchQueue.main.async {
-                            let convertedPoint = self.previewLayer.layerPointConverted(fromCaptureDevicePoint: normalizedPoint)
+                            let nomalizedPoint = indexFingerTip.location
+                            let convertedPoint = self.previewLayer.layerPointConverted(fromCaptureDevicePoint: self.CameraDirection_fordots.calculate(indexFingerTip: nomalizedPoint, normalizedPoint: nomalizedPoint))
+                            
                             self.fingerTipView.center = convertedPoint
                             self.fingerTipView.isHidden = false
                             
@@ -176,7 +255,7 @@ extension HandTrackingGameViewController: AVCaptureVideoDataOutputSampleBufferDe
     // 성공 메시지를 화면에 표시하는 함수
     private func displaySuccessMessage() {
         let successLabel = UILabel(frame: CGRect(x: view.bounds.midX - 50, y: view.bounds.midY - 150, width: 100, height: 50))
-        successLabel.text = "성공"
+        successLabel.text = "Success"
         successLabel.textColor = .green
         successLabel.textAlignment = .center
         successLabel.font = UIFont.boldSystemFont(ofSize: 24)
@@ -205,5 +284,3 @@ struct StoryView_Dots: View {
 #Preview {
     StoryView_Dots()
 }
-
-

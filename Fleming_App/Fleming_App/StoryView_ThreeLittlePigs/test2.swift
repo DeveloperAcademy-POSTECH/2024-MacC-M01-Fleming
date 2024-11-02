@@ -29,6 +29,7 @@ struct makeCameraView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
+
 enum CameraDirection {
     case vertical
     case horizontal
