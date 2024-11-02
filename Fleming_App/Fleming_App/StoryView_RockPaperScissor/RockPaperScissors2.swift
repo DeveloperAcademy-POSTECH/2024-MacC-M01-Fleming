@@ -118,6 +118,12 @@ struct RockPaperScissors2: View{
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
+    // 반복연습과 관련있는 변수들
+    @State var repeatCount = 0 // 몇 회 반복?
+    @Binding var repeatNumber : Int
+    @State private var refresh = false
+    let refreshTime: TimeInterval = 2.0
+    
     var body: some View {
         
         ZStack{
