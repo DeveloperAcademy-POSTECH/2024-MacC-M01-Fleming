@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "   Horray!" : {
+
+    },
     "!!!!!" : {
 
     },
@@ -49,6 +52,9 @@
     "Book" : {
 
     },
+    "case 3" : {
+
+    },
     "Confirm" : {
 
     },
@@ -71,9 +77,6 @@
 
     },
     "Hello, device!" : {
-
-    },
-    "It's tied!" : {
 
     },
     "Label Text: %@" : {
@@ -148,16 +151,13 @@
     "Total Counting: %lld" : {
 
     },
-    "Try Again!" : {
-
-    },
     "User Info" : {
 
     },
-    "WIN!" : {
+    "You did a GOOD JOB!" : {
 
     },
-    "You Win 3 Times!\nHorray!" : {
+    "You win the Game!" : {
 
     },
     "개인 음성 권한이 거부되었습니다. 설정에서 권한을 허용해주세요." : {

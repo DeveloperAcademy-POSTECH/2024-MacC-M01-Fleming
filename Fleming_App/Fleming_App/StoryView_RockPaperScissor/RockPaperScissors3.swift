@@ -7,14 +7,21 @@
 
 import SwiftUI
 
-struct RockPaperScissors3 : View{
+struct RockPaperScissors3 : View {
     @Environment(\.dismiss) var dismiss
-    @Binding var currentStep: Int
+//    @Binding var currentStep: Int
 
     var body : some View {
-        Text("You Win 3 Times!\nHorray!")
+        Text("You win the Game!")
             .font(.system(size: 64))
-            .foregroundStyle(.red)
+            .bold()
+            .foregroundStyle(.blue)
+            .background(Color.white)
+            .frame(alignment:.center)
+        Text("   Horray!")
+            .font(.system(size: 64))
+            .bold()
+            .foregroundStyle(.blue)
             .background(Color.white)
             .frame(alignment:.center)
         

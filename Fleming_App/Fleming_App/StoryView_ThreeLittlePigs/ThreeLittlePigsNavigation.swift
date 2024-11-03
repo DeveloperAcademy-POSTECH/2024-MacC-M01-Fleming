@@ -29,6 +29,9 @@ struct ThreeLittlePigsNavigation: View {
                 
                 PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
                     .onChange(of: isPresented){ currentStep = 1 }
+                
+                
+                
 //                    .onDisappear() { currentStep = 1 }
                 
             } else {
