@@ -17,6 +17,9 @@ struct RockPaperScissors1: View{
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
+    @State private var isPresented: Bool = true
+    @State private var repeatNumber: Int = 1
+    
     var body: some View{
 
         // 시작화면
@@ -47,6 +50,8 @@ struct RockPaperScissors1: View{
             
             ZStack{
                 Button (action: {
+//                    PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+//                        .onChange(of: isPresented){ currentStep = 1 }
                     currentStep = 2
                 }, label: {
                     ZStack{

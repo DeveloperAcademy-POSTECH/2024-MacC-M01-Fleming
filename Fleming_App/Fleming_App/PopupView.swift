@@ -5,6 +5,8 @@ struct PopupView: View {
     @Binding var repeatNumber: Int // 선택된 숫자를 저장하는 상태 변수
     // -> 모든 스토리 뷰에서 (SwiftData로 읽어온 뒤) Binding으로 받아옴.
     
+//    var onDismiss: () -> Void
+    
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
@@ -81,9 +83,9 @@ struct PopupView: View {
     }
 }
 
-#Preview {
-    @Previewable @State var isPresented = true
-    @Previewable @State var repeatNumber = 3
-
-    PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-}
+//#Preview {
+//    @Previewable @State var isPresented = true
+//    @Previewable @State var repeatNumber = 3
+//
+//    PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+//}

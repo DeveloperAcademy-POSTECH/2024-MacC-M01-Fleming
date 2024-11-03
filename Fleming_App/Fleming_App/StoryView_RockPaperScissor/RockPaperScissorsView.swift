@@ -16,28 +16,60 @@ struct RockPaperScissorsView: View{
     @State private var isPresented: Bool = true
     @State private var repeatNumber: Int = 1 // 반복횟수 저장
     // -> (추후)SwiftData와 결합 필요.
+//    @Binding var isLeft : Bool
+
+    @State private var isStartButtonTapped: Bool = false // Start 버튼이 눌렸는지 추적
+
+    @State private var currentImage_random = "object_RockPaperScossprs_Rock"
     
     var body: some View {
         ZStack {
-            
+//            RockPaperScissors0()
+//            PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+//                .onChange(of: isPresented) { newValue in
+//                    if !newValue {
+//                        currentStep = 1 // Start 버튼이 눌려 isPresented가 false가 될 때 currentStep을 1로 변경
+//                        isStartButtonTapped = false
+//                    }
+//                }
+            PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+                //.onChange(of: isPresented){ currentStep = 0 }
             // 뷰 이동방법
-            if currentStep == 0 {
-                RockPaperScissors1(currentStep: $currentStep)
-                    .transition(.asymmetric(
-                        insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
-                        removal: .opacity))
-                
+            if currentStep == 1 {
+                RockPaperScissors0()
                 PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-                    .onChange(of: isPresented){ currentStep = 1 }
+                                    .onChange(of: isPresented){ currentStep = 2 }
+
+//                    .transition(.asymmetric(
+//                        insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
+//                        removal: .opacity))
+                
+//                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+//                    .onChange(of: isPresented){ currentStep = 1 }
+                
+//                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber, onDismiss: {
+//                                   currentStep = 1 // 팝업이 닫힐 때 다음 단계로 이동
+//                               })
+//                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+//                                   .onChange(of: isPresented) { newValue in
+//                                       if !newValue {
+//                                           currentStep = 1 // Start 버튼이 눌려 isPresented가 false가 될 때 currentStep을 1로 변경
+//                                           isStartButtonTapped = false
+//                                       }
+//                                   }
+                //PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
                 
             } else {
+                
                 getViewForStep(currentStep: currentStep)
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
                         removal: .opacity))
             }
-            
         }
+//        .sheet(isPresented: $isPresented) {
+//            PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+//        }
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
     }
     
@@ -45,21 +77,28 @@ struct RockPaperScissorsView: View{
     func getViewForStep(currentStep: Int) -> some View {
         switch currentStep {
         case 1:
+            //start game 버튼 있는 것
+            //Text("case 1")
             RockPaperScissors1(currentStep: $currentStep)
         case 2:
-            RockPaperScissors2(currentStep: $currentStep, repeatNumber: $repeatNumber)
+            //가위바위보 하는 부분
+            //Text("case 2")
+            RockPaperScissors2(currentStep: $currentStep, currentImage_random: $currentImage_random, repeatNumber: $repeatNumber)
         case 3:
-            RockPaperScissors3(currentStep: $currentStep)
+            //이겼다고 하는 부분
+            Text("case 3")
+            RockPaperScissors3()
+            //RockPaperScissors3(currentStep: $currentStep)
         default:
             EmptyView()
         }
     }
 }
 
-#Preview{
-    @Previewable @State var currentStep: Int = 1
-    RockPaperScissors1(currentStep: $currentStep)
-}
+//#Preview{
+//    @Previewable @State var currentStep: Int = 1
+//    RockPaperScissors1(currentStep: $currentStep)
+//}
 
 // *1. MetalFX-framework특징
 // -> MetalKit은 시뮬레이터에 영향을 주지 않지만, FX는 그렇지 않음.
