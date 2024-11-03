@@ -46,13 +46,12 @@ struct ThreeLittlePigs04: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
             
         }.onAppear {     // personal voice by hera start
             //checkAuthorization()
             soundManager.speakText("""
-                    The first little pig gathered some straw to build a house.
-                    The first little pig built a house with straw.
+                    The first pig finished his straw house! Yay~!
             """)
         }
         .onDisappear(){

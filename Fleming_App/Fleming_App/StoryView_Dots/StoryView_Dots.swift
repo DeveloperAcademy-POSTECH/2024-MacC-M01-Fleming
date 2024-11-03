@@ -41,7 +41,8 @@ enum CameraDirection_fordots {
     func calculate(indexFingerTip: CGPoint, normalizedPoint: CGPoint) -> (CGPoint) {
         switch self {
         case .vertical:
-            return CGPoint(x: indexFingerTip.x, y: 1 - indexFingerTip.y)
+//            return CGPoint(x: indexFingerTip.x, y: 1 - indexFingerTip.y)
+            return CGPoint(x: indexFingerTip.x, y: indexFingerTip.y)
 
         case .horizontal: //변동해야함
 

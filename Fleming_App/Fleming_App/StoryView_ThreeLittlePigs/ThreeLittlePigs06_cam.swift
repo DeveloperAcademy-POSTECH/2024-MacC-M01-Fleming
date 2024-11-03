@@ -56,21 +56,25 @@ struct ThreeLittlePigs06_cam: View {
                 Image("object_home23_cut")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.4) // 화면 크기 n배
-                    .offset(x: 260, y: 100)
+                    .opacity(0.8)
+                    .frame(width: screenWidth * 0.4)
+//                    .offset(x: 260, y: 100)
+                    .offset(x: screenWidth * 0.3, y: screenHeight * 0.1)
                 
                 GeometryReader { geometry in
                     Image("object_home23_in") // testimg 파일을 표시
                         .resizable()
                         .scaledToFit()
-                        .frame(width: UIScreen.main.bounds.width * 0.4)// 화면 크기 0.1배
+                        .frame(width: screenWidth * 0.4)// 화면 크기 0.1배
                     
                     // 이동할 수 있도록 변경
                         .position(imgPosition)
                         .onChange(of: imgPosition) { newPosition in
                             // 목표 위치: x가 950 근방, y가 620 근방
-                            let targetX: CGFloat = 950
-                            let targetY: CGFloat = 620
+//                            let targetX: CGFloat = 950
+                            let targetX: CGFloat = screenWidth * 0.8
+//                            let targetY: CGFloat = 620
+                            let targetY: CGFloat = screenHeight * 0.6
                             
                             // 변경된 위치가 목표 위치와 가까워지면 isSuccess를 true
                             if abs(newPosition.x - targetX) < 50 && abs(newPosition.y - targetY) < 50 {
@@ -107,7 +111,7 @@ struct ThreeLittlePigs06_cam: View {
                 Image("object_home21")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width * 0.3)
+                    .frame(width: screenWidth * 0.3)
                     .scaleEffect(2)
                 // 화면 크기 n배
                     .offset(x: 260, y: 100)
@@ -115,13 +119,12 @@ struct ThreeLittlePigs06_cam: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
             
         }.onAppear {     // personal voice by hera start
             //checkAuthorization()
             soundManager.speakText("""
-                    The Three Little Pigs
-                    Once upon a time, there were three little pigs. They each decided to build their own house.
+                    Pick up the sticks and help build the house.
             """)
         }
     }

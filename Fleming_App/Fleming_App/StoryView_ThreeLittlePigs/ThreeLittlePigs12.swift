@@ -59,14 +59,14 @@ struct ThreeLittlePigs12: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
             
         }
         .onAppear{
             soundModel.sampleMusicName = "music_sample1"
             soundModel.playSound()
             soundManager.speakText("""
-                But one day, a big bad wolf came.
+                The wolf came to the first house.
             """)
         }
         .onDisappear(){
