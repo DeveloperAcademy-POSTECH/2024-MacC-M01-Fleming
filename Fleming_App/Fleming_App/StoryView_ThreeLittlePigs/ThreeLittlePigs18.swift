@@ -77,12 +77,12 @@ struct ThreeLittlePigs18: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
             
         }
         .onAppear{
             soundManager.speakText("""
-                But one day, a big bad wolf came.
+                But the brick house was very strong... The three little pigs could live safely!
             """)
         }
         .onDisappear(){

@@ -46,10 +46,10 @@ struct ThreeLittlePigs07: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
+            
         }.onAppear(){soundManager.speakText("""
-                    The second little pig gathered some wood to build a house.
-                    The second little pig built a house with wood.
+                    The second pig finished his stick house! Yay~!
             """)}
         .onDisappear(){
             soundManager.stopSpeaking()

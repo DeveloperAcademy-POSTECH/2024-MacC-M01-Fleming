@@ -59,15 +59,14 @@ struct ThreeLittlePigs14: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
             
         }
         .onAppear{
             soundModel.sampleMusicName = "music_sample1"
             soundModel.playSound()
             soundManager.speakText("""
-                The first little pig ran to the second little pig’s
-                house. The wolf went to the second little pig's house and blew again. 'Whoooo!' And the wooden house blew away too!
+                The wolf came to the second house.
             """)
         }
         .onDisappear(){

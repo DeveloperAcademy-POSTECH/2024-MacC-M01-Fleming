@@ -103,10 +103,18 @@ struct ThreeLittlePigs13_speech: View {
                             .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                             .offset(x:5)
                         Text("Sucess!!")
-                            .onAppear {triggerRefreshAfterDelay()}
+                            .foregroundStyle(Color.white)
+                            .font(.system(size: 36))
+                            .fontWeight(.bold)
+                            .offset(x:screenWidth * 0.5)
+                            .onAppear{triggerRefreshAfterDelay()}
                         
                     } else if audioManager.dBCounter > 4 {
                         Text("Sucess!!")
+                            .foregroundStyle(Color.white)
+                            .font(.system(size: 36))
+                            .fontWeight(.bold)
+                            .offset(x:screenWidth * 0.5)
                             .onAppear {
                                 triggerRefreshAfterDelay()
                                 if(repeatCount >= repeatNumber){
@@ -118,29 +126,29 @@ struct ThreeLittlePigs13_speech: View {
 
                 }
             }
-            .offset(y: screenHeight / 2 - 80)
+            .offset(y: screenHeight / 2 - 100)
             .frame(width: screenWidth * 0.70, alignment: .center)
             
             // 임시2(버튼) - dBCounter 나타낼 수 있도록
-            Button(action: {
-                isPresentingSoundLevelView = true
-            }, label: {
-                Image(systemName: "microphone.circle")
-                    .font(.system(size:40))
-                    .bold()
-                    .foregroundStyle(.red)
-            })
-            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
+//            Button(action: {
+//                isPresentingSoundLevelView = true
+//            }, label: {
+//                Image(systemName: "microphone.circle")
+//                    .font(.system(size:40))
+//                    .bold()
+//                    .foregroundStyle(.red)
+//            })
+//            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-80, height: screenHeight-80, alignment: .bottom)
+                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
         }
         .onAppear {
             
             soundManager.speakText(
                                    """
-                                   The wolf went to the first little pig's house and blew a big wind. 'Whoooo!' And the straw house blew away!
+                                   Blow with the wolf and make the straw house fly away!
                                    """)
         }
         .onDisappear{
