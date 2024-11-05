@@ -35,21 +35,21 @@ struct ThreeLittlePigs5: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: 0, y: 100)
+                .offset(x: 0, y: screenHeight * 0.2 )
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
             
             Image("object_home21")
                 .resizable()
                 .scaledToFit()
                 .frame(width: screenWidth * 0.3) // 화면 크기 n배
-                .offset(x: screenWidth/5, y: 100)
+                .offset(x: screenWidth/5, y: screenHeight * 0.2 )
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
             
             Image("object_home31")
                 .resizable()
                 .scaledToFit()
                 .frame(width: screenWidth * 0.3) // 화면 크기 n배
-                .offset(x: screenWidth / 5 * 2, y: screenHeight / 8)
+                .offset(x: screenWidth / 5 * 2, y: screenHeight * 0.2 )
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
             
             // 소리 재생 버튼 추가

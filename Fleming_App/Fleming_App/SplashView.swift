@@ -36,7 +36,7 @@ struct SplashView: View {
             Image("Bookarooy")
                 .resizable()
                 .scaledToFit()
-                .frame(width: screenWidth * 0.5, height: screenHeight * 0.4)
+                .frame(width: screenWidth * 0.6, height: screenHeight * 0.5)
                 .padding()
         }
         .frame(width: screenWidth, height: screenHeight)

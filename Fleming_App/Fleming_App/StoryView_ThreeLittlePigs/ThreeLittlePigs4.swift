@@ -160,7 +160,7 @@ struct ThreeLittlePigs4: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: screenWidth * 0.3)
-                .offset(x:  -screenWidth * 0.15, y: isLeft ? screenHeight * 0.08 : screenHeight * 0.16)
+                .offset(x:  -screenWidth * 0.15, y: isLeft ? screenHeight * 0.1 : screenHeight * 0.2)
                 .animation(.easeInOut(duration: 0.3), value: isLeft)
             
             // 집을 선택하여 띄우는 뷰 - currentStep에 따라
@@ -239,5 +239,5 @@ struct ThreeLittlePigs4: View {
 
 #Preview {
     @Previewable @State var isLeft: Bool = false
-    ThreeLittlePigs4(currentStep: .constant(4), isLeft:$isLeft)
+    ThreeLittlePigs4(currentStep: .constant(10), isLeft:$isLeft)
 }

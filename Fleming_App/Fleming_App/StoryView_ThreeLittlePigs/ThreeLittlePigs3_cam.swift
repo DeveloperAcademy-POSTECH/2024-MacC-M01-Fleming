@@ -16,7 +16,11 @@ struct ThreeLittlePigs3_cam: View {
     
     // 위치 지정용 변수
     @State private var touchPoint: CGPoint? = nil
-    @State private var imgPosition: CGPoint = CGPoint(x: 300, y: 620) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
+//    @State private var imgPosition: CGPoint = CGPoint(x: 300, y: 620) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
+    
+    @State private var imgPosition: CGPoint = CGPoint(
+        x: UIScreen.main.bounds.width * 0.2,
+        y: UIScreen.main.bounds.height * 0.7) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
     
     @Binding var currentStep: Int // currentStep 스토리 진행의 단계
     
@@ -33,7 +37,9 @@ struct ThreeLittlePigs3_cam: View {
     @State var repeatCount = 0 // 몇 회 반복?
     @Binding var repeatNumber: Int
     @State private var refresh = false
-    let refreshTime: TimeInterval = 2.0 // Success를 보고, 몇 초 뒤 별이 차오르는가?
+    let refreshTime: TimeInterval = 3.0 // Success를 보고, 몇 초 뒤 별이 차오르는가?
+    
+    // 표적맞추기 위한 위치선정
     
     var body: some View {
         
@@ -41,6 +47,9 @@ struct ThreeLittlePigs3_cam: View {
             
             // 카메라 뷰(배경깔기)
             makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
+            
+            Rectangle()
+                .fill(Color(hex: "#D9D9D9").opacity(0.36))
             
             // 배경화면(초원)
             Image("Background_ThreeLittlePig2")
@@ -58,7 +67,7 @@ struct ThreeLittlePigs3_cam: View {
                     .scaledToFit()
                     .opacity(0.8)
                     .frame(width: screenWidth * 0.4)
-                    .offset(x: screenWidth * 0.3, y: screenHeight * 0.1) // 초기 테스트값은 x:950, y:620
+                    .offset(x: screenWidth * 0.3, y: screenHeight * 0.2) // 초기 테스트값은 x:950, y:620
                 
                 GeometryReader { geometry in
                     Image(selectImage2()) // testimg 파일을 표시
@@ -70,7 +79,8 @@ struct ThreeLittlePigs3_cam: View {
                         .position(imgPosition)
                         .onChange(of: imgPosition) { newPosition in
                             let targetX: CGFloat = screenWidth * 0.8 // let targetX: CGFloat = 950 // 초기 테스트값
-                            let targetY: CGFloat = screenHeight * 0.6 // let targetY: CGFloat = 620 // 초기 테스트값
+                            let targetY: CGFloat = screenHeight * 0.7 // let targetY: CGFloat = 620 // 초기 테스트값
+                            // -> targetX, targetY는 항상 아래의 완성된 집과 일치시킬 것.
                             
                             // 변경된 위치가 목표 위치와 가까워지면 isSuccess를 true
                             if abs(newPosition.x - targetX) < 50 && abs(newPosition.y - targetY) < 50 {
@@ -93,11 +103,12 @@ struct ThreeLittlePigs3_cam: View {
             // 성공 메시지 표시
             if isSuccess {
                 Text("Success!")
-                    .font(.title)
-                    .foregroundColor(.red)
+                    .font(.system(size:200, weight: .bold))
+                    .foregroundColor(.yellow)
                     .bold()
-                    .position(x: screenWidth / 2, y: screenHeight / 2)
-                    .animation(.easeInOut(duration: 3), value: isSuccess)
+                    .position(x: screenWidth / 2,
+                              y: isLeft ? screenHeight * 0.4 - 30 : screenHeight * 0.4)
+                    .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                     .onAppear {
                         repeatCount += 1
                         triggerRefreshAfterDelay()
@@ -107,9 +118,10 @@ struct ThreeLittlePigs3_cam: View {
                 Image(selectImage3())
                     .resizable()
                     .scaledToFit()
-                    .frame(width: screenWidth * 0.3)
+                    .frame(width: screenWidth * 0.2)
                     .scaleEffect(2)
-                    .offset(x: 260, y: 100)
+                    .position(x: screenWidth * 0.8 , y: screenHeight * 0.7) // targetX, targetY값과 같도록 설정해줄 것
+                    
             }
             
             // 페이지 이동 버튼
@@ -119,6 +131,11 @@ struct ThreeLittlePigs3_cam: View {
         }.onAppear {
             // TTS 읽어주기 시작.
             playTTS()
+        }
+        
+        // 애니메이션 작동
+        .onReceive(timer) { _ in
+            isLeft.toggle() // 0.5초마다 좌우 위치를 변경
         }
     }
     
@@ -188,7 +205,7 @@ struct ThreeLittlePigs3_cam: View {
         case 3:
             imageName = "object_home11"
         case 6:
-            imageName = "object_home21"
+            imageName = "object_home23"
         case 9:
             imageName = "object_home31"
         default:
@@ -201,5 +218,5 @@ struct ThreeLittlePigs3_cam: View {
 #Preview {
     @Previewable @State var isLeft: Bool = false
     @Previewable @State var repeatNumber: Int = 2
-    ThreeLittlePigs3_cam(currentStep: .constant(3), isLeft:$isLeft, repeatNumber: $repeatNumber)
+    ThreeLittlePigs3_cam(currentStep: .constant(9), isLeft:$isLeft, repeatNumber: $repeatNumber)
 }

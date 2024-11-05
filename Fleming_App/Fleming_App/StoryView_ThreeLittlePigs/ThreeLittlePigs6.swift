@@ -28,7 +28,7 @@ struct ThreeLittlePigs6: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
-                .offset(x: isLeft ? -240 : -260, y: 100)
+                .offset(x: isLeft ? -screenWidth * 0.2 : -screenWidth * 0.2 - 20, y: screenHeight * 0.1 )
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
             
             // 집
@@ -36,7 +36,7 @@ struct ThreeLittlePigs6: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.5) // 화면 크기 n배
-                .offset(x: isLeft ? 240 : 260, y: 100)
+                .offset(x: isLeft ? screenWidth * 0.2 : screenWidth * 0.2 + 20, y: screenHeight * 0.1 )
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
             
             // 소리 재생 버튼 추가
@@ -52,7 +52,7 @@ struct ThreeLittlePigs6: View {
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
+                .frame(width:screenWidth - 100, height: screenHeight - 110, alignment: .bottom)
             
         }
         .onAppear{

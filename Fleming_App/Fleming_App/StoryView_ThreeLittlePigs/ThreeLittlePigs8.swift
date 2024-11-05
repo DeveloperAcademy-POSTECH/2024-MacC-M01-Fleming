@@ -35,7 +35,7 @@ struct ThreeLittlePigs8: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: isLeft ? -screenWidth / 4 : -screenWidth / 4 + 20, y: screenHeight / 4)
+                .offset(x: -screenWidth / 4, y: isLeft ? screenHeight / 5 : screenHeight / 5 + 20)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경
@@ -46,7 +46,7 @@ struct ThreeLittlePigs8: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: isLeft ? 0 : 20, y: screenHeight / 3)
+                .offset(x: 0, y: isLeft ? screenHeight / 4 : screenHeight / 4 + 20)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경
@@ -57,23 +57,12 @@ struct ThreeLittlePigs8: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: isLeft ? screenWidth / 4 : screenWidth / 4 + 20, y: screenHeight / 4)
+                .offset(x: screenWidth / 4, y: isLeft ? screenHeight / 5 : screenHeight / 5 + 20)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경
                     isLeft.toggle()
                 }
-            
-            // 소리 재생 버튼 추가
-            Button(action: {
-                soundModel.playSound()
-            }, label: {
-                Image(systemName: "speaker.wave.2.fill")
-                    .font(.system(size:40))
-                    .bold()
-                    .foregroundStyle(.orange)
-            })
-            .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
             
             // 페이지 이동 버튼
             ButtonView_ThreeLittlePig(currentStep: $currentStep)
@@ -81,6 +70,8 @@ struct ThreeLittlePigs8: View {
             
         }
         .onAppear{
+            soundModel.stopSound()
+            soundModel.playSound()
             soundManager.speakText("""
                 But the brick house was very strong... The three little pigs could live safely!
             """)
@@ -88,7 +79,6 @@ struct ThreeLittlePigs8: View {
         .onDisappear(){
             soundModel.stopSound()
         }
-        
     }
 }
 

@@ -38,8 +38,19 @@ struct ThreeLittlePigsNavigation: View {
             }
             
         }
-        .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
+//        .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
+        .animation(.interactiveSpring(duration: 1), value: currentStep) // 애니메이션 추가
+        /// (예시들)
+        /// bouncy(다소 통통튐 - 0.7이 그나마 나음),
+        /// linear(1초이상 필요, 1초이상 하면 캐릭터가 먼저 튀어나옴)
+        /// smooth(1초가 가장 자연스러운 움직임이나, 깜빡일 때 반, 옆으로 밀려나올때 반 / 캐릭터도 튀어나옴)
+        /// interactiveSpring (1에서 부드러운편)
+        /// spring(많이 통통튐)
+        /// {공통} 카메라 불러올 때, 튀어오름.
+        
         //        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
+        
+        
     }
     
     // 각 단계에 맞는 뷰를 반환

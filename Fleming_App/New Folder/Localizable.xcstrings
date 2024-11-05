@@ -10,6 +10,9 @@
     "!!!!!" : {
 
     },
+    "/" : {
+
+    },
     "%lld" : {
 
     },
@@ -23,9 +26,6 @@
 
     },
     "160 dB" : {
-
-    },
-    "activities." : {
 
     },
     "aroo" : {
@@ -67,6 +67,9 @@
     "Edit Info" : {
 
     },
+    "EN" : {
+
+    },
     "for Kids" : {
 
     },
@@ -77,6 +80,12 @@
 
     },
     "Hello, device!" : {
+
+    },
+    "in the children's activities." : {
+
+    },
+    "KR" : {
 
     },
     "Label Text: %@" : {
@@ -100,7 +109,7 @@
     "Please choose between rock, paper, scissors." : {
 
     },
-    "Please make sure there are no obstacles in the children's " : {
+    "Please make sure there are no obstacles" : {
 
     },
     "Read Text" : {
