@@ -56,6 +56,7 @@ struct RandomCircle: View {
         circlePositions = generatedPositions
     }
 
+    //원과 원끼리 닿지 않도록
     func distanceBetween(_ p1: CGPoint, _ p2: CGPoint) -> CGFloat {
         return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2))
     }
@@ -77,12 +78,25 @@ struct CameraView: UIViewControllerRepresentable {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraLayer.videoGravity = .resizeAspectFill
         cameraLayer.frame = controller.view.bounds
+        
+        cameraLayer.setAffineTransform(CGAffineTransform(rotationAngle: -.pi / 2))
+        //카메라 회전 위해 -> 왼쪽으로 90도
+        
         controller.view.layer.addSublayer(cameraLayer)
+        
+        //화면 크기가 변할 때 레이어의 크기도
+        DispatchQueue.main.async {
+            cameraLayer.frame = controller.view.bounds
+        }
         
         captureSession.startRunning()
         
         return controller
     }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        if let cameraLayer = uiViewController.view.layer.sublayers?.first as? AVCaptureVideoPreviewLayer {
+            cameraLayer.frame = uiViewController.view.bounds // 화면 크기에 맞춰 재조정
+        }
+    }
 }
