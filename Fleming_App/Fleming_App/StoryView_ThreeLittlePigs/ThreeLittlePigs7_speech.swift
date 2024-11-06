@@ -25,7 +25,7 @@ struct ThreeLittlePigs7_speech: View {
     //dBCounter 기능을 위한 변수
     @ObservedObject var audioManager = AudioManager() // 오디오 매니저 연결
     private let columns = Array(repeating: GridItem(.flexible()), count: 10) // 체크마크 열의 수를 설정(dBCounter)
-    @State private var thresholdValue: Float = 50.0 // 초기 데시벨 기준 값
+    @State private var thresholdValue: Float = 55.0 // 초기 데시벨 기준 값 (언젠가는 직접반영을 구현해야 혀)
     
     //dBCounter 뷰를 위한 변수
     @State private var isPresentingSoundLevelView = false
@@ -57,7 +57,7 @@ struct ThreeLittlePigs7_speech: View {
                     .frame(width: screenWidth * 0.5) // 화면 크기 n배
                     .padding(-100)
             }
-            .offset(x: -260, y: -50)
+            .offset(x: -screenWidth * 0.2, y: 0)
             
             
             if repeatCount < repeatNumber {
@@ -66,17 +66,17 @@ struct ThreeLittlePigs7_speech: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth * 0.6) // 화면 크기 n배
-                    .offset(x: 260, y: 0)
+                    .offset(x: screenWidth * 0.2, y: screenHeight * 0.2 - 100)
             } else if repeatCount >= repeatNumber {
                 // 날아가기 이후 집
                 Image(selectImage2())
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth * 0.6) // 화면 크기 n배
-                    .offset(x: 260, y: 0)
+                    .offset(x: screenWidth * 0.2, y: screenHeight * 0.2 - 100)
             }
             
-            // 임시2(게이지) - 소리가 일정량 넘으면 증가하도록
+            // (게이지) - 소리가 일정량 넘으면 증가하도록
             VStack{
                 Text("Scream")
                     .font(.system(size: 36))
@@ -213,5 +213,5 @@ struct ThreeLittlePigs7_speech: View {
 #Preview {
     @Previewable @State var isLeft: Bool = false
     @Previewable @State var repeatNumber: Int = 2
-    ThreeLittlePigs7_speech(currentStep: .constant(13), isLeft:$isLeft, repeatNumber: $repeatNumber)
+    ThreeLittlePigs7_speech(currentStep: .constant(15), isLeft:$isLeft, repeatNumber: $repeatNumber)
 }

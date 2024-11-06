@@ -83,9 +83,9 @@ struct PopupView: View {
     }
 }
 
-//#Preview {
-//    @Previewable @State var isPresented = true
-//    @Previewable @State var repeatNumber = 3
-//
-//    PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-//}
+#Preview {
+    @Previewable @State var isPresented = true
+    @Previewable @State var repeatNumber = 3
+
+    PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
+}

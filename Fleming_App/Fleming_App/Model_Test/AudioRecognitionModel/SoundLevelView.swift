@@ -12,7 +12,7 @@ struct SoundLevelView: View {
     
     // 데시벨 넘는 횟수 카운트용(dBCounter)
     private let columns = Array(repeating: GridItem(.flexible()), count: 10) // 체크마크 열의 수를 설정(dBCounter)
-    @State private var thresholdValue: Float = 50.0 // 초기 데시벨 기준 값
+    @State private var thresholdValue: Float = 55.0 // 초기 데시벨 기준 값
     
     // FullScreenCove 해제용
     @Environment(\.dismiss) var dismiss

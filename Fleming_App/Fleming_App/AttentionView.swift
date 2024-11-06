@@ -4,6 +4,7 @@
 //
 //  Created by 김도현 on 10/31/24.
 */
+
 import SwiftUI
 
 struct AttentionView: View {
@@ -16,18 +17,17 @@ struct AttentionView: View {
                 .multilineTextAlignment(.center)
                 .padding(.bottom,-20)
                 .frame(width: UIScreen.main.bounds.width * 0.8)
-//            Spacer()
             Image("attention")
                 .resizable()
                 .aspectRatio(contentMode: .fit) // Ensure the image retains its aspect ratio
                 .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.4) // Increase image size
                 
-            Text("Please make sure there are no obstacles in the children's ")
+            Text("Please make sure there are no obstacles")
                 .font(.system(size: UIScreen.main.bounds.width * 0.03))
                 .multilineTextAlignment(.center)
                 .padding(.top, -30)
                 .padding(.bottom,-30)
-            Text("activities.")
+            Text("in the children's activities.")
                 .font(.system(size: UIScreen.main.bounds.width * 0.03))
                 .multilineTextAlignment(.center)
                 .padding(.bottom,30)
@@ -45,7 +45,7 @@ struct AttentionView: View {
                                 .cornerRadius(100)
                         }
                         .padding(.top, 30)
-            
+
         }
         .padding(30)
     }
