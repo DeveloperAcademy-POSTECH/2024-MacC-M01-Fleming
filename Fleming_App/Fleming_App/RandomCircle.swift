@@ -23,6 +23,9 @@ struct RandomCircle: View {
             CameraView()
                 .ignoresSafeArea()
 
+            Color.yellow.opacity(0.7)
+                        .ignoresSafeArea()
+            
             ForEach(circlePositions, id: \.id) { item in
                 Circle()
                     .frame(width: circleSize, height: circleSize)
