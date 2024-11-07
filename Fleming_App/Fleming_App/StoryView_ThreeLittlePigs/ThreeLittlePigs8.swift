@@ -46,7 +46,7 @@ struct ThreeLittlePigs8: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width * 0.3) // 화면 크기 n배
-                .offset(x: 0, y: isLeft ? screenHeight / 4 : screenHeight / 4 + 20)
+                .offset(x: 0, y: isLeft ? screenHeight / 4 : screenHeight / 4 - 20)
                 .animation(.easeInOut(duration: 0.5), value: isLeft) // 0.5초 간격 애니메이션
                 .onReceive(timer) { _ in
                     // 0.5초마다 좌우 위치를 변경
@@ -63,10 +63,6 @@ struct ThreeLittlePigs8: View {
                     // 0.5초마다 좌우 위치를 변경
                     isLeft.toggle()
                 }
-            
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
             
         }
         .onAppear{

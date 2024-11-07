@@ -24,10 +24,6 @@ struct ThreeLittlePigs2: View {
             // 캐릭터 나타내는 뷰
             ThreeLittlePigs2_sub(currentStep: $currentStep, isLeft: $isLeft) // 뷰 안그려짐이슈 해결을 위해 분리...
             
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
-            
         }.onAppear {
             // TTS 읽어주기 시작.
             playTTS()

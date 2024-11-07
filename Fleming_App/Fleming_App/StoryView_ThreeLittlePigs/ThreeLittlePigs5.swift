@@ -63,10 +63,6 @@ struct ThreeLittlePigs5: View {
             })
             .offset(x: screenWidth/2 - 60, y: -screenHeight/2 + 60)
             
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
-            
         }
         .onAppear{
             // 배경음악 재생 및 TTS 읽어주기 시작.

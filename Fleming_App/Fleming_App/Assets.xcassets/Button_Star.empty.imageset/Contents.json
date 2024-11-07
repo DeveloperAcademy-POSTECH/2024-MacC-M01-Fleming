@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Cover_pigs.png",
+      "filename" : "Button_Star.empty.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Button_Star.empty@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Button_Star.empty@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

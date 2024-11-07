@@ -14,13 +14,11 @@ import AVFoundation
 
 struct ThreeLittlePigs3_cam: View {
     
-    // 위치 지정용 변수
-    @State private var touchPoint: CGPoint? = nil
-//    @State private var imgPosition: CGPoint = CGPoint(x: 300, y: 620) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
-    
+    // 위치 지정용 변수(표적)
+    @State private var touchPoint: CGPoint? = nil // 초기 이미지 위치 x는 300, y는 620
     @State private var imgPosition: CGPoint = CGPoint(
         x: UIScreen.main.bounds.width * 0.2,
-        y: UIScreen.main.bounds.height * 0.7) // 초기 이미지 위치 //x는 950으로 y는 620이 correct
+        y: UIScreen.main.bounds.height * 0.7) // 초기 이미지 위치 x는 950, y는 620
     
     @Binding var currentStep: Int // currentStep 스토리 진행의 단계
     
@@ -39,8 +37,6 @@ struct ThreeLittlePigs3_cam: View {
     @State private var refresh = false
     let refreshTime: TimeInterval = 3.0 // Success를 보고, 몇 초 뒤 별이 차오르는가?
     
-    // 표적맞추기 위한 위치선정
-    
     var body: some View {
         
         ZStack{
@@ -50,6 +46,8 @@ struct ThreeLittlePigs3_cam: View {
             
             Rectangle()
                 .fill(Color(hex: "#D9D9D9").opacity(0.36))
+                .ignoresSafeArea()
+//                .position(x:screenWidth / 2, y:screenHeight / 2)
             
             // 배경화면(초원)
             Image("Background_ThreeLittlePig2")
@@ -124,9 +122,23 @@ struct ThreeLittlePigs3_cam: View {
                     
             }
             
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
+            // Repeat 횟수 표시(별모양
+            HStack(spacing: -screenWidth * 0.02){
+                ForEach(0..<repeatNumber, id: \.self){ index in
+                    if index < repeatCount {
+                        Image("Button_Star.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: screenWidth * 0.1)
+                    } else {
+                        Image("Button_Star.empty")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: screenWidth * 0.1)
+                    }
+                }
+            }
+            .position(x:screenWidth * 0.5, y: screenHeight * 0.06)
             
         }.onAppear {
             // TTS 읽어주기 시작.
@@ -218,5 +230,5 @@ struct ThreeLittlePigs3_cam: View {
 #Preview {
     @Previewable @State var isLeft: Bool = false
     @Previewable @State var repeatNumber: Int = 2
-    ThreeLittlePigs3_cam(currentStep: .constant(9), isLeft:$isLeft, repeatNumber: $repeatNumber)
+    ThreeLittlePigs3_cam(currentStep: .constant(3), isLeft:$isLeft, repeatNumber: $repeatNumber)
 }
