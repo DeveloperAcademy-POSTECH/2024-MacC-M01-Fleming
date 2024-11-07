@@ -10,9 +10,6 @@
     "!!!!!" : {
 
     },
-    "/" : {
-
-    },
     "%lld" : {
 
     },
@@ -40,6 +37,9 @@
     "Attention" : {
 
     },
+    "Background" : {
+
+    },
     "Birth:" : {
 
     },
@@ -47,6 +47,9 @@
 
     },
     "Blow it !" : {
+
+    },
+    "Blow with the wolf and make the straw house fly away!" : {
 
     },
     "Book" : {
@@ -67,7 +70,10 @@
     "Edit Info" : {
 
     },
-    "EN" : {
+    "English" : {
+
+    },
+    "Enjoy activities best from 1m away" : {
 
     },
     "for Kids" : {
@@ -85,10 +91,13 @@
     "in the children's activities." : {
 
     },
-    "KR" : {
+    "Korean" : {
 
     },
     "Label Text: %@" : {
+
+    },
+    "Language" : {
 
     },
     "Little Pigs" : {
@@ -127,13 +136,13 @@
     "Save" : {
 
     },
-    "Scream" : {
-
-    },
     "Second Label: %@" : {
 
     },
     "Select Voice" : {
+
+    },
+    "SOUND" : {
 
     },
     "Start" : {
@@ -146,6 +155,9 @@
 
     },
     "Sucess!!" : {
+
+    },
+    "Text Sound" : {
 
     },
     "The Three" : {

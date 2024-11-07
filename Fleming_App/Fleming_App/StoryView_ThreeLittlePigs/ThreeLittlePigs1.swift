@@ -91,9 +91,6 @@ struct ThreeLittlePigs1: View {
             .padding(.leading, 40)
             .padding(.bottom, screenHeight*0.5)
 
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
         }
         .onAppear {
             // TTS 읽어주기 시작.

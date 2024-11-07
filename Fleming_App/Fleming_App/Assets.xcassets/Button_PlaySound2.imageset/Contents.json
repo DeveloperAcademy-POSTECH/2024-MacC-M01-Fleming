@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Cover_rsp.png",
+      "filename" : "Button_PlaySound2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Cover_rsp@2x.png",
+      "filename" : "Button_PlaySound2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Cover_rsp@3x.png",
+      "filename" : "Button_PlaySound2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

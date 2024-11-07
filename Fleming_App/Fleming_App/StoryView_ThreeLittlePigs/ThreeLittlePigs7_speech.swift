@@ -78,30 +78,24 @@ struct ThreeLittlePigs7_speech: View {
             
             // (게이지) - 소리가 일정량 넘으면 증가하도록
             VStack{
-                Text("Scream")
-                    .font(.system(size: 36))
-                    .bold()
-                    .frame(alignment: .leading)
-                    .foregroundStyle(AppColor.pigBrown)
-                    .padding(-3)
                 
                 ZStack(alignment: .leading){
                     Rectangle()
                         .foregroundStyle(Color.white)
-                        .frame(width: screenWidth * 0.7, height: 60)
+                        .frame(width: screenWidth * 0.7, height: 40)
                         .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                     
                     if audioManager.dBCounter < 4{
                         Rectangle()
                             .foregroundStyle(Color.gray)
-                            .frame(width: max(screenWidth * 0.7 * CGFloat(Double(audioManager.dBCounter) * 0.25) - 10, 0), height: 50) // 추가 개선 필요.
+                            .frame(width: max(screenWidth * 0.7 * CGFloat(Double(audioManager.dBCounter) * 0.25) - 10, 0), height: 30) // 추가 개선 필요.
                             .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                             .offset(x:5)
                     }else if audioManager.dBCounter == 4{
                         
                         Rectangle()
                             .foregroundStyle(Color.gray)
-                            .frame(width: max(screenWidth * 0.7 - 10, 0), height: 50) // 추가 개선 필요.
+                            .frame(width: max(screenWidth * 0.7 - 10, 0), height: 30) // 추가 개선 필요.
                             .clipShape(RoundedRectangle(cornerSize: .init(width: 30, height: 30)))
                             .offset(x:5)
                         Text("Sucess!!")
@@ -124,16 +118,11 @@ struct ThreeLittlePigs7_speech: View {
                                 }
                             }
                     }
-
-
                 }
             }
-            .offset(y: screenHeight / 2 - 100)
+            .offset(y: -screenHeight * 0.44) // -screenHeight / 2 + screenHeight * 0.06
             .frame(width: screenWidth * 0.70, alignment: .center)
             
-            // 페이지 이동 버튼
-            ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
         }
         .onAppear {
             // TTS 읽어주기 시작.

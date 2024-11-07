@@ -17,10 +17,13 @@ struct ThreeLittlePigsNavigation: View {
     @State private var repeatNumber: Int = 1 // 반복횟수 저장
     // -> (추후)SwiftData와 결합 필요.
     
+    var screenHeight = UIScreen.main.bounds.height
+    var screenWidth = UIScreen.main.bounds.width
+    
     var body: some View {
         ZStack {
             
-            // 뷰 이동방법
+            // 뷰 이동방법(페이지 이동)
             if currentStep == 0 {
                 ThreeLittlePigs0(currentStep: $currentStep, isLeft: .constant(true))
                     .transition(.asymmetric(
@@ -35,21 +38,43 @@ struct ThreeLittlePigsNavigation: View {
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
                         removal: .opacity))
+                
+                // TTS + 페이지 넘김 블럭
+                HStack(spacing: -30){
+                    Image("Button_PlaySound")
+                    ZStack{
+                        Rectangle()
+                            .foregroundStyle(.white.opacity(0.8))
+                            .frame(width: screenWidth * 0.85, height: 100)
+                            .cornerRadius(100)
+                        Text("Blow with the wolf and make the straw house fly away!")
+                            .font(.system(size:36, weight:.bold))
+                    }
+                    Image("Button_NextPage")
+                }
+                .offset(y: screenHeight * 0.4)
+                
+                // 페이지 이동 버튼 (개발용, 나중에 주석처리)
+                ButtonView_ThreeLittlePig(currentStep: $currentStep)
+                    .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
+                
             }
             
+            // 홈 버튼
+            HomeButtonView()
+                .position(x: screenHeight * 0.06, y: screenHeight * 0.06)
+            
         }
-//        .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
-        .animation(.interactiveSpring(duration: 1), value: currentStep) // 애니메이션 추가
+        .animation(.interactiveSpring(duration: 1), value: currentStep) // 애니메이션
+        .navigationBarBackButtonHidden(true) // 커스텀 백버튼 존재. 기본버튼 삭제
         /// (예시들)
+        /// easeInOut(0.5초 - 초기값)
         /// bouncy(다소 통통튐 - 0.7이 그나마 나음),
         /// linear(1초이상 필요, 1초이상 하면 캐릭터가 먼저 튀어나옴)
         /// smooth(1초가 가장 자연스러운 움직임이나, 깜빡일 때 반, 옆으로 밀려나올때 반 / 캐릭터도 튀어나옴)
         /// interactiveSpring (1에서 부드러운편)
         /// spring(많이 통통튐)
         /// {공통} 카메라 불러올 때, 튀어오름.
-        
-        //        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
-        
         
     }
     
