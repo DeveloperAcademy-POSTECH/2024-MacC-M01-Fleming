@@ -183,8 +183,11 @@ struct BookarooView: View{
                                         .shadow(color: Color.black.opacity(0.25), radius: 20, x: 5, y: 5)
                                 })
                                 .navigationDestination(isPresented: $isNavigating3){
-                                    StoryView_Dots()
-                                    // makeCameraForCircle()
+                                    //StoryView_Dots()
+                                    
+                                    //DotsFirstView()
+                                    RandomCircle() //초기 view 테스트 위해 임시 주석처리
+
                                 }
                             }
                             

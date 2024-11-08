@@ -61,7 +61,13 @@
     "Confirm" : {
 
     },
+    "Connect me into the World" : {
+
+    },
     "Default" : {
+
+    },
+    "Dots" : {
 
     },
     "Edit" : {
@@ -146,6 +152,9 @@
 
     },
     "Start game" : {
+
+    },
+    "Success" : {
 
     },
     "Success!" : {
