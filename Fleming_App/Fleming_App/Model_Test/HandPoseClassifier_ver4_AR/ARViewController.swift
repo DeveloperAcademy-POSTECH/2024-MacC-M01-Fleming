@@ -135,17 +135,19 @@ class ARViewController: UIViewController, ARSessionDelegate {
                     
                     
                 }
-                print("labelProbabilities \(handPosePrediction.labelProbabilities)")
-
-                // 핸드포즈 정확도율 기준(0.9가 기본값이었음.)
-                if confidence > 0.8 {
-
-                    print("handPosePrediction: \(handPosePrediction.label)")
-                    renderHandPose(name: handPosePrediction.label)
-                } else {
-                    print("handPosePrediction: \(handPosePrediction.label)")
-//                    cleanEmojii()
-                }
+                // (손 인식률 확인 - 필요하면 켜시오)
+//                print("labelProbabilities \(handPosePrediction.labelProbabilities)")
+//
+//                // 핸드포즈 정확도율 기준(0.9가 기본값이었음.)
+//                if confidence > 0.8 {
+//
+//                    print("handPosePrediction: \(handPosePrediction.label)")
+//                    renderHandPose(name: handPosePrediction.label)
+//                } else {
+//                    // (손 인식률 확인 - 필요하면 켜시오)
+//                    print("handPosePrediction: \(handPosePrediction.label)")
+////                    cleanEmojii()
+//                }
                 
             } catch let error {
                 print("Failure HandyModel: \(error.localizedDescription)")

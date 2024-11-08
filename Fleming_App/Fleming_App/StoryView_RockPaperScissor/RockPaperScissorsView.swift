@@ -20,8 +20,7 @@ struct RockPaperScissorsView: View{
 
 
     @State private var isStartButtonTapped: Bool = false // Start 버튼이 눌렸는지 추적
-
-    @State private var currentImage_random = "object_RockPaperScossprs_Rock"
+    @State private var currentImage_random = " "
     
     var body: some View {
         ZStack {
@@ -29,7 +28,7 @@ struct RockPaperScissorsView: View{
 
             // 뷰 이동방법
             if currentStep == 1 {
-                RockPaperScissors0()
+                RockPaperScissors0(currentStep: $currentStep)
                 PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
                                     .onChange(of: isPresented){ currentStep = 2 }
                 

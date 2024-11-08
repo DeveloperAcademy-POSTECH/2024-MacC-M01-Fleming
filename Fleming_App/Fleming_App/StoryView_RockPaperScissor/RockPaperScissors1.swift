@@ -30,28 +30,31 @@ struct RockPaperScissors1: View{
 
             VStack{
                 Text("Rock Paper Scissors !")
-                    .font(.system(size: 60, weight: .bold))
-                    .foregroundStyle(.blue)
+                    .font(.system(size: 96, weight: .bold))
+                    .foregroundStyle(AppColor.handColor2)
                     .padding(.bottom, screenHeight * 0.1)
                 
-                HStack{
-                    Image("object_RockPaperScissors_Rock")
-                        .frame(height: screenHeight * 0.2)
+                HStack(spacing: screenWidth * 0.05){
+                    Image("object_RockPaperScissors_Rock2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: screenHeight * 0.4)
                     
-                    Image("object_RockPaperScissors_Paper")
-                        .frame(height: screenHeight * 0.2)
-                        .padding(screenWidth * 0.05)
+                    Image("object_RockPaperScissors_Paper2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: screenHeight * 0.4)
                     
-                    Image("object_RockPaperScissors_Scissors")
-                        .frame(height: screenHeight * 0.2)
+                    Image("object_RockPaperScissors_Scissors2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: screenHeight * 0.4)
                 }
                 .padding(.bottom, screenHeight * 0.1)
             }
             
             ZStack{
                 Button (action: {
-//                    PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-//                        .onChange(of: isPresented){ currentStep = 1 }
                     currentStep = 2
                 }, label: {
                     ZStack{
