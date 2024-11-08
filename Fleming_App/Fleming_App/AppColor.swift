@@ -12,7 +12,8 @@ class AppColor {
     static let pigBrown = Color(hex: "#996736")
     
     // RockPaperScissors
-    static let handColor = Color(hex: "#FFDF83")
+    static let handColor = Color(hex: "#63C1FE")
+    static let handColor2 = Color(hex: "#FFCE1F")
     static let handBackgroundColor = Color(hex: "#D9D9D9")
 }
 

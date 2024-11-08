@@ -79,9 +79,6 @@
     "for Kids" : {
 
     },
-    "Friend" : {
-
-    },
     "Gender" : {
 
     },
@@ -100,10 +97,10 @@
     "Language" : {
 
     },
-    "Little Pigs" : {
+    "Let's win this game!" : {
 
     },
-    "Me" : {
+    "Little Pigs" : {
 
     },
     "Name" : {
@@ -115,7 +112,7 @@
     "Note :" : {
 
     },
-    "Please choose between rock, paper, scissors." : {
+    "Please choose between \nrock, paper, scissors." : {
 
     },
     "Please make sure there are no obstacles" : {
@@ -173,9 +170,6 @@
 
     },
     "User Info" : {
-
-    },
-    "You did a GOOD JOB!" : {
 
     },
     "You win the Game!" : {
