@@ -113,7 +113,6 @@ struct BookarooView: View{
                                     currentStep = 1
                                     isNavigating3 = true
                                 }, label: {
-                                    
                                     Image("Cover_dots")
                                         .resizable()
                                         .frame(width: 290, height: 400)
@@ -123,7 +122,9 @@ struct BookarooView: View{
                                 })
                                 .navigationDestination(isPresented: $isNavigating3){
                                     //StoryView_Dots()
-                                    RandomCircle()
+                                    
+                                    //DotsFirstView()
+                                    RandomCircle() //초기 view 테스트 위해 임시 주석처리
 //                                      makeCameraForCircle()
 //                                    RockPaperScissorsView(currentStep: $currentStep, isNavigating3:$isNavigating3)
                                 }

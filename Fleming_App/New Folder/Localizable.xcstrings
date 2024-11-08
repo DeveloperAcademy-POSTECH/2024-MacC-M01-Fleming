@@ -58,7 +58,13 @@
     "Confirm" : {
 
     },
+    "Connect me into the World" : {
+
+    },
     "Default" : {
+
+    },
+    "Dots" : {
 
     },
     "Edit" : {
@@ -133,6 +139,9 @@
     "Start game" : {
 
     },
+    "Success" : {
+
+    },
     "Success!" : {
 
     },
@@ -181,7 +190,7 @@
     "실시간 소리 크기 그래프 (dB)" : {
 
     },
-    "원에 닿음" : {
+    "원의 색상: %@" : {
 
     },
     "현재 소리 크기: %lld dB" : {
