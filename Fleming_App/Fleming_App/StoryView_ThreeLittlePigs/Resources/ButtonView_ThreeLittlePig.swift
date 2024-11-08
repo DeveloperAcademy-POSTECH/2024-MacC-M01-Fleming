@@ -25,7 +25,7 @@ struct ButtonView_ThreeLittlePig: View{
                     Image(systemName: "chevron.left")
                         .font(.system(size:40))
                         .bold()
-                        .foregroundStyle(.cyan)
+                        .foregroundStyle(.clear) // cyan이 좋아요.
                 })
             }
             
@@ -44,7 +44,7 @@ struct ButtonView_ThreeLittlePig: View{
                     Image(systemName: "chevron.right")
                         .font(.system(size:40))
                         .bold()
-                        .foregroundStyle(.cyan)
+                        .foregroundStyle(.clear) // cyan이 좋아요.
                 })
             }
         }
