@@ -621,7 +621,7 @@ struct RandomCircle: View {
                     }
                 }
             }
-            .stroke(Color.red, lineWidth: 2) // 경로를 빨간색으로
+            .stroke(Color.red, lineWidth: 3) // 경로를 빨간색으로
             
             
             // 원 색 찾기 위해
