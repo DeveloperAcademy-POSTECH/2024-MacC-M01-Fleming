@@ -17,7 +17,7 @@ class AudioManager: ObservableObject {
     // 데시벨 오르내림 체크용(dBCounter)
     @Published var dBCounter: Int = 0 // 50dB 이상으로 올라갔다가 다시 내려갈 때마다 증가
     private var wasAboveThreshold: Bool = false
-    var threshold: Float = 60.0 // 데시벨 기준 값
+    var threshold: Float = 55.0 // 데시벨 기준 값
     @Published var thresholdHistory: [Float] = [] // threshold 값을 저장하는 배열(Test용)
     
     init() {

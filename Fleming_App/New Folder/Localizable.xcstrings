@@ -25,9 +25,6 @@
     "160 dB" : {
 
     },
-    "activities." : {
-
-    },
     "aroo" : {
 
     },
@@ -40,6 +37,9 @@
     "Attention" : {
 
     },
+    "Background" : {
+
+    },
     "Birth:" : {
 
     },
@@ -47,6 +47,9 @@
 
     },
     "Blow it !" : {
+
+    },
+    "Blow with the wolf and make the straw house fly away!" : {
 
     },
     "Book" : {
@@ -73,10 +76,13 @@
     "Edit Info" : {
 
     },
-    "for Kids" : {
+    "English" : {
 
     },
-    "Friend" : {
+    "Enjoy activities best from 1m away" : {
+
+    },
+    "for Kids" : {
 
     },
     "Gender" : {
@@ -85,13 +91,22 @@
     "Hello, device!" : {
 
     },
+    "in the children's activities." : {
+
+    },
+    "Korean" : {
+
+    },
     "Label Text: %@" : {
 
     },
-    "Little Pigs" : {
+    "Language" : {
 
     },
-    "Me" : {
+    "Let's win this game!" : {
+
+    },
+    "Little Pigs" : {
 
     },
     "Name" : {
@@ -103,10 +118,10 @@
     "Note :" : {
 
     },
-    "Please choose between rock, paper, scissors." : {
+    "Please choose between \nrock, paper, scissors." : {
 
     },
-    "Please make sure there are no obstacles in the children's " : {
+    "Please make sure there are no obstacles" : {
 
     },
     "Read Text" : {
@@ -124,13 +139,13 @@
     "Save" : {
 
     },
-    "Scream" : {
-
-    },
     "Second Label: %@" : {
 
     },
     "Select Voice" : {
+
+    },
+    "SOUND" : {
 
     },
     "Start" : {
@@ -148,6 +163,9 @@
     "Sucess!!" : {
 
     },
+    "Text Sound" : {
+
+    },
     "The Three" : {
 
     },
@@ -161,9 +179,6 @@
 
     },
     "User Info" : {
-
-    },
-    "You did a GOOD JOB!" : {
 
     },
     "You win the Game!" : {
@@ -188,6 +203,9 @@
 
     },
     "실시간 소리 크기 그래프 (dB)" : {
+
+    },
+    "한 번 더" : {
 
     },
     "현재 소리 크기: %lld dB" : {

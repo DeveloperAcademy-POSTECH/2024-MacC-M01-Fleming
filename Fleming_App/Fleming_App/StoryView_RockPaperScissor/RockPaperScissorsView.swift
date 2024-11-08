@@ -11,53 +11,26 @@ import SwiftUI
 struct RockPaperScissorsView: View{
     @Binding var currentStep: Int
     @Binding var isNavigating2: Bool
+    var screenHeight = UIScreen.main.bounds.height
     
     // Popup과 연결되는 값들(Repeat 횟수)
     @State private var isPresented: Bool = true
     @State private var repeatNumber: Int = 1 // 반복횟수 저장
     // -> (추후)SwiftData와 결합 필요.
-//    @Binding var isLeft : Bool
+
 
     @State private var isStartButtonTapped: Bool = false // Start 버튼이 눌렸는지 추적
-
-    @State private var currentImage_random = "object_RockPaperScossprs_Rock"
+    @State private var currentImage_random = " "
     
     var body: some View {
         ZStack {
-//            RockPaperScissors0()
-//            PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-//                .onChange(of: isPresented) { newValue in
-//                    if !newValue {
-//                        currentStep = 1 // Start 버튼이 눌려 isPresented가 false가 될 때 currentStep을 1로 변경
-//                        isStartButtonTapped = false
-//                    }
-//                }
             PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-                //.onChange(of: isPresented){ currentStep = 0 }
+
             // 뷰 이동방법
             if currentStep == 1 {
-                RockPaperScissors0()
+                RockPaperScissors0(currentStep: $currentStep)
                 PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
                                     .onChange(of: isPresented){ currentStep = 2 }
-
-//                    .transition(.asymmetric(
-//                        insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
-//                        removal: .opacity))
-                
-//                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-//                    .onChange(of: isPresented){ currentStep = 1 }
-                
-//                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber, onDismiss: {
-//                                   currentStep = 1 // 팝업이 닫힐 때 다음 단계로 이동
-//                               })
-//                PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-//                                   .onChange(of: isPresented) { newValue in
-//                                       if !newValue {
-//                                           currentStep = 1 // Start 버튼이 눌려 isPresented가 false가 될 때 currentStep을 1로 변경
-//                                           isStartButtonTapped = false
-//                                       }
-//                                   }
-                //PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
                 
             } else {
                 
@@ -66,11 +39,13 @@ struct RockPaperScissorsView: View{
                         insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
                         removal: .opacity))
             }
+            
+            // 홈 버튼
+            HomeButtonView()
+                .position(x: screenHeight * 0.06, y: screenHeight * 0.06)
         }
-//        .sheet(isPresented: $isPresented) {
-//            PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-//        }
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
+        .navigationBarBackButtonHidden(true) // 커스텀 백버튼 존재. 기본버튼 삭제
     }
     
     @ViewBuilder
@@ -95,10 +70,11 @@ struct RockPaperScissorsView: View{
     }
 }
 
-//#Preview{
-//    @Previewable @State var currentStep: Int = 1
-//    RockPaperScissors1(currentStep: $currentStep)
-//}
+#Preview{
+    @Previewable @State var currentStep: Int = 1
+//    RockPaperScissors2(currentStep: $currentStep, currentImage_random: .constant(" "), repeatNumber: .constant(2))
+    RockPaperScissorsView(currentStep: .constant(2), isNavigating2: .constant(true))
+}
 
 // *1. MetalFX-framework특징
 // -> MetalKit은 시뮬레이터에 영향을 주지 않지만, FX는 그렇지 않음.

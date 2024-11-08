@@ -17,33 +17,65 @@ struct ThreeLittlePigsNavigation: View {
     @State private var repeatNumber: Int = 1 // 반복횟수 저장
     // -> (추후)SwiftData와 결합 필요.
     
+    var screenHeight = UIScreen.main.bounds.height
+    var screenWidth = UIScreen.main.bounds.width
+    
     var body: some View {
         ZStack {
             
-            // 뷰 이동방법
+            // 뷰 이동방법(페이지 이동)
             if currentStep == 0 {
-                ThreeLittlePigs00(currentStep: $currentStep, isLeft: .constant(true))
+                ThreeLittlePigs0(currentStep: $currentStep, isLeft: .constant(true))
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
                         removal: .opacity))
                 
                 PopupView(isPresented: $isPresented, repeatNumber: $repeatNumber)
-                    .onChange(of: isPresented){ currentStep = 1 }
-                
-                
-                
-//                    .onDisappear() { currentStep = 1 }
-                
+                    .onChange(of: isPresented){ currentStep = 1 } // Start버튼을 누르면, 1페이지로 시작함.
+
             } else {
                 getViewForStep(currentStep: currentStep)
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing), // 새 뷰는 오른쪽에서 등장
                         removal: .opacity))
+                
+                // TTS + 페이지 넘김 블럭
+                HStack(spacing: -30){
+                    Image("Button_PlaySound")
+                    ZStack{
+                        Rectangle()
+                            .foregroundStyle(.white.opacity(0.8))
+                            .frame(width: screenWidth * 0.85, height: 100)
+                            .cornerRadius(100)
+                        Text("Blow with the wolf and make the straw house fly away!")
+                            .font(.system(size:36, weight:.bold))
+                    }
+                    Image("Button_NextPage")
+                }
+                .offset(y: screenHeight * 0.4)
+                
+                // 페이지 이동 버튼 (개발용, 나중에 주석처리)
+                ButtonView_ThreeLittlePig(currentStep: $currentStep)
+                    .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
+                
             }
             
+            // 홈 버튼
+            HomeButtonView()
+                .position(x: screenHeight * 0.06, y: screenHeight * 0.06)
+            
         }
-        .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
-        //        .navigationBarBackButtonHidden(true) // 추후에 커스텀함
+        .animation(.interactiveSpring(duration: 1), value: currentStep) // 애니메이션
+        .navigationBarBackButtonHidden(true) // 커스텀 백버튼 존재. 기본버튼 삭제
+        /// (예시들)
+        /// easeInOut(0.5초 - 초기값)
+        /// bouncy(다소 통통튐 - 0.7이 그나마 나음),
+        /// linear(1초이상 필요, 1초이상 하면 캐릭터가 먼저 튀어나옴)
+        /// smooth(1초가 가장 자연스러운 움직임이나, 깜빡일 때 반, 옆으로 밀려나올때 반 / 캐릭터도 튀어나옴)
+        /// interactiveSpring (1에서 부드러운편)
+        /// spring(많이 통통튐)
+        /// {공통} 카메라 불러올 때, 튀어오름.
+        
     }
     
     // 각 단계에 맞는 뷰를 반환
@@ -51,41 +83,41 @@ struct ThreeLittlePigsNavigation: View {
     func getViewForStep(currentStep: Int) -> some View {
         switch currentStep {
         case 1:
-            ThreeLittlePigs01(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs1(currentStep: $currentStep, isLeft: $isLeft)
         case 2:
-            ThreeLittlePigs02(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs2(currentStep: $currentStep, isLeft: $isLeft)
         case 3: // 카메라 앞 손움직이기 반복
-            ThreeLittlePigs03_cam(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
+            ThreeLittlePigs3_cam(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
         case 4:
-            ThreeLittlePigs04(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs4(currentStep: $currentStep, isLeft: $isLeft)
         case 5:
-            ThreeLittlePigs05(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs2(currentStep: $currentStep, isLeft: $isLeft)
         case 6: // 카메라 앞 손움직이기 반복
-            ThreeLittlePigs06_cam(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
+            ThreeLittlePigs3_cam(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
         case 7:
-            ThreeLittlePigs07(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs4(currentStep: $currentStep, isLeft: $isLeft)
         case 8:
-            ThreeLittlePigs08(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs2(currentStep: $currentStep, isLeft: $isLeft)
         case 9: // 카메라 앞 손움직이기 반복
-            ThreeLittlePigs09_cam(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
+            ThreeLittlePigs3_cam(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
         case 10:
-            ThreeLittlePigs10(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs4(currentStep: $currentStep, isLeft: $isLeft)
         case 11:
-            ThreeLittlePigs11(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs5(currentStep: $currentStep, isLeft: $isLeft)
         case 12:
-            ThreeLittlePigs12(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs6(currentStep: $currentStep, isLeft: $isLeft)
         case 13:
-            ThreeLittlePigs13_speech(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
-        case 14:
-            ThreeLittlePigs14(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs7_speech(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
+        case 14: // 발성연습 반복
+            ThreeLittlePigs6(currentStep: $currentStep, isLeft: $isLeft)
         case 15:
-            ThreeLittlePigs15_speech(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
-        case 16:
-            ThreeLittlePigs16(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs7_speech(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
+        case 16: // 발성연습 반복
+            ThreeLittlePigs6(currentStep: $currentStep, isLeft: $isLeft)
         case 17:
-            ThreeLittlePigs17_speech(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
-        case 18:
-            ThreeLittlePigs18(currentStep: $currentStep, isLeft: $isLeft)
+            ThreeLittlePigs7_speech(currentStep: $currentStep, isLeft: $isLeft, repeatNumber: $repeatNumber)
+        case 18: // 발성연습 반복
+            ThreeLittlePigs8(currentStep: $currentStep, isLeft: $isLeft)
         default:
             EmptyView()
         }
