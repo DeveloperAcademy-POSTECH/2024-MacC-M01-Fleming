@@ -44,8 +44,8 @@ struct RockPaperScissorsView: View{
             HomeButtonView()
                 .position(x: screenHeight * 0.06, y: screenHeight * 0.06)
         }
-
         .animation(.easeInOut(duration: 0.5), value: currentStep) // 애니메이션 추가
+        .navigationBarBackButtonHidden(true) // 커스텀 백버튼 존재. 기본버튼 삭제
     }
     
     @ViewBuilder
@@ -70,10 +70,11 @@ struct RockPaperScissorsView: View{
     }
 }
 
-//#Preview{
-//    @Previewable @State var currentStep: Int = 1
-//    RockPaperScissors1(currentStep: $currentStep)
-//}
+#Preview{
+    @Previewable @State var currentStep: Int = 1
+//    RockPaperScissors2(currentStep: $currentStep, currentImage_random: .constant(" "), repeatNumber: .constant(2))
+    RockPaperScissorsView(currentStep: .constant(2), isNavigating2: .constant(true))
+}
 
 // *1. MetalFX-framework특징
 // -> MetalKit은 시뮬레이터에 영향을 주지 않지만, FX는 그렇지 않음.
