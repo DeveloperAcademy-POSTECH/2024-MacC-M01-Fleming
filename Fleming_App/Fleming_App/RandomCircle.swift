@@ -28,7 +28,6 @@ struct RandomCircle: View {
     private let circleCount = 6
     private let circleSize: CGFloat = 50.0
     private let colors: [Color] = [.customOrange, .customGreen, .customBrown]
-    private let margin: CGFloat = 80.0
     private let fingerCircleSize: CGFloat = 100.0
     
     var body: some View {
@@ -93,47 +92,14 @@ struct RandomCircle: View {
         }
     }
     
-    func startAddingColors() {
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            backgroundColors.append(Color.yellow.opacity(0.1))
-            
-            if backgroundColors.count > 1000 {
-                timer.invalidate()
-            }
-        }
-    }
-    
-    func checkCircleCollision() {
-        guard let fingerPos = fingertipPosition else { return }
-        
-        let fingerImageSize: CGFloat = fingerCircleSize
-        
-        for circle in circlePositions {
-            let distance = distanceBetween(circle.position, fingerPos)
-            
-            if distance < (circleSize / 3 + fingerImageSize / 2) {
-                if currentTouchedColor == circle.color,
-                   lastTouchedCircleID != circle.id {
-                    showSuccess = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        showSuccess = false
-                    }
-                }
-                currentTouchedColor = circle.color
-                lastTouchedCircleID = circle.id
-                break
-            }
-        }
-    }
-    
     func generateRandomCircles() {
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
         var generatedPositions: [(id: UUID, position: CGPoint, color: Color, size: CGFloat)] = []
         
         while generatedPositions.count < circleCount {
-            let x = CGFloat.random(in: (circleSize + margin)...(screenWidth - circleSize - margin))
-            let y = CGFloat.random(in: (circleSize + margin)...(screenHeight - circleSize - margin))
+            let x = CGFloat.random(in: (circleSize)...(screenWidth - circleSize))
+            let y = CGFloat.random(in: (circleSize)...(screenHeight - circleSize))
             let newPoint = CGPoint(x: x, y: y)
             
             let randomSize = CGFloat.random(in: 50...100)
@@ -151,6 +117,39 @@ struct RandomCircle: View {
     
     func distanceBetween(_ p1: CGPoint, _ p2: CGPoint) -> CGFloat {
         return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2))
+    }
+    
+    
+    func checkCircleCollision() {
+        guard let fingerPos = fingertipPosition else { return }
+        
+        let fingerImageSize: CGFloat = fingerCircleSize
+        
+        for circle in circlePositions {
+            let distance = distanceBetween(circle.position, fingerPos)
+            
+            if distance < (circleSize / 2 + fingerImageSize / 2) {
+                if currentTouchedColor == circle.color,
+                   lastTouchedCircleID != circle.id {
+                    showSuccess = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        showSuccess = false
+                    }
+                }
+                currentTouchedColor = circle.color
+                lastTouchedCircleID = circle.id
+                break
+            }
+        }
+    }
+    func startAddingColors() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            backgroundColors.append(Color.yellow.opacity(0.1))
+            
+            if backgroundColors.count > 1000 {
+                timer.invalidate()
+            }
+        }
     }
 }
 
