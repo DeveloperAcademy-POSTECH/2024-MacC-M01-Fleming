@@ -3,7 +3,7 @@
 //  Fleming_App
 //
 //  Created by 임유리 on 11/5/24.
-//
+
 
 import SwiftUI
 import AVFoundation
@@ -23,6 +23,7 @@ struct RandomCircle: View {
     @State private var lastTouchedCircle: (id: UUID, color: Color)? = nil
     @State private var lastTouchedCircleID: UUID? = nil
     @State private var fingerPath: [CGPoint] = []
+    @State private var backgroundColors: [Color] = [Color.yellow.opacity(0.1)]
     
     private let circleCount = 6
     private let circleSize: CGFloat = 50.0
@@ -32,6 +33,11 @@ struct RandomCircle: View {
     
     var body: some View {
         ZStack {
+            ForEach(backgroundColors.indices, id: \.self) { index in
+                backgroundColors[index]
+                    .ignoresSafeArea()
+            }
+            
             CameraView(fingertipPosition: $fingertipPosition)
                 .ignoresSafeArea()
             
@@ -46,21 +52,19 @@ struct RandomCircle: View {
             }
             
             if let fingertipPosition = fingertipPosition {
-                
-                ForEach(0..<20) { _ in
-                    Image("handfinger")
-                        .resizable()
-                        .frame(width: fingerCircleSize, height: fingerCircleSize)
-                        .position(fingertipPosition)
-                        .opacity(0.1)
-                }
-                .onChange(of: fingertipPosition) { newPosition in                                  checkCircleCollision()
-                        fingerPath.append(newPosition)
-                    
-                }
+                Image("handfinger")
+                    .resizable()
+                    .frame(width: fingerCircleSize, height: fingerCircleSize)
+                    .position(fingertipPosition)
+                    .onChange(of: fingertipPosition) { newPosition in
+                        for _ in 0..<5 {
+                            fingerPath.append(newPosition)
+                        }
+                        checkCircleCollision()
+                    }
             }
-            
-            ForEach(0..<10) { _ in
+
+            ForEach(0..<10, id: \.self) { _ in
                 Path { path in
                     if !fingerPath.isEmpty {
                         path.move(to: fingerPath.first!)
@@ -69,9 +73,11 @@ struct RandomCircle: View {
                         }
                     }
                 }
-                .stroke(Color.red.opacity(0.1), lineWidth: 3)
+                .stroke(Color.red, lineWidth: 3)
             }
+
             
+
             if showSuccess {
                 Text("Success")
                     .font(.largeTitle)
@@ -83,9 +89,16 @@ struct RandomCircle: View {
         }
         .onAppear {
             generateRandomCircles()
+            startAddingColors()
+        }
+    }
+    
+    func startAddingColors() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            backgroundColors.append(Color.yellow.opacity(0.1))
             
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-                generateRandomCircles()
+            if backgroundColors.count > 1000 {
+                timer.invalidate()
             }
         }
     }
@@ -129,11 +142,11 @@ struct RandomCircle: View {
                 distanceBetween(point.position, newPoint) < randomSize
             }) {
                 let color = colors[generatedPositions.count / 2]
-                generatedPositions.append((id: UUID(), position: newPoint, color: color, size: randomSize))
+                generatedPositions.append((id: UUID(), position: newPoint, color: color,size: randomSize))
             }
         }
         
-        circlePositions.append(contentsOf: generatedPositions)
+        circlePositions = generatedPositions
     }
     
     func distanceBetween(_ p1: CGPoint, _ p2: CGPoint) -> CGFloat {
@@ -155,6 +168,7 @@ struct CameraView: UIViewControllerRepresentable {
         }
         
         captureSession.addInput(input)
+        
         
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.setSampleBufferDelegate(context.coordinator, queue: DispatchQueue(label: "videoQueue"))
@@ -251,4 +265,3 @@ struct RandomCircle_Previews: PreviewProvider {
         RandomCircle()
     }
 }
-
