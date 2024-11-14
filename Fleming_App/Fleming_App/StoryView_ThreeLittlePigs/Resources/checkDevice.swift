@@ -4,23 +4,18 @@
 //
 //  Created by 임유리 on 10/24/24.
 //
-
+//
 import SwiftUI
 
+enum CameraDirection {
+    case horizontal
+    case vertical
+    case not
+}
 
 struct checkDevice {
     @State private var deviceName: String = ""
-    
-//    var body: some View {
-//        VStack {
-////            Text("Device Name: \(deviceName)!!")
-////            Text("!!")
-//        }
-//        .onAppear {
-//            self.deviceName = self.getDeviceName()
-//        }
-//    }
-    
+
     func getDeviceName() -> CameraDirection {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -36,7 +31,7 @@ struct checkDevice {
         return mapToDevice(identifier: code)
     }
     
-    func mapToDevice(identifier: String) -> CameraDirection { //확인 이후 if로 변경예정
+    func mapToDevice(identifier: String) -> CameraDirection {
         switch identifier {
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":
             return CameraDirection.horizontal
@@ -122,44 +117,3 @@ struct checkDevice {
         }
     }
 }
-
-//enum CameraDirection {
-//    case vertical
-//    case horizontal
-//    case not
-//    
-//    func calculate() -> CGPoint {
-//        switch self {
-//        case .vertical:
-//            <#code#>
-//        case .horizontal: //변동해야함
-//            <#code#>
-//        case .not:
-//            break
-//        }
-//    }
-//}
-
-
-
-//"Model Identifiers: iPad13,18", "iPad13,19"
-//iPad Pro 12.9인치 (6세대)
-//Model Identifiers: "iPad14,5", "iPad14,6"
-//iPad Pro 11인치 (6세대)
-//Model Identifiers: "iPad14,3", "iPad14,4"
-
-
-//public enum iPadType: String {
-//    case iPad2 = "iPad 2"
-//    case iPad3 = "iPad 3"
-//    case iPad4 = "iPad 4"
-//    case iPadAir = "iPad Air"
-//    case iPadAir2 = "iPad Air 2"
-//..... 이런 식으로
-//public static func getType(for identifier: String) -> iPadType? {
-//        if ["iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4"].contains(identifier) {
-//            return .iPad2
-//        } else if ["iPad3,1", "iPad3,2", "iPad3,3"].contains(identifier) {
-//            return .iPad3
-//        } else if ["iPad3,4", "iPad3,5", "iPad3,6"].contains(identifier) {
-//            return .iPad4
