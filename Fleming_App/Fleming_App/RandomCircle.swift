@@ -93,27 +93,26 @@ struct RandomCircle: View {
     }
     
     func generateRandomCircles() {
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
+        let fixedPositions: [CGPoint] = [
+            CGPoint(x: 150, y: 250),
+            CGPoint(x: 250, y: 350),
+            CGPoint(x: 350, y: 450),
+            CGPoint(x: 450, y: 550),
+            CGPoint(x: 550, y: 650),
+            CGPoint(x: 650, y: 750)
+        ]
+        
         var generatedPositions: [(id: UUID, position: CGPoint, color: Color, size: CGFloat)] = []
         
-        while generatedPositions.count < circleCount {
-            let x = CGFloat.random(in: (circleSize)...(screenWidth - circleSize))
-            let y = CGFloat.random(in: (circleSize)...(screenHeight - circleSize))
-            let newPoint = CGPoint(x: x, y: y)
-            
-            let randomSize = CGFloat.random(in: 50...100)
-            
-            if !generatedPositions.contains(where: { point in
-                distanceBetween(point.position, newPoint) < randomSize
-            }) {
-                let color = colors[generatedPositions.count / 2]
-                generatedPositions.append((id: UUID(), position: newPoint, color: color,size: randomSize))
-            }
+        for (index, position) in fixedPositions.enumerated() {
+            let color = colors[index / 2]
+            let size = CGFloat(50.0)
+            generatedPositions.append((id: UUID(), position: position, color: color, size: size))
         }
         
         circlePositions = generatedPositions
     }
+
     
     func distanceBetween(_ p1: CGPoint, _ p2: CGPoint) -> CGFloat {
         return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2))
