@@ -96,10 +96,10 @@ struct RandomCircle: View {
         let fixedPositions: [CGPoint] = [
             CGPoint(x: 150, y: 250),
             CGPoint(x: 250, y: 350),
-            CGPoint(x: 350, y: 450),
+            CGPoint(x: 510, y: 270),
             CGPoint(x: 450, y: 550),
-            CGPoint(x: 550, y: 650),
-            CGPoint(x: 650, y: 750)
+            CGPoint(x: 690, y: 90),
+            CGPoint(x: 420, y: 700)
         ]
         
         var generatedPositions: [(id: UUID, position: CGPoint, color: Color, size: CGFloat)] = []
