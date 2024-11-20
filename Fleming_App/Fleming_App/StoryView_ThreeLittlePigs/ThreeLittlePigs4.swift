@@ -42,9 +42,6 @@ struct ThreeLittlePigs4: View {
             // TTS 읽어주기 시작.
             playTTS()
         }
-        .onDisappear(){
-            soundManager.stopSpeaking()
-        }
         // 애니메이션 작동
         .onReceive(timer) { _ in
             isLeft.toggle() // 0.5초마다 좌우 위치를 변경

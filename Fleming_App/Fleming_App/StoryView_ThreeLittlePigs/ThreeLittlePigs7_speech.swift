@@ -128,9 +128,7 @@ struct ThreeLittlePigs7_speech: View {
             // TTS 읽어주기 시작.
             playTTS()
         }
-        .onDisappear{
-            soundManager.stopSpeaking() // audioManager.stopAudioManager() // (필요시)오디오 모듈 끄기
-        }
+
         .fullScreenCover(isPresented: $isPresentingSoundLevelView){
             SoundLevelView()
         }

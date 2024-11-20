@@ -40,23 +40,24 @@ struct ThreeLittlePigsNavigation: View {
                         removal: .opacity))
                 
                 // TTS + 페이지 넘김 블럭
-                HStack(spacing: -30){
-                    Image("Button_PlaySound")
-                    ZStack{
-                        Rectangle()
-                            .foregroundStyle(.white.opacity(0.8))
-                            .frame(width: screenWidth * 0.85, height: 100)
-                            .cornerRadius(100)
-                        Text("Blow with the wolf and make the straw house fly away!")
-                            .font(.system(size:36, weight:.bold))
-                    }
-                    Image("Button_NextPage")
-                }
-                .offset(y: screenHeight * 0.4)
+                ButtonView_ThreeLittlePig(currentStep:$currentStep)
+//                HStack(spacing: -30){
+//                    Image("Button_PlaySound")
+//                    ZStack{
+//                        Rectangle()
+//                            .foregroundStyle(.white.opacity(0.8))
+//                            .frame(width: screenWidth * 0.85, height: 100)
+//                            .cornerRadius(100)
+//                        Text("Blow with the wolf and make the straw house fly away!")
+//                            .font(.system(size:36, weight:.bold))
+//                    }
+//                    Image("Button_NextPage")
+//                }
+//                .offset(y: screenHeight * 0.4)
                 
                 // 페이지 이동 버튼 (개발용, 나중에 주석처리)
-                ButtonView_ThreeLittlePig(currentStep: $currentStep)
-                    .frame(width:screenWidth-100, height: screenHeight-110, alignment: .bottom)
+                ButtonView_ThreeLittlePig_Dev(currentStep: $currentStep)
+                    .frame(width:screenWidth-100, height: screenHeight-100, alignment: .bottom)
                 
             }
             
