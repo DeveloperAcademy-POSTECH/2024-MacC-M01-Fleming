@@ -72,9 +72,7 @@ struct ThreeLittlePigs8: View {
                 But the brick house was very strong... The three little pigs could live safely!
             """)
         }
-        .onDisappear(){
-            soundModel.stopSound()
-        }
+        
     }
 }
 

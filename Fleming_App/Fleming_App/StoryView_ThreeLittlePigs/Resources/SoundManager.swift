@@ -45,17 +45,40 @@ class SoundManager: ObservableObject {
     }
 
     func speakText(_ text: String, withRate rate: Float = 0.5) {
-        let utterance = AVSpeechUtterance(string: text)
-        if let customVoice = personalVoices.first {
-            utterance.voice = customVoice
-        } else {
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        // 대화 시작시, 기존 말은 멈추고 시작하기.
+        synthesizer.stopSpeaking(at: .immediate)
+        
+        // 0.4초 뒤에 TTS 시작
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            let utterance = AVSpeechUtterance(string: text)
+            if let customVoice = self.personalVoices.first {
+                utterance.voice = customVoice
+            } else {
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            }
+            utterance.rate = rate
+            self.synthesizer.speak(utterance)
         }
-        utterance.rate = rate
-        synthesizer.speak(utterance)
+//        let utterance = AVSpeechUtterance(string: text)
+//        if let customVoice = personalVoices.first {
+//            utterance.voice = customVoice
+//        } else {
+//            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//        }
+//        utterance.rate = rate
+//        synthesizer.speak(utterance)
     }
     
     func stopSpeaking() {
-           synthesizer.stopSpeaking(at: .immediate)
-       }
+        // TTS 중지
+        synthesizer.stopSpeaking(at: .immediate)
+        
+        // AVAudioSession도 활성화된 경우 중지
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        } catch {
+            print("Audio session 비활성화 실패: \(error.localizedDescription)")
+        }
+    }
 }

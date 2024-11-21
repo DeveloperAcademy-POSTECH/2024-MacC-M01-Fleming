@@ -59,10 +59,6 @@ struct ThreeLittlePigs6: View {
             playTTS()
         }
         
-        .onDisappear(){
-            soundModel.stopSound()
-        }
-        
         // 애니메이션 작동
         .onReceive(timer) { _ in
             isLeft.toggle() // 0.5초마다 좌우 위치를 변경

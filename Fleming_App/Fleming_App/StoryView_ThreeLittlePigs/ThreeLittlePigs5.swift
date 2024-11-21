@@ -72,9 +72,6 @@ struct ThreeLittlePigs5: View {
                 One day, a wolf came to the village where the pigs lived.
             """)
         }
-        .onDisappear(){
-            soundModel.stopSound()
-        }
         
         // 애니메이션 작동
         .onReceive(timer) { _ in

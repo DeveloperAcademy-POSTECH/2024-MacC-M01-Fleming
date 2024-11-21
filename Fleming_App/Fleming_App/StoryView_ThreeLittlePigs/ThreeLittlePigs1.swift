@@ -100,10 +100,6 @@ struct ThreeLittlePigs1: View {
             """)
         }
         
-        // personal voice Stop
-        .onDisappear(){
-            soundManager.stopSpeaking()
-        }
         .alert(isPresented: .constant(authorStatus == .denied)) {
             Alert(
                 title: Text("개인음성 권한 거부됨"),
