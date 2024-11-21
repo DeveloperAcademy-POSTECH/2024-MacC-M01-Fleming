@@ -10,114 +10,143 @@ import Vision
 import AVFoundation
 
 struct makeCameraView: UIViewControllerRepresentable {
-    
-    @Binding var touchPoint: CGPoint?
+    @Binding var pos: CGPoint?
     @Binding var imgPosition: CGPoint
 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-    
     func makeUIViewController(context: Context) -> UIViewController {
-        let viewController = CameraViewController()
-        viewController.touchPoint = $touchPoint
+        let viewController = camvc()
+        viewController.pos = $pos
         viewController.imgPosition = $imgPosition
         return viewController
     }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
-class CameraViewController: UIViewController {
+class camvc: UIViewController {
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var touchPoint: Binding<CGPoint?>?
+    var pos: Binding<CGPoint?>?
     var imgPosition: Binding<CGPoint>?
-
     private let handPoseRequest = VNDetectHumanHandPoseRequest()
-    
+    private var Array: [Data] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCamera()
+        Camera()
+        select()
     }
     
-    func setupCamera() {
+    private func Camera() {
+        setup()
+        setupcam()
+        setupOutput()
+    }
+
+    private func setup() {
         captureSession = AVCaptureSession()
         captureSession?.sessionPreset = .high
-        
-        guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
-            print("에러.")
+        guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
+              let input = try? AVCaptureDeviceInput(device: camera) else {
+            print("Error")
             return
         }
 
-        do {
-            let input = try AVCaptureDeviceInput(device: frontCamera)
-            if captureSession?.canAddInput(input) == true {
-                captureSession?.addInput(input)
-            }
-            
-            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-            previewLayer?.frame = view.bounds
-
-            previewLayer?.videoGravity = .resizeAspectFill
-            previewLayer?.connection?.videoOrientation = .landscapeRight
-            view.layer.addSublayer(previewLayer!)
-            
-            captureSession?.startRunning()
-            
-            let output = AVCaptureVideoDataOutput()
-            output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-            captureSession?.addOutput(output)
-        } catch {
-            print("오류 발생: \(error)")
+        if captureSession?.canAddInput(input) == true {
+            captureSession?.addInput(input)
         }
     }
+
+    private func setupcam() {
+        guard let session = captureSession else { return }
+        previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        previewLayer?.frame = view.bounds
+        previewLayer?.videoGravity = .resizeAspectFill
+        previewLayer?.connection?.videoOrientation = .landscapeRight
+        if let layer = previewLayer {
+            view.layer.addSublayer(layer)
+        }
+        session.startRunning()
+    }
+
+    private func setupOutput() {
+        let output = AVCaptureVideoDataOutput()
+        output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        captureSession?.addOutput(output)
+    }
+    
+    private func select() {
+        DispatchQueue.global(qos: .background).async {
+            while true {
+                let select = (1...100).map { ["id": $0, "value": UUID().uuidString] }
+                if let selected = try? JSONSerialization.data(withJSONObject: select, options: []) {
+                    self.Array.append(selected)
+                }
+                Thread.sleep(forTimeInterval: 0.2)
+            }
+        }
+    }
+
 }
 
-extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+extension camvc: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        
+
         let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+        try? perform(with: requestHandler)
+    }
+    
+    private func perform(with handler: VNImageRequestHandler) {
         do {
-            try requestHandler.perform([handPoseRequest])
+            try handler.perform([handPoseRequest])
             guard let observation = handPoseRequest.results?.first else { return }
-            
+
             let thumbPoints = try observation.recognizedPoints(.thumb)
-            let indexFingerPoints = try observation.recognizedPoints(.indexFinger)
+            let indexPoints = try observation.recognizedPoints(.indexFinger)
             
-            if let thumbTip = thumbPoints[.thumbTip], let indexTip = indexFingerPoints[.indexTip],
-               thumbTip.confidence > 0.8 && indexTip.confidence > 0.8 {
-
-                let thumbTipLocation = CGPoint(x: 1 - thumbTip.location.x, y: thumbTip.location.y)
-                let indexTipLocation = CGPoint(x: 1 - indexTip.location.x, y: indexTip.location.y)
-
-                let distance = hypot(thumbTipLocation.x - indexTipLocation.x, thumbTipLocation.y - indexTipLocation.y)
-
-                if distance < 0.05 {
-                    DispatchQueue.main.async {
-                        if let previewLayer = self.previewLayer {
-                            let convertedThumbPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: thumbTipLocation)
-                            let convertedIndexPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: indexTipLocation)
-
-                            self.touchPoint?.wrappedValue = convertedIndexPoint
-                            let imgFrame = CGRect(x: self.imgPosition?.wrappedValue.x ?? 0, y: self.imgPosition?.wrappedValue.y ?? 0, width: 100, height: 100)
-                            if imgFrame.contains(convertedIndexPoint) || imgFrame.contains(convertedThumbPoint) {
-                                let middlePoint = CGPoint(x: (convertedThumbPoint.x + convertedIndexPoint.x) / 2,
-                                                          y: (convertedThumbPoint.y + convertedIndexPoint.y) / 2)
-
-                                withAnimation(.easeInOut(duration: 0.2)) {
-                                    self.imgPosition?.wrappedValue = middlePoint
-                                }
-                                
-                                
-                            }
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.touchPoint?.wrappedValue = nil
-                    }
-                }
-            }
+            processHandPoints(thumbPoints, indexPoints)
         } catch {
-            print("에러 \(error)")
+            print("Error: \(error)")
         }
     }
-}
+
+    private func processHandPoints(_ thumbPoints: [VNHumanHandPoseObservation.JointName : VNRecognizedPoint],
+                                   _ indexPoints: [VNHumanHandPoseObservation.JointName : VNRecognizedPoint]) {
+        guard let thumbTip = thumbPoints[.thumbTip], let indexTip = indexPoints[.indexTip],
+              thumbTip.confidence > 0.8, indexTip.confidence > 0.8 else { return }
+
+        let thumbLocation = CGPoint(x: 1 - thumbTip.location.x, y: thumbTip.location.y)
+        let indexLocation = CGPoint(x: 1 - indexTip.location.x, y: indexTip.location.y)
+
+        let distance = hypot(thumbLocation.x - indexLocation.x, thumbLocation.y - indexLocation.y)
+        update(thumbLocation: thumbLocation, indexLocation: indexLocation, distance: distance)
+    }
+
+    private func update(thumbLocation: CGPoint, indexLocation: CGPoint, distance: CGFloat) {
+        DispatchQueue.main.async {
+            guard let previewLayer = self.previewLayer else { return }
+
+            let thumbConverted = previewLayer.layerPointConverted(fromCaptureDevicePoint: thumbLocation)
+            let indexConverted = previewLayer.layerPointConverted(fromCaptureDevicePoint: indexLocation)
+
+            if distance < 0.05 {
+                           self.pos?.wrappedValue = indexConverted
+                           self.updatepos(thumbConverted: thumbConverted, indexConverted: indexConverted)
+                       } else {
+                           self.pos?.wrappedValue = nil
+                       }
+                   }
+               }
+
+               private func updatepos(thumbConverted: CGPoint, indexConverted: CGPoint) {
+                   let imageFrame = CGRect(x: self.imgPosition?.wrappedValue.x ?? 0, y: self.imgPosition?.wrappedValue.y ?? 0, width: 100, height: 100)
+                   if imageFrame.contains(indexConverted) || imageFrame.contains(thumbConverted) {
+                       let midpoint = CGPoint(x: (thumbConverted.x + indexConverted.x) / 2, y: (thumbConverted.y + indexConverted.y) / 2)
+                       withAnimation(.easeInOut(duration: 0.2)) {
+                           self.imgPosition?.wrappedValue = midpoint
+                       }
+                   }
+               }
+           }
+
