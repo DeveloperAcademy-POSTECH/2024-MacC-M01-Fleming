@@ -27,8 +27,8 @@ struct ThreeLittlePigs7_speech: View {
     private let columns = Array(repeating: GridItem(.flexible()), count: 10) // 체크마크 열의 수를 설정(dBCounter)
     @State private var thresholdValue: Float = 55.0 // 초기 데시벨 기준 값 (언젠가는 직접반영을 구현해야 혀)
     
-    //dBCounter 뷰를 위한 변수
-    @State private var isPresentingSoundLevelView = false
+    // [개발자용] dBCounter 뷰를 위한 변수
+//    @State private var isPresentingSoundLevelView = false
     
     // 반복연습과 관련있는 변수들
     @State var repeatCount = 0 // 몇 회 반복?
@@ -129,9 +129,10 @@ struct ThreeLittlePigs7_speech: View {
             playTTS()
         }
 
-        .fullScreenCover(isPresented: $isPresentingSoundLevelView){
-            SoundLevelView()
-        }
+        // [개발자용] 사운드 dB확인용.
+//        .fullScreenCover(isPresented: $isPresentingSoundLevelView){
+//            SoundLevelView()
+//        }
     }
     
     // Success 이후, 넘어가기

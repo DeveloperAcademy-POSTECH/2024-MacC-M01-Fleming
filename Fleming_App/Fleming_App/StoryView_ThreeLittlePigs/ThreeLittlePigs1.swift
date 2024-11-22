@@ -102,9 +102,9 @@ struct ThreeLittlePigs1: View {
         
         .alert(isPresented: .constant(authorStatus == .denied)) {
             Alert(
-                title: Text("개인음성 권한 거부됨"),
-                message: Text("개인 음성 권한이 거부되었습니다. 설정에서 권한을 허용해주세요."),
-                dismissButton: .default(Text("확인"))
+                title: Text("Microphone Authorization Needed."),
+                message: Text("We need Microphone Authorization for Voice Training"),
+                dismissButton: .default(Text("Accept"))
             )
         }
     }

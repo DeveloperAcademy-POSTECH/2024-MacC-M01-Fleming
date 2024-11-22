@@ -61,7 +61,7 @@ struct RockPaperScissorsView: View{
             RockPaperScissors2(currentStep: $currentStep, currentImage_random: $currentImage_random, repeatNumber: $repeatNumber)
         case 3:
             //이겼다고 하는 부분
-            Text("case 3")
+//            Text("case 3")
             RockPaperScissors3()
             //RockPaperScissors3(currentStep: $currentStep)
         default:

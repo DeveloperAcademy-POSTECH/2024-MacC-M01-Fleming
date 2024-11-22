@@ -14,6 +14,10 @@ struct Fleming_AppApp: App {
     @State private var showSplash = true // 스플래쉬 뷰 표시 여부
     @State private var showAttention = false // AttentionView 표시 여부
     
+    // 언어설정 & 뷰 새로고침
+    @StateObject private var settingVariables = SettingVariables()
+    @State private var reloadTrigger = false
+    
     // MetalFX-framework는 실제 기기에서 사용가능할 때만 호출. (상세내용은 끝자락 주석 확인 <- *1)
     init(){ setupMetalFX() }
     
@@ -41,9 +45,22 @@ struct Fleming_AppApp: App {
 
             }
             .navigationViewStyle(StackNavigationViewStyle()) // iPad에서도 스택 네비게이션 강제
+            .environmentObject(SettingVariables())
             
-//            ThreeLittlePigsNavigation(currentStep: $currentStep, isLeft: $isLeft)
-            
+            // 저장된 언어를 설정변수에 반영
+            .onAppear {
+                                let currentLanguage = UserDefaults.standard.stringArray(forKey: "AppleLanguages")?.first ?? "en"
+                                settingVariables.selectedLanguage = currentLanguage
+                            }
+            // 언어변경시 앱 전체 새로고침
+//            .onChange(of: settingVariables.selectedLanguage) { newLanguage in
+//                            // 언어 변경 시 앱 전체 새로고침
+//                            settingVariables.reloadAppBundle()
+//                        }
+            .onChange(of: settingVariables.selectedLanguage) { _ in
+                                // 언어 변경 시 루트 뷰 새로고침
+                                reloadTrigger.toggle()
+                            }
         }
     }
 }
