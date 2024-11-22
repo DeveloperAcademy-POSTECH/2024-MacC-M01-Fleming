@@ -14,6 +14,7 @@ import AVFoundation
 
 struct ThreeLittlePigs3_cam: View {
     
+    // by hera
     // 위치 지정용 변수(표적)
     @State private var touchPoint: CGPoint? = nil // 초기 이미지 위치 x는 300, y는 620
     @State private var imgPosition: CGPoint = CGPoint(
@@ -42,7 +43,7 @@ struct ThreeLittlePigs3_cam: View {
         ZStack{
             
             // 카메라 뷰(배경깔기)
-            makeCameraView(touchPoint: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
+            makeCameraView(pos: $touchPoint, imgPosition: $imgPosition).edgesIgnoringSafeArea(.all)
             
             Rectangle()
                 .fill(Color(hex: "#D9D9D9").opacity(0.36))
@@ -65,41 +66,33 @@ struct ThreeLittlePigs3_cam: View {
                     .scaledToFit()
                     .opacity(0.8)
                     .frame(width: screenWidth * 0.4)
-                    .offset(x: screenWidth * 0.3, y: screenHeight * 0.2) // 초기 테스트값은 x:950, y:620
+                    .offset(x: screenWidth * 0.3, y: screenHeight * 0.2)
                 
-                GeometryReader { geometry in
-                    Image(selectImage2()) // testimg 파일을 표시
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: screenWidth * 0.4)
-                    
-                    // 이동할 수 있도록 변경
-                        .position(imgPosition)
-                        .onChange(of: imgPosition) { newPosition in
-                            let targetX: CGFloat = screenWidth * 0.8 // let targetX: CGFloat = 950 // 초기 테스트값
-                            let targetY: CGFloat = screenHeight * 0.7 // let targetY: CGFloat = 620 // 초기 테스트값
-                            // -> targetX, targetY는 항상 아래의 완성된 집과 일치시킬 것.
-                            
-                            // 변경된 위치가 목표 위치와 가까워지면 isSuccess를 true
+                    GeometryReader { geometry in
+                        Image(selectImage2()) // testimg 파일을 표시
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: screenWidth * 0.4)
+                            .position(imgPosition)
+                            .onChange(of: imgPosition) { newPosition in
+                                let targetX: CGFloat = screenWidth * 0.8
+                                let targetY: CGFloat = screenHeight * 0.7
+                                // -> targetX, targetY는 항상 아래의 완성된 집과 일치시킬 것
                             if abs(newPosition.x - targetX) < 50 && abs(newPosition.y - targetY) < 50 {
-                                withAnimation {
-                                    isSuccess = true
+                                    withAnimation {
+                                        isSuccess = true
+                                    }
                                 }
                             }
-                        }
-                }
+                    }
             }
-            
-            // 손가락이 맞닿았을 때 원 그리기
-            if let touchPoint = touchPoint {
+                if let touchPoint = touchPoint {
                 Circle()
                     .fill(Color.red)
                     .frame(width: 30, height: 30)
                     .position(touchPoint)
             }
-            
-            // 성공 메시지 표시
-            if isSuccess {
+                if isSuccess {
                 Text("Success!")
                     .font(.system(size:200, weight: .bold))
                     .foregroundColor(.yellow)
@@ -152,18 +145,18 @@ struct ThreeLittlePigs3_cam: View {
     }
     
     // 퍼즐 맞춘 뒤 리프레시 하는 함수
-    private func triggerRefreshAfterDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + refreshTime) {
-            refresh.toggle() // refresh 상태를 변경하여 뷰를 새로고침
-            imgPosition = CGPoint(x: 300, y: 620) // 게임 초기화
-            isSuccess = false // 게임 초기화
-            print("RepeatCount: \(repeatCount)")
-            if repeatCount >= repeatNumber{
-                currentStep += 1
+        private func triggerRefreshAfterDelay() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + refreshTime) {
+                refresh.toggle() // refresh 상태를 변경하여 뷰를 새로고침
+                imgPosition = CGPoint(x: 300, y: 620) // 게임 초기화
+                isSuccess = false // 게임 초기화
+                print("RepeatCount: \(repeatCount)")
+                if repeatCount >= repeatNumber{
+                    currentStep += 1
+                }
             }
         }
-    }
-    
+        
     // 현재 스텝에 따라 사운드를 재생하는 함수
     private func playTTS() {
         switch currentStep {
