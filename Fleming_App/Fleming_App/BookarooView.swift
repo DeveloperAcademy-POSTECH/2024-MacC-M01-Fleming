@@ -16,7 +16,9 @@ struct BookarooView: View{
     
     // 카테고리 조정을 위한 변수 (텍스트, 컬러, 너비, 높이)
     @State private var selectedCategory: String = "All" // 선택된 카테고리
+    
     var categories = ["All", "Physic", "Concentrate", "Recognition", "Voice", " "] // 변수 수정시, 카테고리에서도 수정 바람.
+    
     var categoryColor: [Color] = [Color(hex: "#F09753"),Color(hex: "#F8D04D"),Color(hex: "#B1D854"),
                                   Color(hex: "#7BBFFA"),Color(hex: "#8A81DC"), Color(hex: "#49CFB0")]
     @State private var categoryBackgroundColor: Color = Color(hex: "#F09753")
@@ -35,16 +37,16 @@ struct BookarooView: View{
     
     // 설정탭 관련 변수(기본, 언어)
     @State private var isSettingView: Bool = false // Setting뷰일때, 스크롤뷰 잠금
-    @State private var languageSetting: Bool = false // false: 영어, true: 한국어
+//    @State private var languageSetting: Bool = false // false: 영어, true: 한국어
     
     // 설정탭 관련 변수 (사운드)
-    @State private var volumeBackgroundIndex = 0
-    @State private var volumeTTSIndex = 0
-    let sliderValues: [Double] = [0, 0.25, 0.5, 0.75, 1]
-    var volumeBackground: Double { sliderValues[volumeBackgroundIndex] }
-    var volumeTTS: Double { sliderValues[volumeTTSIndex] }
+//    @State private var volumeBackgroundIndex = 0
+//    @State private var volumeTTSIndex = 0
+//    let sliderValues: [Double] = [0, 0.25, 0.5, 0.75, 1]
+//    var volumeBackground: Double { sliderValues[volumeBackgroundIndex] }
+//    var volumeTTS: Double { sliderValues[volumeTTSIndex] }
     
-    
+
     var body: some View {
         NavigationStack{
             ZStack {
@@ -191,125 +193,129 @@ struct BookarooView: View{
                                 }
                             }
                             
+                            
+                            // 스크롤뷰(설정칸 - 스크롤 안되게 해둠)
                             if selectedCategory == " "{
-                                // 스크롤뷰(설정칸 - 스크롤 안되게 해둠)
-                                VStack{
-                                    // (임시표시) Sound
-                                    HStack{
-                                        Spacer().frame(width: screenWidth * 0.025)
-                                        Text("SOUND")
-                                            .font(.system(size:48, weight:.bold))
-                                            .foregroundStyle(.white)
-                                            .frame(width: 300, alignment: .leading)
-                                        Spacer()
-                                    }
-                                    
-                                    // (임시표시) Sound-detail
-                                    VStack(){
-                                        HStack(spacing: 40){
-                                            Text("Background")
-                                                .font(.system(size:40, weight:.bold))
-                                                .foregroundStyle(.white)
-                                                .frame(width:320, alignment:.leading)
-                                            
-                                            Image("Button_PlaySound2")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width:48)
-                                            
-                                            Slider(
-                                                value: Binding(
-                                                    get: { Double(volumeBackgroundIndex) },
-                                                    set: { newValue in
-                                                        volumeBackgroundIndex = Int(round(newValue))
-                                                    }
-                                                ),
-                                                in: 0...4,
-                                                step: 1
-                                            )
-                                            .accentColor(.white)
-                                            .frame(width: screenWidth * 0.3)
-                                        }
-                                        
-                                        HStack(spacing:40){
-                                            Text("Text Sound")
-                                                .font(.system(size:40, weight:.bold))
-                                                .foregroundStyle(.white)
-                                                .frame(width:320, alignment: .leading)
-                                            
-                                            Image("Button_PlaySound2")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width:48)
-                                            
-                                            Slider(
-                                                value: Binding(
-                                                    get: { Double(volumeTTSIndex) },
-                                                    set: { newValue in
-                                                        volumeTTSIndex = Int(round(newValue))
-                                                    }
-                                                ),
-                                                in: 0...4,
-                                                step: 1
-                                            )
-                                            .accentColor(.white)
-                                            .frame(width: screenWidth * 0.3)
-                                        }
-                                    }
-                                    
-                                    // (임시표시)Language
-                                    HStack{
-                                        Spacer().frame(width: screenWidth * 0.025)
-                                        
-                                        Text("Language")
-                                            .font(.system(size:48, weight:.bold))
-                                            .foregroundStyle(.white)
-                                            .frame(width: 300, alignment: .leading)
-                                        
-                                        Spacer()
-                                        
-                                        Button(action:{
-                                            languageSetting = true
-                                        }, label:{
-                                            
-                                            if languageSetting == true {
-                                                Text("Korean")
-                                                    .font(.system(size:48, weight:.bold))
-                                                    .foregroundStyle(.white)
-                                                    .padding(10)
-                                            } else {
-                                                Text("Korean")
-                                                    .font(.system(size:48, weight:.bold))
-                                                    .foregroundStyle(.white)
-                                                    .padding(10)
-                                                    .opacity(0.4)
-                                            }
-                                        })
-                                        
-                                        Spacer().frame(width: screenWidth * 0.05)
-                                        
-                                        Button(action:{
-                                            languageSetting = false
-                                        }, label:{
-                                            if languageSetting == false {
-                                                Text("English")
-                                                    .font(.system(size:48, weight:.bold))
-                                                    .foregroundStyle(.white)
-                                                    .padding(10)
-                                            } else {
-                                                Text("English")
-                                                    .font(.system(size:48, weight:.bold))
-                                                    .foregroundStyle(.white)
-                                                    .padding(10)
-                                                    .opacity(0.4)
-                                            }
-                                        })
-                                        Spacer()
-                                    }
-                                    
-                                    Spacer()
-                                }
-                                .frame(width:screenWidth, height: screenHeight * 0.55)
+//                                VStack{
+//                                    // (임시표시) Sound
+//                                    HStack{
+//                                        Spacer().frame(width: screenWidth * 0.025)
+//                                        Text("SOUND")
+//                                            .font(.system(size:48, weight:.bold))
+//                                            .foregroundStyle(.white)
+//                                            .frame(width: 300, alignment: .leading)
+//                                        Spacer()
+//                                    }
+//                                    
+//                                    // (임시표시) Sound-detail
+//                                    VStack(){
+//                                        HStack(spacing: 40){
+//                                            Text("Background")
+//                                                .font(.system(size:40, weight:.bold))
+//                                                .foregroundStyle(.white)
+//                                                .frame(width:320, alignment:.leading)
+//                                            
+//                                            Image("Button_PlaySound2")
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width:48)
+//                                            
+//                                            Slider(
+//                                                value: Binding(
+//                                                    get: { Double(volumeBackgroundIndex) },
+//                                                    set: { newValue in
+//                                                        volumeBackgroundIndex = Int(round(newValue))
+//                                                    }
+//                                                ),
+//                                                in: 0...4,
+//                                                step: 1
+//                                            )
+//                                            .accentColor(.white)
+//                                            .frame(width: screenWidth * 0.3)
+//                                        }
+//                                        
+//                                        HStack(spacing:40){
+//                                            Text("Text Sound")
+//                                                .font(.system(size:40, weight:.bold))
+//                                                .foregroundStyle(.white)
+//                                                .frame(width:320, alignment: .leading)
+//                                            
+//                                            Image("Button_PlaySound2")
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width:48)
+//                                            
+//                                            Slider(
+//                                                value: Binding(
+//                                                    get: { Double(volumeTTSIndex) },
+//                                                    set: { newValue in
+//                                                        volumeTTSIndex = Int(round(newValue))
+//                                                    }
+//                                                ),
+//                                                in: 0...4,
+//                                                step: 1
+//                                            )
+//                                            .accentColor(.white)
+//                                            .frame(width: screenWidth * 0.3)
+//                                        }
+//                                    }
+//                                    
+//                                    // (임시표시)Language
+//                                    HStack{
+//                                        Spacer().frame(width: screenWidth * 0.025)
+//                                        
+//                                        Text("Language")
+//                                            .font(.system(size:48, weight:.bold))
+//                                            .foregroundStyle(.white)
+//                                            .frame(width: 300, alignment: .leading)
+//                                        
+//                                        Spacer()
+//                                        
+//                                        Button(action:{
+//                                            languageSetting = true
+//                                        }, label:{
+//                                            
+//                                            if languageSetting == true {
+//                                                Text("Korean")
+//                                                    .font(.system(size:48, weight:.bold))
+//                                                    .foregroundStyle(.white)
+//                                                    .padding(10)
+//                                            } else {
+//                                                Text("Korean")
+//                                                    .font(.system(size:48, weight:.bold))
+//                                                    .foregroundStyle(.white)
+//                                                    .padding(10)
+//                                                    .opacity(0.4)
+//                                            }
+//                                        })
+//                                        
+//                                        Spacer().frame(width: screenWidth * 0.05)
+//                                        
+//                                        Button(action:{
+//                                            languageSetting = false
+//                                        }, label:{
+//                                            if languageSetting == false {
+//                                                Text("English")
+//                                                    .font(.system(size:48, weight:.bold))
+//                                                    .foregroundStyle(.white)
+//                                                    .padding(10)
+//                                            } else {
+//                                                Text("English")
+//                                                    .font(.system(size:48, weight:.bold))
+//                                                    .foregroundStyle(.white)
+//                                                    .padding(10)
+//                                                    .opacity(0.4)
+//                                            }
+//                                        })
+//                                        Spacer()
+//                                    }
+//                                    
+//                                    Spacer()
+//                                }
+//                                .frame(width:screenWidth, height: screenHeight * 0.55)
+                                
+                                SettingView()
+                                    .frame(width:screenWidth, height: screenHeight * 0.55)                                
                             }
                             
                         }

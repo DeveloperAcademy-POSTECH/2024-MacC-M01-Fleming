@@ -302,7 +302,7 @@ struct RockPaperScissors_cam: View {
                             .padding(.bottom, 50)
                         
                     } else {
-                        Text("Please choose between \nrock, paper, scissors.")
+                        Text("Please choose among \nrock, paper, scissors.")
                             .foregroundColor(.black)
                             .background(.white.opacity(0.4))
                             .padding(.bottom, 50)
@@ -368,7 +368,7 @@ struct RockPaperScissors_cam: View {
     //                                .padding(.bottom, screenHeight / 3)
     //                        }
     //                    } else {
-    //                        Text("Please choose between rock, paper, scissors.")
+    //                        Text("Please choose among rock, paper, scissors.")
     //                    }
     //                // 결과 텍스트를 표시
     //                Text(resultText)

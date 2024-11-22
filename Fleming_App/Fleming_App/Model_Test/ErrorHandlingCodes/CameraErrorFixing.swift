@@ -12,7 +12,7 @@ import SwiftUI
 struct CameraErrorFixing: View{
     var body: some View {
         
-        Text("Hello, device!")
+        Text("Loading Device settings...")
             .onAppear() {
                 let deviceModel = UIDevice.current.model
                 print("Device model: \(deviceModel)")

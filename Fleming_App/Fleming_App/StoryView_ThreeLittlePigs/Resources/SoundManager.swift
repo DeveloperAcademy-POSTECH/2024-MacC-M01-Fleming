@@ -4,6 +4,9 @@
 //
 //  Created by 임유리 on 10/22/24.
 //
+// TTS 재생 모델
+// (TTS 중지관련 부분은 Leo 수정본)
+//
 
 import SwiftUI
 import AVFoundation
@@ -14,11 +17,28 @@ class SoundManager: ObservableObject {
     
     @Published var authorStatus: AVSpeechSynthesizer.PersonalVoiceAuthorizationStatus = .notDetermined
     @Published var personalVoices: [AVSpeechSynthesisVoice] = []
+    private var synthesizer = AVSpeechSynthesizer()
+    
+//    // (init 변경안) 볼륨크기 환경객체 주입
+//    private var settingVariables: SettingVariables
+//    
+//    init(settingVariables: SettingVariables) {
+//            self.settingVariables = settingVariables
+//            self.authorStatus = .notDetermined
+//            self.personalVoices = []
+//            self.synthesizer = AVSpeechSynthesizer()
+//            // 모든 저장 프로퍼티 초기화 후 추가 설정 수행
+//            self.initialize()
+//        }
+//    
+//    private func initialize() {
+//        checkAuthorization()
+//    }
+
     private let synthesizer = AVSpeechSynthesizer()
     private var soundcheck = NSCache<NSString, NSData>()
     private var timer: Timer?
-    
-    
+
     
     init() {
         
@@ -130,11 +150,11 @@ class SoundManager: ObservableObject {
             }
             
             utterance.rate = rate
-            
+//            utterance.volume = self.settingVariables.volumeBackground // volumeBackground 값 적용
             self.synthesizer.speak(utterance)
             
         }
-        
+
     }
     
     

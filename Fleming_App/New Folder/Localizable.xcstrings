@@ -5,210 +5,417 @@
 
     },
     "   Horray!" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "야호"
+          }
+        }
+      }
     },
     "!!!!!" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "!!!!!"
+          }
+        }
+      }
+    },
+    "* Language setting is adpted after restarting the app." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* 언어설정은 앱이 재실행 된 후 적용됩니다."
+          }
+        }
+      }
     },
     "%lld" : {
 
     },
-    "%lld dB" : {
-
-    },
-    "0 dB" : {
-
-    },
-    "80 dB" : {
-
-    },
-    "160 dB" : {
-
+    "Accept" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수락"
+          }
+        }
+      }
     },
     "aroo" : {
-
-    },
-    "Attending Physician" : {
-
-    },
-    "Attending physician :" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카루"
+          }
+        }
+      }
     },
     "Attention" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주의사항"
+          }
+        }
+      }
     },
     "Background" : {
-
-    },
-    "Birth:" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "배경음"
+          }
+        }
+      }
     },
     "Birthday" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "생일"
+          }
+        }
+      }
     },
     "Blow it !" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "날려 버려요!"
+          }
+        }
+      }
     },
     "Book" : {
-
-    },
-    "case 3" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북"
+          }
+        }
+      }
     },
     "Confirm" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확인"
+          }
+        }
+      }
     },
     "Connect me into the World" : {
-
-    },
-    "Default" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나를 연결해주세요"
+          }
+        }
+      }
     },
     "Dots" : {
-
-    },
-    "Edit" : {
-
-    },
-    "Edit Info" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "점 잇기"
+          }
+        }
+      }
     },
     "English" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영어"
+          }
+        }
+      }
     },
     "Enjoy activities best from 1m away" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1m 떨어져서 사용하는 것을 권장합니다"
+          }
+        }
+      }
     },
     "for Kids" : {
-
-    },
-    "Gender" : {
-
-    },
-    "Hello, device!" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아이용"
+          }
+        }
+      }
     },
     "in the children's activities." : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(아이의 주변을 안전하게 해주세요)"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "Korean" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "한국어"
+          }
+        }
+      }
     },
     "Label Text: %@" : {
 
     },
     "Language" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "언어설정"
+          }
+        }
+      }
     },
     "Let's win this game!" : {
 
     },
     "Little Pigs" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삼형제"
+          }
+        }
+      }
     },
-    "Name" : {
-
+    "Loading Device settings..." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기 환경을 확인중입니다…"
+          }
+        }
+      }
     },
-    "Note" : {
-
+    "Microphone Authorization Needed." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인음성 권한 필요."
+          }
+        }
+      }
     },
-    "Note :" : {
-
-    },
-    "Please choose between \nrock, paper, scissors." : {
-
+    "Please choose among \nrock, paper, scissors." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가위 바위 보 중 하나를 선택해 주세요"
+          }
+        }
+      }
     },
     "Please make sure there are no obstacles" : {
-
-    },
-    "Read Text" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주변에 장애물이 없는 것을 확인해주세요"
+          }
+        }
+      }
     },
     "Rehabilitation" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재활동화 프로그램"
+          }
+        }
+      }
     },
     "Repeat" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "반복 횟수"
+          }
+        }
+      }
     },
     "Rock Paper Scissors !" : {
-
-    },
-    "Save" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가위 바위 보!"
+          }
+        }
+      }
     },
     "Second Label: %@" : {
 
     },
-    "Select Voice" : {
-
-    },
     "SOUND" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소리"
+          }
+        }
+      }
     },
     "Start" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작"
+          }
+        }
+      }
     },
     "Start game" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임 시작"
+          }
+        }
+      }
     },
     "Success" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "성공이에요"
+          }
+        }
+      }
     },
     "Success!" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "성공이에요!"
+          }
+        }
+      }
     },
     "Sucess!!" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "성공이에요!!"
+          }
+        }
+      }
     },
     "Text Sound" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동화책 음성"
+          }
+        }
+      }
     },
     "The Three" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아기 돼지"
+          }
+        }
+      }
     },
     "Third Label: %lld%%의 확률" : {
 
     },
     "Threshold" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기준선"
+          }
+        }
+      }
     },
     "Total Counting: %lld" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "총 카운팅"
+          }
+        }
+      }
     },
-    "User Info" : {
-
+    "We need Microphone Authorization for Voice Training" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인 음성 권한이 거부되었습니다. 설정에서 권한을 허용해주세요."
+          }
+        }
+      }
     },
     "You win the Game!" : {
-
-    },
-    "개인 음성 권한이 거부되었습니다. 설정에서 권한을 허용해주세요." : {
-
-    },
-    "개인음성 권한 거부됨" : {
-
-    },
-    "기준데시벨 넘었는지 체크용" : {
-
-    },
-    "데시벨 기준 값: %lld dB" : {
-
-    },
-    "동화책으로 돌아가기" : {
-
-    },
-    "실시간 소리 크기 게이지 (dB)" : {
-
-    },
-    "실시간 소리 크기 그래프 (dB)" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임에서 이겼어요!"
+          }
+        }
+      }
     },
     "한 번 더" : {
-
-    },
-    "현재 소리 크기: %lld dB" : {
-
-    },
-    "확인" : {
 
     }
   },
