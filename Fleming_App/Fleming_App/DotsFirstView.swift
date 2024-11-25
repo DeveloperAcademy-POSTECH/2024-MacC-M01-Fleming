@@ -42,7 +42,6 @@ struct DotsFirstView : View {
                 }
                 .padding(.trailing, 50)
             }
-            
         }
     }
 }
