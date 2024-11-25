@@ -79,6 +79,7 @@ class ARViewController: UIViewController, ARSessionDelegate {
         
         // generak world tracking
         let configuration = ARWorldTrackingConfiguration()
+        configuration.userFaceTrackingEnabled = false // 얼굴 추적 비활성화
         
         // enable the front camera
         if ARFaceTrackingConfiguration.isSupported {
