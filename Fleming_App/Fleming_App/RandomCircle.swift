@@ -19,16 +19,16 @@ struct RandomCircle: View {
     @State private var circlePositions: [(id: UUID, position: CGPoint, color: Color, size: CGFloat)] = []
     @State private var fingertipPosition: CGPoint? = nil
     @State private var showSuccess: Bool = false
-    @State private var currentTouchedColor: Color? = nil
-    @State private var lastTouchedCircle: (id: UUID, color: Color)? = nil
-    @State private var lastTouchedCircleID: UUID? = nil
     @State private var fingerPath: [CGPoint] = []
     @State private var backgroundColors: [Color] = [Color.yellow.opacity(0.1)]
-    
+    @State private var circle: (id: UUID, color: Color)? = nil
+    @State private var ID: UUID? = nil
     private let circleCount = 6
     private let circleSize: CGFloat = 50.0
     private let colors: [Color] = [.customOrange, .customGreen, .customBrown]
     private let fingerCircleSize: CGFloat = 100.0
+    @State private var touchit: Color? = nil
+
     
     var body: some View {
         ZStack {
@@ -149,15 +149,15 @@ struct RandomCircle: View {
                 let distance = distanceBetween(circle.position, fingerPos)
                 
                 if distance < (circleSize / 2 + fingerImageSize / 2) {
-                    if currentTouchedColor == circle.color,
-                       lastTouchedCircleID != circle.id {
+                    if touchit == circle.color,
+                       ID != circle.id {
                         showSuccess = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             showSuccess = false
                         }
                     }
-                    currentTouchedColor = circle.color
-                    lastTouchedCircleID = circle.id
+                    touchit = circle.color
+                    ID = circle.id
                     break
                 }
             }

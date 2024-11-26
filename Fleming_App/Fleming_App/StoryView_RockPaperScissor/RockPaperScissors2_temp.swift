@@ -21,7 +21,7 @@ struct RockPaperScissors2: View {
     @State private var showCurrentImage_random: Bool = false
     
     let images = ["object_RockPaperScissors_Paper3", "object_RockPaperScissors_Scissors3", "object_RockPaperScissors_Rock3"]
-    
+    let count  = 70
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
@@ -31,13 +31,14 @@ struct RockPaperScissors2: View {
     @State private var refresh = false
     let refreshTime: TimeInterval = 2.0
     @State var determinedGameResult: Bool = false // 새 게임을 하는 버튼
+    let queue = DispatchQueue.global(qos: .background)
     
     // 임시(UUID를 활용한 body 새로그리기)
     @State private var refreshID = UUID() // 새로고침용 UUID
     
     // 임시(Fullscreen 강제열기)
     @State private var showFullScreenView = false
-
+    
     
     var body: some View {
         
@@ -91,9 +92,9 @@ struct RockPaperScissors2: View {
                             if showCurrentImage_random{
                                 Image(currentImage_random)
                                     .frame(width: screenHeight * 0.55)
-//                                    .onAppear{
-//                                        currentImage_random = images.randomElement() ?? "object_RockPaperScissors_Paper"
-//                                    }
+                                //                                    .onAppear{
+                                //                                        currentImage_random = images.randomElement() ?? "object_RockPaperScissors_Paper"
+                                //                                    }
                                 // 디버깅용
                                     .onAppear{
                                         printCurrentTime()
@@ -178,14 +179,14 @@ struct RockPaperScissors2: View {
         //        }
         
         // [tlsgud, 321 적용 후] 화면 뜨고, 3초 후 승패 가리기
-//        .onChange(of: prepCount){
-//            if prepCount == nil {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                    currentImage_random = " " // 현재 이미지 삭제
-//                    startCountdown() // 321 시작
-//                }
-//            }
-//        }
+        //        .onChange(of: prepCount){
+        //            if prepCount == nil {
+        //                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        //                    currentImage_random = " " // 현재 이미지 삭제
+        //                    startCountdown() // 321 시작
+        //                }
+        //            }
+        //        }
         
     } // var.body.some.view 끝
     
@@ -196,28 +197,41 @@ struct RockPaperScissors2: View {
         print("카운트다운 시작")
         
         // 각 이미지가 1초 간격으로 표시
-        for i in 0...2 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
+        DispatchQueue.global(qos: .background).async {
+            for i in 0...2 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        prepCount = i
+                    }
+                }
+            }
+            
+            // 마지막 이미지 이후 랜덤 이미지가 나타나는 타이밍
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation(.easeInOut(duration: 0.5)) {
-                    prepCount = i
+                    prepCount = nil
+                    showCurrentImage_random = true
+                    
+                    // 디버깅용
+                    printCurrentTime()
+                    print("showCurrentImage_random 값: \(showCurrentImage_random)")
+                    determinedGameResult = false
+                    print("determinedGameResult 값: \(determinedGameResult)")
                 }
             }
         }
-        
-        // 마지막 이미지 이후 랜덤 이미지가 나타나는 타이밍
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                prepCount = nil
-                showCurrentImage_random = true
-                
-                // 디버깅용
-                printCurrentTime()
-                print("showCurrentImage_random 값: \(showCurrentImage_random)")
-                determinedGameResult = false
-                print("determinedGameResult 값: \(determinedGameResult)")
-            }
+        for i in 0..<count {
+                queue.async {
+                    self.updateit(index: i)
+                }
         }
     }
+    func updateit(index: Int) {
+        let start = Date()
+        while Date().timeIntervalSince(start) < 0.1 {
+       }
+    }
+
 }
 
 // 승패 확인 케이스
@@ -291,6 +305,7 @@ struct RockPaperScissors_cam: View {
                 .offset(x: -screenWidth * 0.5 * 0.5, y: -screenHeight * 0.5 * 0.5) // (x,y) = (0,0)일 때, 밀려서 시도중... / 너무 많이 밀린다...
                 .edgesIgnoringSafeArea(.all)
                 .clipShape(RoundedRectangle(cornerRadius: 80))
+            
             VStack {
                 if repeatCount < repeatNumber {
                     if confidenceValue > 80 {
@@ -386,6 +401,8 @@ struct RockPaperScissors_cam: View {
         printCurrentTime()
         print("Process Game result 호출")
         
+
+
         let gameResult = result
         
         if gameResult == "Win" {
@@ -430,7 +447,7 @@ struct RockPaperScissors_cam: View {
         
 
     }
-    
+
     private func showResultText(_ text: String) {
         Text(text)
             .font(.system(size: 100, weight: .bold, design: .rounded))
