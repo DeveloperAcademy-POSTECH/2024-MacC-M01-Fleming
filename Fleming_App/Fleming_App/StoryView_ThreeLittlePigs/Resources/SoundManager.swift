@@ -35,7 +35,6 @@ class SoundManager: ObservableObject {
 //        checkAuthorization()
 //    }
 
-    //private let synthesizer = AVSpeechSynthesizer()
     private var soundcheck = NSCache<NSString, NSData>()
     private var timer: Timer?
 

@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00C014D02CB38D3900E2753B"
-               BuildableName = "Fleming_App.app"
-               BlueprintName = "Fleming_App"
-               ReferencedContainer = "container:Fleming_App.xcodeproj">
+               BuildableName = "Bookaroo.app"
+               BlueprintName = "Bookaroo"
+               ReferencedContainer = "container:Bookaroo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -41,9 +41,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00C014E02CB38D3B00E2753B"
-               BuildableName = "Fleming_AppTests.xctest"
-               BlueprintName = "Fleming_AppTests"
-               ReferencedContainer = "container:Fleming_App.xcodeproj">
+               BuildableName = "Bookaroo_AppTests.xctest"
+               BlueprintName = "Bookaroo_AppTests"
+               ReferencedContainer = "container:Bookaroo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -52,9 +52,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00C014EA2CB38D3B00E2753B"
-               BuildableName = "Fleming_AppUITests.xctest"
-               BlueprintName = "Fleming_AppUITests"
-               ReferencedContainer = "container:Fleming_App.xcodeproj">
+               BuildableName = "Bookaroo_AppUITests.xctest"
+               BlueprintName = "Bookaroo_AppUITests"
+               ReferencedContainer = "container:Bookaroo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "00C014D02CB38D3900E2753B"
-            BuildableName = "Fleming_App.app"
-            BlueprintName = "Fleming_App"
-            ReferencedContainer = "container:Fleming_App.xcodeproj">
+            BuildableName = "Bookaroo.app"
+            BlueprintName = "Bookaroo"
+            ReferencedContainer = "container:Bookaroo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -92,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "00C014D02CB38D3900E2753B"
-            BuildableName = "Fleming_App.app"
-            BlueprintName = "Fleming_App"
-            ReferencedContainer = "container:Fleming_App.xcodeproj">
+            BuildableName = "Bookaroo.app"
+            BlueprintName = "Bookaroo"
+            ReferencedContainer = "container:Bookaroo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -45,9 +45,9 @@
 		005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftVideoToolbox.tbd; path = usr/lib/swift/libswiftVideoToolbox.tbd; sourceTree = SDKROOT; };
 		005AAB332CC88DFC009CA5D3 /* Fleming_App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fleming_App.xctestplan; path = ../../../Fleming_App.xctestplan; sourceTree = "<group>"; };
-		00C014D12CB38D3900E2753B /* Fleming_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fleming_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		00C014E12CB38D3B00E2753B /* Fleming_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fleming_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		00C014EB2CB38D3B00E2753B /* Fleming_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fleming_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C014D12CB38D3900E2753B /* Bookaroo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookaroo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C014E12CB38D3B00E2753B /* Bookaroo_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bookaroo_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C014EB2CB38D3B00E2753B /* Bookaroo_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bookaroo_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -138,9 +138,9 @@
 		00C014D22CB38D3900E2753B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				00C014D12CB38D3900E2753B /* Fleming_App.app */,
-				00C014E12CB38D3B00E2753B /* Fleming_AppTests.xctest */,
-				00C014EB2CB38D3B00E2753B /* Fleming_AppUITests.xctest */,
+				00C014D12CB38D3900E2753B /* Bookaroo.app */,
+				00C014E12CB38D3B00E2753B /* Bookaroo_AppTests.xctest */,
+				00C014EB2CB38D3B00E2753B /* Bookaroo_AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00C014D02CB38D3900E2753B /* Fleming_App */ = {
+		00C014D02CB38D3900E2753B /* Bookaroo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00C014F52CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Fleming_App" */;
+			buildConfigurationList = 00C014F52CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Bookaroo" */;
 			buildPhases = (
 				00C014CD2CB38D3900E2753B /* Sources */,
 				00C014CE2CB38D3900E2753B /* Frameworks */,
@@ -164,16 +164,16 @@
 				00C014D32CB38D3900E2753B /* Fleming_App */,
 				9827D0A82CBBBE01000334B0 /* New Folder */,
 			);
-			name = Fleming_App;
+			name = Bookaroo;
 			packageProductDependencies = (
 			);
 			productName = Fleming_App;
-			productReference = 00C014D12CB38D3900E2753B /* Fleming_App.app */;
+			productReference = 00C014D12CB38D3900E2753B /* Bookaroo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		00C014E02CB38D3B00E2753B /* Fleming_AppTests */ = {
+		00C014E02CB38D3B00E2753B /* Bookaroo_AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00C014F82CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Fleming_AppTests" */;
+			buildConfigurationList = 00C014F82CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Bookaroo_AppTests" */;
 			buildPhases = (
 				00C014DD2CB38D3B00E2753B /* Sources */,
 				00C014DE2CB38D3B00E2753B /* Frameworks */,
@@ -187,16 +187,16 @@
 			fileSystemSynchronizedGroups = (
 				00C014E42CB38D3B00E2753B /* Fleming_AppTests */,
 			);
-			name = Fleming_AppTests;
+			name = Bookaroo_AppTests;
 			packageProductDependencies = (
 			);
 			productName = Fleming_AppTests;
-			productReference = 00C014E12CB38D3B00E2753B /* Fleming_AppTests.xctest */;
+			productReference = 00C014E12CB38D3B00E2753B /* Bookaroo_AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		00C014EA2CB38D3B00E2753B /* Fleming_AppUITests */ = {
+		00C014EA2CB38D3B00E2753B /* Bookaroo_AppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00C014FB2CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Fleming_AppUITests" */;
+			buildConfigurationList = 00C014FB2CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Bookaroo_AppUITests" */;
 			buildPhases = (
 				00C014E72CB38D3B00E2753B /* Sources */,
 				00C014E82CB38D3B00E2753B /* Frameworks */,
@@ -210,11 +210,11 @@
 			fileSystemSynchronizedGroups = (
 				00C014EE2CB38D3B00E2753B /* Fleming_AppUITests */,
 			);
-			name = Fleming_AppUITests;
+			name = Bookaroo_AppUITests;
 			packageProductDependencies = (
 			);
 			productName = Fleming_AppUITests;
-			productReference = 00C014EB2CB38D3B00E2753B /* Fleming_AppUITests.xctest */;
+			productReference = 00C014EB2CB38D3B00E2753B /* Bookaroo_AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +240,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 00C014CC2CB38D3900E2753B /* Build configuration list for PBXProject "Fleming_App" */;
+			buildConfigurationList = 00C014CC2CB38D3900E2753B /* Build configuration list for PBXProject "Bookaroo" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -255,9 +255,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00C014D02CB38D3900E2753B /* Fleming_App */,
-				00C014E02CB38D3B00E2753B /* Fleming_AppTests */,
-				00C014EA2CB38D3B00E2753B /* Fleming_AppUITests */,
+				00C014D02CB38D3900E2753B /* Bookaroo */,
+				00C014E02CB38D3B00E2753B /* Bookaroo_AppTests */,
+				00C014EA2CB38D3B00E2753B /* Bookaroo_AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -313,12 +313,12 @@
 /* Begin PBXTargetDependency section */
 		00C014E32CB38D3B00E2753B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00C014D02CB38D3900E2753B /* Fleming_App */;
+			target = 00C014D02CB38D3900E2753B /* Bookaroo */;
 			targetProxy = 00C014E22CB38D3B00E2753B /* PBXContainerItemProxy */;
 		};
 		00C014ED2CB38D3B00E2753B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00C014D02CB38D3900E2753B /* Fleming_App */;
+			target = 00C014D02CB38D3900E2753B /* Bookaroo */;
 			targetProxy = 00C014EC2CB38D3B00E2753B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -455,7 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -494,7 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fleming_App/Preview Content\"";
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -531,7 +531,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -551,7 +551,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -570,7 +570,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				MARKETING_VERSION = 1.0.0;
@@ -588,7 +588,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SPWZSLF9KX;
+				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				MARKETING_VERSION = 1.0.0;
@@ -604,7 +604,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00C014CC2CB38D3900E2753B /* Build configuration list for PBXProject "Fleming_App" */ = {
+		00C014CC2CB38D3900E2753B /* Build configuration list for PBXProject "Bookaroo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00C014F32CB38D3B00E2753B /* Debug */,
@@ -613,7 +613,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00C014F52CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Fleming_App" */ = {
+		00C014F52CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Bookaroo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00C014F62CB38D3B00E2753B /* Debug */,
@@ -622,7 +622,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00C014F82CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Fleming_AppTests" */ = {
+		00C014F82CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Bookaroo_AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00C014F92CB38D3B00E2753B /* Debug */,
@@ -631,7 +631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00C014FB2CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Fleming_AppUITests" */ = {
+		00C014FB2CB38D3B00E2753B /* Build configuration list for PBXNativeTarget "Bookaroo_AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00C014FC2CB38D3B00E2753B /* Debug */,
