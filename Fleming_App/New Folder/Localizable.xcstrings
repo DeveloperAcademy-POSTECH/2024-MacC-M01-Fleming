@@ -77,17 +77,6 @@
         }
       }
     },
-    "Birthday" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "생일"
-          }
-        }
-      }
-    },
     "Blow it !" : {
       "localizations" : {
         "ko" : {
@@ -103,7 +92,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "북"
+            "value" : "Book"
           }
         }
       }
@@ -205,7 +194,14 @@
       }
     },
     "Let's win this game!" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임을 이겨봅시다!"
+          }
+        }
+      }
     },
     "Little Pigs" : {
       "localizations" : {
@@ -233,6 +229,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인음성 권한 필요."
+          }
+        }
+      }
+    },
+    "One more!" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "한 번 더!"
           }
         }
       }
@@ -373,28 +379,6 @@
     "Third Label: %lld%%의 확률" : {
 
     },
-    "Threshold" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기준선"
-          }
-        }
-      }
-    },
-    "Total Counting: %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "총 카운팅"
-          }
-        }
-      }
-    },
     "We need Microphone Authorization for Voice Training" : {
       "localizations" : {
         "ko" : {
@@ -414,9 +398,6 @@
           }
         }
       }
-    },
-    "한 번 더" : {
-
     }
   },
   "version" : "1.0"

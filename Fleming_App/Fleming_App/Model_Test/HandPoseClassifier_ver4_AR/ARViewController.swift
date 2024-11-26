@@ -55,16 +55,16 @@ class ARViewController: UIViewController, ARSessionDelegate {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { enabled in
                 DispatchQueue.main.async {
-                    enabled ? self.setupARView() : print("카메라 접근 권한이 없습니다.")
+                    enabled ? self.setupARView() : print("Camera access is not authorized.")
                     if enabled {
                         self.setupARView()
                     } else {
-                        print("카메라 접근 권한이 없습니다.")
+                        print("Camera access is not authorized.")
                     }
                 }
             }
         case .denied, .restricted:
-            print("카메라 접근이 거부되었습니다.")
+            print("Camera access has been denied.")
             
         @unknown default:
             print("Error")

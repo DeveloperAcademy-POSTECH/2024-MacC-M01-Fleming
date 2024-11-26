@@ -118,7 +118,7 @@ struct RockPaperScissors2: View {
                                     }
                                     
                                     refreshID = UUID()
-                                }, label: {Text("한 번 더")})
+                                }, label: {Text("One more!")})
                             }
                             
                         }
