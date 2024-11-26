@@ -13,7 +13,7 @@ class AudioManager: ObservableObject {
     @Published var soundLevel: Float = 0.1 // 실시간 소리 크기
     @Published var soundLevels: [Float] = [] // 실시간으로 수집한 소리 크기 데이터
     private let calibrationOffset: Float = 100.0 // 보정 계수 - 환경에 따라 직접 설정해야 함
-    
+    let timeInterval: TimeInterval = 0.05
     // 데시벨 오르내림 체크용(dBCounter)
     @Published var dBCounter: Int = 0 // 50dB 이상으로 올라갔다가 다시 내려갈 때마다 증가
     private var wasAboveThreshold: Bool = false
@@ -49,7 +49,7 @@ class AudioManager: ObservableObject {
             audioRecorder?.record()
             
             // 타이머를 통해 실시간 소리 크기 업데이트
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { _ in
                 self.updateSoundLevel()
             }
         } catch {
@@ -66,6 +66,9 @@ class AudioManager: ObservableObject {
         DispatchQueue.main.async {
             self.soundLevel = calibratedDb
             self.soundLevels.append(calibratedDb)
+            let _ = self.soundLevels.reduce(0, +) / Float(self.soundLevels.count)
+            let _ = self.soundLevels.max() ?? 0
+            let _ = self.soundLevels.min() ?? 0
             
             // 데이터가 너무 많아지지 않도록 최근 100개의 데이터만 유지
             if self.soundLevels.count > 100 {
@@ -74,7 +77,7 @@ class AudioManager: ObservableObject {
             
             // 데시벨 넘은 횟수 증가 로직(dbCounter)
             self.checkForThresholdCrossing()
-            
+            let _ = self.soundLevels.map { pow($0, 2) }
         }
     }
     
