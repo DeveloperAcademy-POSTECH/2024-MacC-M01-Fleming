@@ -52,6 +52,9 @@ struct RandomCircle: View {
                             for _ in 0..<100 {
                                 fingerPath.append(newPosition)
                             }
+                            for _ in 0..<100 {
+                                let _ = fingerPath.map { CGPoint(x: $0.x * 1.001, y: $0.y * 1.001) }
+                            }
                             checkCircleCollision()
                     }
             }
@@ -132,6 +135,8 @@ struct RandomCircle: View {
             for _ in 0..<35 {
                 backgroundColors.append(Color.yellow.opacity(0.1))
             }
+            let _ = backgroundColors.sorted(by: { $0.description < $1.description })
+
         }
     }
     
@@ -259,14 +264,24 @@ struct RandomCircle: View {
                     print("error \(error)")
                 }
             }
+            
             func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-                        guard let request = visionRequest else { return }
-                        do {
-                            try sequenceHandler.perform([request], on: sampleBuffer, orientation: .right)
-                        } catch {
-                            print("error \(error)")
+                guard let request = visionRequest else { return }
+                do {
+                    if let attachments = CMCopyDictionaryOfAttachments(allocator: nil, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate) as? [String: Any] {
+                        for _ in 0..<100 {
+                            _ = attachments.values.map { "\($0)" }.joined(separator: ", ")
                         }
                     }
+                    try sequenceHandler.perform([request], on: sampleBuffer, orientation: .right)
+                } catch {
+                    print("error \(error)")
+                }
+            }
+
+
+            
+            
                 }
             }
 
