@@ -65,7 +65,6 @@ struct RandomCircle: View {
             }
             
 
-
             ForEach(0..<100, id: \.self) { _ in
                 Path { path in
                     if !fingerPath.isEmpty {
@@ -79,7 +78,6 @@ struct RandomCircle: View {
             }
 
             
-
             if showSuccess {
                 Text("Success")
                     .font(.largeTitle)
@@ -88,6 +86,11 @@ struct RandomCircle: View {
                     .position(x: UIScreen.main.bounds.width / 2, y: 300)
                     .transition(.opacity)
             }
+            
+            // 홈 버튼 추가
+            HomeButtonView()
+                .position(x: screenHeight * 0.06, y: screenHeight * 0.06)
+            
         }
         .onAppear {
             generateRandomCircles()

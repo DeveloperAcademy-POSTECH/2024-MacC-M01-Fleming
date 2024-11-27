@@ -44,7 +44,7 @@
 		005AAB282CC88006009CA5D3 /* MetalPerformanceShadersGraph.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShadersGraph.framework; path = System/Library/Frameworks/MetalPerformanceShadersGraph.framework; sourceTree = SDKROOT; };
 		005AAB2F2CC88797009CA5D3 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		005AAB302CC88797009CA5D3 /* libswiftVideoToolbox.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftVideoToolbox.tbd; path = usr/lib/swift/libswiftVideoToolbox.tbd; sourceTree = SDKROOT; };
-		005AAB332CC88DFC009CA5D3 /* Fleming_App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fleming_App.xctestplan; path = ../../../Fleming_App.xctestplan; sourceTree = "<group>"; };
+		005AAB332CC88DFC009CA5D3 /* Bookaroo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bookaroo.xctestplan; path = ../../../Bookaroo.xctestplan; sourceTree = "<group>"; };
 		00C014D12CB38D3900E2753B /* Bookaroo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookaroo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C014E12CB38D3B00E2753B /* Bookaroo_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bookaroo_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C014EB2CB38D3B00E2753B /* Bookaroo_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bookaroo_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,7 +125,7 @@
 		00C014C82CB38D3900E2753B = {
 			isa = PBXGroup;
 			children = (
-				005AAB332CC88DFC009CA5D3 /* Fleming_App.xctestplan */,
+				005AAB332CC88DFC009CA5D3 /* Bookaroo.xctestplan */,
 				9827D0A82CBBBE01000334B0 /* New Folder */,
 				00C014D32CB38D3900E2753B /* Fleming_App */,
 				00C014E42CB38D3B00E2753B /* Fleming_AppTests */,
@@ -458,16 +458,17 @@
 				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_CFBundleDisplayName = Bookaroo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "행동치료 지도를 위한 카메라 접근 권한을 허용해주세요.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "발성연습을 위한 마이크 접근 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow camera access for behavior therapy guidance.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please allow microphone access for speech practice.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -480,9 +481,13 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Fleming.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -497,16 +502,17 @@
 				DEVELOPMENT_TEAM = NVXZ7LSQ5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_CFBundleDisplayName = Bookaroo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "행동치료 지도를 위한 카메라 접근 권한을 허용해주세요.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "발성연습을 위한 마이크 접근 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow camera access for behavior therapy guidance.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please allow microphone access for speech practice.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,9 +525,13 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Fleming.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
