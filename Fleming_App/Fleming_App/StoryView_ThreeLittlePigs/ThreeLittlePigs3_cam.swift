@@ -22,6 +22,7 @@ struct ThreeLittlePigs3_cam: View {
         y: UIScreen.main.bounds.height * 0.7) // 초기 이미지 위치 x는 950, y는 620
     
     @Binding var currentStep: Int // currentStep 스토리 진행의 단계
+    private let fingerCircleSize: CGFloat = 100.0 // 손가락 이미지 크기
     
     // 애니메이션 넣을 때 쓰는 변수(현재는 안 쓰임)
     @Binding var isLeft : Bool // 동그라미가 왼쪽에 있는지 여부
@@ -87,10 +88,17 @@ struct ThreeLittlePigs3_cam: View {
                     }
             }
                 if let touchPoint = touchPoint {
-                Circle()
-                    .fill(Color.red)
-                    .frame(width: 30, height: 30)
-                    .position(touchPoint)
+                    
+//                Circle()
+//                    .fill(Color.red)
+//                    .frame(width: 30, height: 30)
+//                    .position(touchPoint)
+                    
+                    Image("handfinger")
+                        .resizable()
+                        .frame(width: fingerCircleSize, height: fingerCircleSize)
+                        .position(touchPoint)
+                    
             }
                 if isSuccess {
                 Text("Success!")

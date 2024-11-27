@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../../../Fleming_App.xctestplan"
+            reference = "container:../../../Bookaroo.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -103,6 +103,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Bookaroo"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
